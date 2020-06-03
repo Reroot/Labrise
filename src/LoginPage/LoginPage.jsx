@@ -35,7 +35,8 @@ function LoginPage() {
 
     return (
         <div className="col-lg-8 offset-lg-2">
-            <h2>Login</h2>
+            <h2>Welcome to Labrise! Your Personal Health Assistant</h2>
+            <title>Please enter your log in or register into our Secure Portal</title>
             <form name="form" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Username</label>
