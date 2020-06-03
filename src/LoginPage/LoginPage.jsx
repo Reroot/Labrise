@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+// 
 import { userActions } from '../_actions';
 
 function LoginPage() {
@@ -34,7 +34,7 @@ function LoginPage() {
     }
 
     return (
-        <div className="col-lg-8 offset-lg-2">
+        <div>
             <h2>Welcome to Labrise! Your Personal Health Assistant</h2>
             <title>Please enter your log in or register into our Secure Portal</title>
             <form name="form" onSubmit={handleSubmit}>

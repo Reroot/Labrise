@@ -10,6 +10,7 @@ import { configureFakeBackend } from './_helpers';
 configureFakeBackend();
 
 render(
+
     <Provider store={store}>
         <App />
     </Provider>,
