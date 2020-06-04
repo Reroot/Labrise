@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // 
 import { userActions } from '../_actions';
+import Navbar from './Navbar';
 
 function LoginPage() {
     const [inputs, setInputs] = useState({
@@ -35,6 +36,10 @@ function LoginPage() {
 
     return (
         <div>
+            <h1>
+                <Navbar />
+            </h1>
+            
             <h2>Welcome to Labrise! Your Personal Health Assistant</h2>
             <title>Please enter your log in or register into our Secure Portal</title>
             <form name="form" onSubmit={handleSubmit}>
