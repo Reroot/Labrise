@@ -38,6 +38,9 @@ function App() {
       )}
 
       <Router history={history}>
+        {/*
+        Need to make this more fluid with pending before displaying
+        */}
         {user && (
           <Grid
             container
