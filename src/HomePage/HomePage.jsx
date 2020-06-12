@@ -5,9 +5,7 @@ import { userActions } from "../_actions";
 import Pay from "./components/Pay";
 import PayPalButton from "./components/PaypalButton";
 
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Grid from "@material-ui/core/Grid";
 
 function HomePage() {
   const users = useSelector((state) => state.users);
@@ -23,48 +21,22 @@ function HomePage() {
   }
 
   return (
-    <Container style={{ marginLeft: "1rem", marginRight: "0" }}>
-      <Row>
-        <Col md={2}>
+    <Grid container id="mainGrid">
+      <Grid container id="headerGrid" justify="space-between">
+        <Grid item xs={3}>
           <h1>Hi {user.firstName}!</h1>
-        </Col>
-        <Col></Col>
-        <Col md={2} style={{ textAlign: "right" }}>
+        </Grid>
+        <Grid item xs={3} style={{ textAlign: "right" }}>
           <Link to="/login">Logout</Link>
-        </Col>
-      </Row>
-      {/* 
-            <h3>All registered users:</h3>
-            {users.loading && <em>Loading users...</em>}
-            {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-            {users.items &&
-                <ul>
-                    {users.items.map((user, index) =>
-                        <li key={user.id}>
-                            {user.firstName + ' ' + user.lastName}
-                            {
-                                user.deleting ? <em> - Deleting...</em>
-                                : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
-                                : <span> - <a onClick={() => handleDeleteUser(user.id)} className="text-primary">Delete</a></span>
-                            }
-                        </li>
-                    )}
-                t</ul>
-            }*/}
-
-      <Row></Row>
-      <Row>
-        {" "}
-        <p>You're logged in with Labrise!!</p>{" "}
-      </Row>
-      <Row></Row>
-      <Row>d</Row>
-      <Row>
-        <Col sm={2}>
-          <Pay />
-        </Col>
-      </Row>
-    </Container>
+        </Grid>
+      </Grid>
+      <Grid item xs>
+        <p>You're logged in with Labrise!!</p>
+      </Grid>
+      <Grid item xs>
+        <Pay />
+      </Grid>
+    </Grid>
   );
 }
 

@@ -21,7 +21,14 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        height: "100vh",
+        paddingTop: "1vh",
+        paddingLeft: "2vh",
+        paddingRight: "1vh",
+      }}
+    >
       {alert.message && (
         <div className={`alert ${alert.type}`}>{alert.message}</div>
       )}
