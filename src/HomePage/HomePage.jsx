@@ -23,10 +23,14 @@ function HomePage() {
   }
 
   return (
-    <Container>
+    <Container style={{ marginLeft: "1rem", marginRight: "0" }}>
       <Row>
-        <Col>
+        <Col md={2}>
           <h1>Hi {user.firstName}!</h1>
+        </Col>
+        <Col></Col>
+        <Col md={2} style={{ textAlign: "right" }}>
+          <Link to="/login">Logout</Link>
         </Col>
       </Row>
       {/* 
@@ -56,10 +60,9 @@ function HomePage() {
       <Row></Row>
       <Row>d</Row>
       <Row>
-        <Pay />
-        <p>
-          <Link to="/login">Logout</Link>
-        </p>
+        <Col sm={2}>
+          <Pay />
+        </Col>
       </Row>
     </Container>
   );
