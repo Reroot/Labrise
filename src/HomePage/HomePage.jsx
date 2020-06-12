@@ -1,28 +1,35 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '../_actions';
-import  Pay  from './components/Pay';
-import PayPalButton from './components/PaypalButton'
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../_actions";
+import Pay from "./components/Pay";
+import PayPalButton from "./components/PaypalButton";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 function HomePage() {
-    const users = useSelector(state => state.users);
-    const user = useSelector(state => state.authentication.user);
-    const dispatch = useDispatch();
+  const users = useSelector((state) => state.users);
+  const user = useSelector((state) => state.authentication.user);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(userActions.getAll());
-    }, []);
+  useEffect(() => {
+    dispatch(userActions.getAll());
+  }, []);
 
-    function handleDeleteUser(id) {
-        dispatch(userActions.delete(id));
-    }
+  function handleDeleteUser(id) {
+    dispatch(userActions.delete(id));
+  }
 
-    return (
-
-        <div className="col-lg-8 offset-lg-2">
-            <h1>Hi {user.firstName}!</h1>
-
-            {/* 
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <h1>Hi {user.firstName}!</h1>
+        </Col>
+      </Row>
+      {/* 
             <h3>All registered users:</h3>
             {users.loading && <em>Loading users...</em>}
             {users.error && <span className="text-danger">ERROR: {users.error}</span>}
@@ -40,14 +47,22 @@ function HomePage() {
                     )}
                 t</ul>
             }*/}
-            
-            <p>You're logged in with Labrise!!</p>
-            <Pay />
-            <p>
-                <Link to="/login">Logout</Link>
-            </p> 
-        </div>
-    );
+
+      <Row></Row>
+      <Row>
+        {" "}
+        <p>You're logged in with Labrise!!</p>{" "}
+      </Row>
+      <Row></Row>
+      <Row>d</Row>
+      <Row>
+        <Pay />
+        <p>
+          <Link to="/login">Logout</Link>
+        </p>
+      </Row>
+    </Container>
+  );
 }
 
 export { HomePage };
