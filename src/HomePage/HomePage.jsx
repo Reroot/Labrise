@@ -6,6 +6,7 @@ import Pay from "./components/Pay";
 import PayPalButton from "./components/PaypalButton";
 
 import Grid from "@material-ui/core/Grid";
+import { ButtonGroup, Button } from "@material-ui/core";
 
 function HomePage() {
   const users = useSelector((state) => state.users);
@@ -21,19 +22,49 @@ function HomePage() {
   }
 
   return (
-    <Grid container id="mainGrid">
-      <Grid container id="headerGrid" justify="space-between">
-        <Grid item xs={3}>
-          <h1>Hi {user.firstName}!</h1>
-        </Grid>
-        <Grid item xs={3} style={{ textAlign: "right" }}>
-          <Link to="/login">Logout</Link>
+    <Grid
+      container
+      id="mainGrid"
+      direction="column"
+      style={{ height: "100vh" }}
+    >
+      <Grid item style={{ height: "10vh" }}>
+        <Grid container id="headerGrid" direction="row">
+          <Grid item xs={3}>
+            <h1>Hi {user.firstName}!</h1>
+          </Grid>
+          <Grid item xs={7}>
+            <Grid item>
+              <ButtonGroup
+                variant="contained"
+                color="white"
+                aria-label="contained primary button group"
+              >
+                <Button>
+                  <Link to="/" style={{ color: "black" }}>
+                    Home
+                  </Link>
+                </Button>
+                <Button>
+                  <Link to="/5" style={{ color: "black" }}>
+                    Two
+                  </Link>
+                </Button>
+                <Button>Lab Results</Button>
+              </ButtonGroup>
+            </Grid>
+          </Grid>
+          <Grid item xs={2} style={{ textAlign: "right" }}>
+            <Button variant="outlined" color="primary">
+              <Link to="/login">Logout</Link>
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
-      <Grid item xs>
-        <p>You're logged in with Labrise!!</p>
+      <Grid item style={{ height: "80vh" }}>
+        Content Home Page
       </Grid>
-      <Grid item xs>
+      <Grid item style={{ height: "10vh" }}>
         <Pay />
       </Grid>
     </Grid>
