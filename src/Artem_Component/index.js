@@ -1,0 +1,1 @@
+export * from './Artem_Component';

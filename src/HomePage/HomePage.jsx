@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../_actions';
+import {PatientPage} from '../PatientPage';
+import {InvoiceRender} from '../Rory_Component';
 
 function HomePage() {
     const users = useSelector(state => state.users);
@@ -19,8 +21,13 @@ function HomePage() {
 
     return (
         <div className="col-lg-8 offset-lg-2">
+            {/* <div>
+                <InvoiceRender {...props} />
+            </div> */}
+
             <h1>Hi {user.firstName}!</h1>
             <p>You're logged in with Labrise!!</p>
+            <Link to="/patient">Your Patient History</Link>
             <h3>All registered users:</h3>
             {users.loading && <em>Loading users...</em>}
             {users.error && <span className="text-danger">ERROR: {users.error}</span>}
@@ -41,7 +48,12 @@ function HomePage() {
             <p>
                 <Link to="/login">Logout</Link>
             </p>
+
+            {/* <PatientPage /> */}
+            
         </div>
+
+        // <PatientPage />
     );
 }
 
