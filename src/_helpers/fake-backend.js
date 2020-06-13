@@ -6,10 +6,11 @@ export function configureFakeBackend() {
   window.fetch = function (url, opts) {
     const { method, headers } = opts;
     const body = opts.body && JSON.parse(opts.body);
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {//axios also possible here
       // wrap in timeout to simulate server api call
       setTimeout(handleRoute, 500);
 
+      
       function handleRoute() {
         switch (true) {
           case url.endsWith("/users/authenticate") && method === "POST":
