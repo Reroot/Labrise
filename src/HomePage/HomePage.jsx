@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../_actions";
-import Pay from "./components/Pay";
-import PayPalButton from "./components/PaypalButton";
+import Pay from "./components/Artems_Pay_Component/Pay";
 
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
