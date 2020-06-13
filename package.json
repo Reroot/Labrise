@@ -11,9 +11,13 @@
         "start": "webpack-dev-server --open"
     },
     "dependencies": {
+        "@material-ui/core": "^4.10.2",
+        "@material-ui/styles": "^4.10.0",
+        "bootstrap": "^4.5.0",
         "history": "^4.10.1",
         "node-sass": "^4.14.1",
         "react": "^16.13.0",
+        "react-bootstrap": "^1.0.1",
         "react-dom": "^16.13.0",
         "react-paypal-express-checkout": "^1.0.5",
         "react-redux": "^7.2.0",
