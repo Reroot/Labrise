@@ -6,6 +6,8 @@ import Pay from "./components/Artems_Pay_Component/Pay";
 
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
+import {PatientPage} from '../PatientPage';
+import {InvoiceRender} from '../Rory_Component';
 
 function HomePage() {
   const users = useSelector((state) => state.users);
@@ -25,6 +27,8 @@ function HomePage() {
       <Grid item style={{ height: "80vh" }}>
         Content Home Page
       </Grid>
+      <Link to="/patient">Your Patient History</Link>
+
       <Grid item style={{ height: "10vh" }}>
         <Pay />
       </Grid>
