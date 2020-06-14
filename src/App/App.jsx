@@ -89,7 +89,7 @@ function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/labresults"></Route>
-          <Route path="/patient" component={PatientPage} />
+          <PrivateRoute path="/patient" component={PatientPage} />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
