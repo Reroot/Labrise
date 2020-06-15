@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../_actions";
-import Pay from "./components/Pay";
-import PayPalButton from "./components/PaypalButton";
+import Pay from "./components/Artems_Pay_Component/Pay";
 
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
+import {PatientPage} from '../PatientPage';
+import {InvoiceRender} from '../Rory_Component';
 
 import { RetrieveInfo } from "../_services";
 
@@ -30,6 +31,8 @@ function HomePage() {
         Content Home Page
         <Button onClick={() => {}}>Try to get</Button>
       </Grid>
+      <Link to="/patient">Your Patient History</Link>
+
       <Grid item style={{ height: "10vh" }}>
         {<Pay />}
       </Grid>

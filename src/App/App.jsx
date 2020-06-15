@@ -9,9 +9,10 @@ import { PrivateRoute } from "../_components";
 import { HomePage } from "../HomePage";
 import { LoginPage } from "../LoginPage";
 import { RegisterPage } from "../RegisterPage";
-
+import { PatientPage } from "../PatientPage/PatientPage"
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
+
 function App() {
   const alert = useSelector((state) => state.alert);
   const dispatch = useDispatch();
@@ -88,6 +89,7 @@ function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/labresults"></Route>
+          <PrivateRoute path="/patient" component={PatientPage} />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
