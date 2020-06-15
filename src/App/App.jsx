@@ -9,7 +9,7 @@ import { PrivateRoute } from "../_components";
 import { HomePage } from "../HomePage";
 import { LoginPage } from "../LoginPage";
 import { RegisterPage } from "../RegisterPage";
-import { PatientPage } from "../PatientPage/PatientPage"
+import { PatientPage } from "../PatientPage/PatientPage";
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
 
