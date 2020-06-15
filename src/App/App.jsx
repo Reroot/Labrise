@@ -55,7 +55,7 @@ function App() {
               <Grid item>
                 <ButtonGroup
                   variant="contained"
-                  color="white"
+                  color="primary"
                   aria-label="contained primary button group"
                 >
                   <Button>

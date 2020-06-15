@@ -7,14 +7,18 @@ import PayPalButton from "./components/PaypalButton";
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
 
+import { RetrieveInfo } from "../_services";
+
 function HomePage() {
   const users = useSelector((state) => state.users);
   const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
-
-  useEffect(() => {
+  {
+    /* useEffect(() => {
     dispatch(userActions.getAll());
   }, []);
+*/
+  }
 
   function handleDeleteUser(id) {
     dispatch(userActions.delete(id));
@@ -24,9 +28,10 @@ function HomePage() {
     <Grid container direction="column" style={{ height: "90vh" }}>
       <Grid item style={{ height: "80vh" }}>
         Content Home Page
+        <Button onClick={() => {}}>Try to get</Button>
       </Grid>
       <Grid item style={{ height: "10vh" }}>
-        <Pay />
+        {<Pay />}
       </Grid>
     </Grid>
   );
