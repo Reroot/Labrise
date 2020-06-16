@@ -32,6 +32,7 @@ function App() {
         paddingTop: "1vh",
         paddingLeft: "2vh",
         paddingRight: "1vh",
+        backgroundImage: `url(/src/13971.jpg)`,
       }}
     >
       {alert.message && (
