@@ -37,7 +37,7 @@ function Header() {
         </Grid>
       </Grid>
       <Grid item xs={2} style={{ textAlign: "right" }}>
-        <Button variant="outlined" color="primary">
+        <Button variant="contained" color="default">
           <Link to="/login">Logout</Link>
         </Button>
       </Grid>
