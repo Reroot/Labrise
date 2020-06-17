@@ -35,7 +35,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="jumbotron">
+    <div>
       <h1>
         <Navbar />
       </h1>

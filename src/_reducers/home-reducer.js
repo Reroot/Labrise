@@ -6,7 +6,8 @@ export default function homeReducer(state = {}, action) {
       console.log("reducer succ");
       return {
         ...state,
-        profileData: { data: action.data, requestSuccessful: true },
+        profileData: { pData: action.data, requestSuccessful: true },
+        test: action.data,
       };
     case homeConstants.GET_REQUEST:
       console.log("reducer pending");

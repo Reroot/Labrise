@@ -17,14 +17,21 @@ import HomeRender from "./home-render";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+//testing
+
 const HomePage = (props) => {
+  console.log(props);
   const users = useSelector((state) => state.users);
   const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
-
+  let info = useSelector((state) => state.homeReducer.profileData);
   useEffect(() => {
     const { actions } = props;
     actions.readProfile();
+    // dispatch(userActions.getAll());
+    // dispatch(homeActions.readProfile());
+    // console.log("useeffect");
+    // console.log(info);
   }, []);
 
   function handleDeleteUser(id) {
@@ -37,10 +44,10 @@ const HomePage = (props) => {
         <Link to="/patient">Your Patient History</Link>
       </Grid>
       <Grid item style={{ height: "75vh" }}>
-        <HomeRender {...props} />
+        <HomeRender {...info} />
       </Grid>
       <Grid item style={{ height: "10vh" }}>
-        {<Pay />}
+        <Pay />
       </Grid>
     </Grid>
   );
@@ -58,7 +65,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-HomePage.propTypes = {
-  actions: PropTypes.object,
-};
+// HomePage.propTypes = {
+//   actions: PropTypes.object,
+// };
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+//export { HomePage };

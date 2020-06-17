@@ -3,14 +3,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 
-const HomeRender = ({ data }) => {
+const HomeRender = (data) => {
+  console.log(data);
   function createHome(info) {
-    return <Grid item>Your name is :{info["firstname"]}</Grid>;
+    return <Grid item>Your name is :{info.pData.value[0]["firstname"]}</Grid>;
   }
   let content = "";
   // if data is pending or falsey
   if (!data || data.requestPending) {
-    console.log("pending render");
     content = (
       <div className="d-flex justify-content-center">
         <div className="spinner-border" role="status">
@@ -20,8 +20,8 @@ const HomeRender = ({ data }) => {
     );
   }
   if (data && data.requestSuccessful) {
-    console.log("success Render");
-    <Grid container>{createHome(data)}</Grid>;
+    content = <Grid container>{createHome(data)}</Grid>;
+    // content = <h1>Hi im paul</h1>;
   }
   if (data && data.requestFailed) {
     content = (
