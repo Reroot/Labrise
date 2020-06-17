@@ -17,6 +17,7 @@ export const readProfile = () => {
     },
   };
   return (dispatch) => {
+    console.log("started action");
     dispatch(_readProfileStarted);
     ///////////Your api azure function here
     adalApiFetch(
@@ -25,6 +26,7 @@ export const readProfile = () => {
       config
     )
       .then((res) => {
+        console.log("success action");
         dispatch(_readProfileSuccess(res));
       })
       .catch((error) => {

@@ -1,4 +1,4 @@
 export * from "./alert.actions";
 export * from "./user.actions";
 export * from "./invoiceActions";
-export * from "./homeActions";
+export * from "./home-actions";

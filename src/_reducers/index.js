@@ -5,7 +5,7 @@ import { registration } from "./registration.reducer";
 import { users } from "./users.reducer";
 import { alert } from "./alert.reducer";
 import invoiceReducer from "./invoiceReducer";
-import homeReducer from "./homeReducer";
+import homeReducer from "./home-reducer";
 
 const rootReducer = combineReducers({
   authentication,

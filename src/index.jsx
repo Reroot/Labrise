@@ -7,7 +7,11 @@ import { App } from "./App";
 
 // setup fake backend
 import { configureFakeBackend } from "./_helpers";
+
+import { runWithAdal } from "react-adal";
+import { authContext } from "./Config/adalConfig";
 const DO_NOT_LOGIN = false;
+
 configureFakeBackend();
 
 runWithAdal(
