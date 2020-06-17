@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
 import { PatientPage } from "../PatientPage";
 import { InvoiceRender } from "../Rory_Component";
+import { Link } from "react-router-dom";
 
 import { RetrieveInfo } from "../_services";
 
@@ -26,12 +27,14 @@ function HomePage() {
   }
 
   return (
-    <Grid container direction="column" style={{ height: "90vh" }}>
-      <Grid item style={{ height: "80vh" }}>
+    <Grid container direction="column" style={{ height: "89vh" }}>
+      <Grid item style={{ height: "4vh" }}>
+        <Link to="/patient">Your Patient History</Link>
+      </Grid>
+      <Grid item style={{ height: "75vh" }}>
         Content Home Page
         <Button onClick={() => {}}>Try to get</Button>
       </Grid>
-
       <Grid item style={{ height: "10vh" }}>
         {<Pay />}
       </Grid>
