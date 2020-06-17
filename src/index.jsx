@@ -10,9 +10,15 @@ import { configureFakeBackend } from "./_helpers";
 const DO_NOT_LOGIN = false;
 configureFakeBackend();
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("app")
+runWithAdal(
+  authContext,
+  () => {
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.getElementById("app")
+    );
+  },
+  DO_NOT_LOGIN
 );
