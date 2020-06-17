@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { PatientPage } from "../PatientPage/PatientPage"
 function Header() {
   const user = useSelector((state) => state.authentication.user);
   return (
@@ -19,17 +19,18 @@ function Header() {
             aria-label="contained primary button group"
           >
             <Button>
-              <Link to="/" style={{ color: "black" }}>
+              <Link to="/" style={{ color: "white" }}>
                 Home
               </Link>
             </Button>
             <Button>
-              <Link to="/5" style={{ color: "black" }}>
-                Two
+              <Link to="/patient" style={{ color: "white" }}>
+                Invoice
+                {PatientPage}
               </Link>
             </Button>
             <Button>
-              <Link to="/labresults" style={{ color: "black" }}>
+              <Link to="/labresults" style={{ color: "white" }}>
                 Lab results
               </Link>
             </Button>
