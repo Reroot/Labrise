@@ -20,7 +20,7 @@ function Header() {
           >
             <Button>
               <Link to="/" style={{ color: "white" }}>
-                Home
+                DashBoard
               </Link>
             </Button>
             <Button>
