@@ -17,8 +17,6 @@ import HomeRender from "./home-render";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-//testing
-
 const HomePage = (props) => {
   console.log(props);
   const users = useSelector((state) => state.users);
@@ -26,8 +24,8 @@ const HomePage = (props) => {
   const dispatch = useDispatch();
   let info = useSelector((state) => state.homeReducer.profileData);
   useEffect(() => {
-    const { actions } = props;
-    actions.readProfile();
+    //const { actions } = props;
+    dispatch(homeActions.readProfile());
     // dispatch(userActions.getAll());
     // dispatch(homeActions.readProfile());
     // console.log("useeffect");
@@ -53,21 +51,21 @@ const HomePage = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    data: state.homeReducer.data,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     data: state.homeReducer.data,
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(homeActions, dispatch),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(homeActions, dispatch),
+//   };
+// }
 
 // HomePage.propTypes = {
 //   actions: PropTypes.object,
 // };
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+// export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
-//export { HomePage };
+export { HomePage };
