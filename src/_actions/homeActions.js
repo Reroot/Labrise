@@ -5,6 +5,7 @@ import { homeConstants } from "../_constants";
 import { adalApiFetch } from "../Config/adalConfig";
 
 export const readProfile = () => {
+  // header info for the fetchUrl
   let config = {
     method: "get",
     "OData-MaxVersion": 4.0,
@@ -16,39 +17,39 @@ export const readProfile = () => {
     },
   };
   return (dispatch) => {
-    dispatch(_readBookStarted());
+    dispatch(_readProfileStarted);
     ///////////Your api azure function here
     adalApiFetch(
       axios,
-      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone&$top=10",
+      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname&$filter=contains(emailaddress1,(%27will.cao@smoothstack.com%27))",
       config
     )
       .then((res) => {
-        dispatch(_readBookSuccess(res));
+        dispatch(_readProfileSuccess(res));
       })
       .catch((error) => {
         console.log(error);
-        dispatch(_readBookFailed(error));
+        dispatch(_readProfileFailed(error));
       });
   };
 };
 
-const _readBookSuccess = (res) => {
+const _readProfileSuccess = (res) => {
   return {
-    type: READ_BOOKS_SUCCESFUL,
+    type: homeConstants.GET_SUCCESS,
     data: res.data,
   };
 };
 
-const _readBookFailed = (error) => {
+const _readProfileFailed = (error) => {
   return {
-    type: READ_BOOKS_FAILURE,
+    type: homeConstants.GET_FAILURE,
     error,
   };
 };
 
-const _readBookStarted = () => {
+const _readProfileStarted = () => {
   return {
-    type: READ_BOOKS_PENDING,
+    type: homeConstants.GET_REQUEST,
   };
 };
