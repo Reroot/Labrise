@@ -2,7 +2,12 @@ import { makeStyles } from "@material-ui/core/styles";
 const navStyles = makeStyles({
   navBar: { height: "10vh" },
   navButton: {},
-  navButtonLink: { color: "White", flexDirection: "row", display: "flex" },
+  navButtonLink: {
+    color: "White",
+    flexDirection: "row",
+    display: "flex",
+    textDecoration: "none",
+  },
   accountBoxIcon: {
     fontSize: "4.5rem",
   },
