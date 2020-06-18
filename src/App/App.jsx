@@ -13,6 +13,7 @@ import { Header } from "../_components";
 // import { Corona } from "../HomePage/components/Corona_Component/Corona";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
 import { Dashboard } from "../HomePage/components/lai_components/dashboard"
+import Paperbase from "./paperbase/Paperbase";
 function App() {
   const alert = useSelector((state) => state.alert);
   const dispatch = useDispatch();
@@ -44,12 +45,12 @@ function App() {
         */}
         {user && <Header />}
         <Switch>
-          <PrivateRoute exact path="/" component={HomePage} />
+          <PrivateRoute exact path="/" component={Paperbase} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           {/* <Route path="/corona" component={Corona} /> */}
-          <Route path="/" ><Dashboard patient='Hyperlipidemia'/></Route>
-          <PrivateRoute path="/patient" component={PatientPage} />
+          <Route path="/labresults" ><Dashboard patient='Hyperlipidemia'/></Route>
+          <Route path="/patient"><PatientPage/></Route>
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
