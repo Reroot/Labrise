@@ -75,6 +75,7 @@ function Header() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>
               <Link to="/login">Logout</Link>
             </MenuItem>
