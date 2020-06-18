@@ -10,7 +10,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import TocIcon from "@material-ui/icons/Toc";
 
 function Header() {
-  const navStyle = navStyles();
+  const useStyles = navStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -26,7 +26,7 @@ function Header() {
         container
         id="headerGrid"
         direction="row"
-        className={navStyle.navBar}
+        className={useStyles.navBar}
       >
         <Grid item xs={3}></Grid>
         <Grid item xs={8}>
@@ -37,19 +37,19 @@ function Header() {
               aria-label="contained primary button group"
             >
               <Button>
-                <Link to="/" className={navStyle.navButtonLink}></Link>
+                <Link to="/" className={useStyles.navButtonLink}></Link>
                 <HomeIcon></HomeIcon>
                 <div>Home</div>
               </Button>
               <Button>
-                <Link to="/5" className={navStyle.navButtonLink}>
+                <Link to="/5" className={useStyles.navButtonLink}>
                   Two
                 </Link>
               </Button>
               <Button>
                 <Link
                   to="/labresults"
-                  className={navStyle.navButtonLink}
+                  className={useStyles.navButtonLink}
                 ></Link>
                 <TocIcon></TocIcon>
                 <div>Lab results</div>
@@ -62,10 +62,10 @@ function Header() {
             aria-controls="simple-menu"
             aria-haspopup="true"
             onClick={handleClick}
-            className={navStyle.navProfileButton}
+            className={useStyles.navProfileButton}
           >
             <AccountBoxIcon
-              className={navStyle.accountBoxIcon}
+              className={useStyles.accountBoxIcon}
             ></AccountBoxIcon>
           </Button>
           <Menu
