@@ -16,7 +16,7 @@ function Header() {
           >
             <Button>
               <Link to="/" style={{ color: "White" }}>
-                Home
+                Lab results
               </Link>
             </Button>
             <Button>
@@ -25,8 +25,8 @@ function Header() {
               </Link>
             </Button>
             <Button>
-              <Link to="/labresults" style={{ color: "White" }}>
-                Lab results
+              <Link to="/records" style={{ color: "White" }}>
+                Records
               </Link>
             </Button>
           </ButtonGroup>

@@ -16,6 +16,7 @@ import * as homeActions from "../_actions/home-actions";
 import HomeRender from "./home-render";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { Dashboard } from "./components/lai_components/dashboard";
 
 //testing
 
@@ -45,14 +46,12 @@ const HomePage = (props) => {
       </Grid>
       <Grid item style={{ height: "75vh" }}>
         <HomeRender {...info} />
+        <Dashboard/>
         {/* <Corona />   */}
       </Grid>
       
 
       <Grid item style={{ height: "10vh" }}>
-      
-
-        
         <Pay />
       </Grid> 
         

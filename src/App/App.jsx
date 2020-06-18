@@ -10,9 +10,9 @@ import { LoginPage } from "../LoginPage";
 import { RegisterPage } from "../RegisterPage";
 import { PatientPage } from "../PatientPage/PatientPage";
 import { Header } from "../_components";
-import { Corona } from "../HomePage/components/Corona_Component/Corona";
-import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
-
+// import { Corona } from "../HomePage/components/Corona_Component/Corona";
+// import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
+import { Dashboard } from "../HomePage/components/lai_components/dashboard"
 function App() {
   const alert = useSelector((state) => state.alert);
   const dispatch = useDispatch();
@@ -47,8 +47,8 @@ function App() {
           <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
-          <Route path="/corona" component={Corona} />
-          <Route path="/labresults"></Route>
+          {/* <Route path="/corona" component={Corona} /> */}
+          <Route path="/" component={Dashboard}></Route>
           <PrivateRoute path="/patient" component={PatientPage} />
           <Redirect from="*" to="/" />
         </Switch>
