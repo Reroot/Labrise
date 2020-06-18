@@ -11,6 +11,7 @@ const HomeRender = (data) => {
   let content = "";
   // if data is pending or falsey
   if (!data || data.requestPending) {
+    console.log("pending");
     content = (
       <div className="d-flex justify-content-center">
         <div className="spinner-border" role="status">
@@ -20,6 +21,7 @@ const HomeRender = (data) => {
     );
   }
   if (data && data.requestSuccessful) {
+    console.log("success");
     content = <Grid container>{createHome(data)}</Grid>;
     // content = <h1>Hi im paul</h1>;
   }
