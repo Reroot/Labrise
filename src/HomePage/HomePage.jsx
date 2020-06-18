@@ -47,14 +47,14 @@ const HomePage = (props) => {
         <Dashboard/>
         {/* <Corona />   */}
       </Grid>
-      
+      <Pay/>
 
       <Grid item style={{ height: "10vh" }}>
-        <Pay />
       </Grid> 
         
 
       
+
     </Grid>
   );
 };

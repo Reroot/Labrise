@@ -48,7 +48,7 @@ function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           {/* <Route path="/corona" component={Corona} /> */}
-          <Route path="/" component={Dashboard}></Route>
+          <Route path="/" ><Dashboard patient='Hyperlipidemia'/></Route>
           <PrivateRoute path="/patient" component={PatientPage} />
           <Redirect from="*" to="/" />
         </Switch>

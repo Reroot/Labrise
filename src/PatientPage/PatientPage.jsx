@@ -86,12 +86,12 @@ export class PatientPage extends React.Component{
                 <title>Review your patient history below</title>
                 <Link to="/">Home</Link>
                 <Rory_Component />
+                <Pay />
                 {/* <Will_Component />
                 <Scott_Component />
                 // <Rory_Component />
                 <Kevin_Component />
                 <Artem_Component /> */}
-                <Pay />
             </div>
         );    
     }
