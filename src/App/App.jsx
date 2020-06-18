@@ -10,6 +10,7 @@ import { LoginPage } from "../LoginPage";
 import { RegisterPage } from "../RegisterPage";
 import { PatientPage } from "../PatientPage/PatientPage";
 import { Header } from "../_components";
+import { ProfilePage } from "../_components/profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/labresults"></Route>
+          <Route path="/profile" component={ProfilePage} />
           <PrivateRoute path="/patient" component={PatientPage} />
           <Redirect from="*" to="/" />
         </Switch>

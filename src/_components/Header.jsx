@@ -37,9 +37,10 @@ function Header() {
               aria-label="contained primary button group"
             >
               <Button>
-                <Link to="/" className={useStyles.navButtonLink}></Link>
-                <HomeIcon></HomeIcon>
-                <div>Home</div>
+                <Link to="/" className={useStyles.navButtonLink}>
+                  <HomeIcon></HomeIcon>
+                  Home
+                </Link>
               </Button>
               <Button>
                 <Link to="/5" className={useStyles.navButtonLink}>
@@ -47,12 +48,10 @@ function Header() {
                 </Link>
               </Button>
               <Button>
-                <Link
-                  to="/labresults"
-                  className={useStyles.navButtonLink}
-                ></Link>
-                <TocIcon></TocIcon>
-                <div>Lab results</div>
+                <Link to="/labresults" className={useStyles.navButtonLink}>
+                  <TocIcon></TocIcon>
+                  Lab results
+                </Link>
               </Button>
             </ButtonGroup>
           </Grid>
@@ -75,7 +74,9 @@ function Header() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to="/profile">Profile</Link>
+            </MenuItem>
             <MenuItem onClick={handleClose}>
               <Link to="/login">Logout</Link>
             </MenuItem>
