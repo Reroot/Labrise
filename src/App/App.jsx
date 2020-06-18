@@ -14,7 +14,8 @@ import { Header } from "../_components";
 function App() {
   const alert = useSelector((state) => state.alert);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.authentication.user);
+  const user = useSelector((state) => state.authentication.loggedIn);
+  console.log(user);
 
   useEffect(() => {
     history.listen((location, action) => {
