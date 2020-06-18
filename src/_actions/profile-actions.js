@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { homeConstants } from "../_constants";
+import { profileConstants } from "../_constants";
 
 import { adalApiFetch } from "../Config/adalConfig";
 
@@ -21,7 +21,7 @@ export const readProfile = () => {
     ///////////Your api azure function here
     adalApiFetch(
       axios,
-      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname&$filter=contains(emailaddress1,(%27will.cao@smoothstack.com%27))",
+      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,new_weight,emailaddress1&$filter=contains(emailaddress1,(%27will.cao@smoothstack.com%27))",
       config
     )
       .then((res) => {
@@ -36,20 +36,20 @@ export const readProfile = () => {
 
 const _readProfileSuccess = (res) => {
   return {
-    type: homeConstants.GET_SUCCESS,
+    type: profileConstants.GET_SUCCESS,
     data: res.data,
   };
 };
 
 const _readProfileFailed = (error) => {
   return {
-    type: homeConstants.GET_FAILURE,
+    type: profileConstants.GET_FAILURE,
     error,
   };
 };
 
 const _readProfileStarted = () => {
   return {
-    type: homeConstants.GET_REQUEST,
+    type: profileConstants.GET_REQUEST,
   };
 };

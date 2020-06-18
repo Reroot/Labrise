@@ -6,6 +6,9 @@ const ProfileStyles = makeStyles({
     outlineColor: "blue",
     margin: ".6rem",
   },
+  container: {
+    height: "84vh",
+  },
 });
 
 export { ProfileStyles };

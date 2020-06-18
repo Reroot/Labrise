@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 
 import { RetrieveInfo } from "../_services";
 
-import * as homeActions from "../_actions/home-actions";
-import HomeRender from "./home-render";
+import * as homeActions from "../_actions/profile-actions";
+import profileRender from "./home-render";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -21,7 +21,7 @@ const HomePage = (props) => {
   const users = useSelector((state) => state.users);
   const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
-  let info = useSelector((state) => state.homeReducer.profileData);
+  // let info = useSelector((state) => state.homeReducer.profileData);
   useEffect(() => {
     //const { actions } = props;
     dispatch(homeActions.readProfile());
@@ -41,7 +41,9 @@ const HomePage = (props) => {
         <Link to="/patient">Your Patient History</Link>
       </Grid>
       <Grid item style={{ height: "70vh" }}>
-        <HomeRender {...info} />
+        {
+          //<HomeRender {...info} />
+        }
       </Grid>
       <Grid item style={{ height: "10vh" }}>
         <Pay />

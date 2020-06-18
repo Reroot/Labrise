@@ -26,7 +26,7 @@ function App() {
   return (
     <div
       style={{
-        height: "95vh",
+        height: "9vh",
         paddingLeft: "2vh",
         paddingRight: "1vh",
       }}

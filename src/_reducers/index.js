@@ -5,7 +5,7 @@ import { registration } from "./registration.reducer";
 import { users } from "./users.reducer";
 import { alert } from "./alert.reducer";
 import invoiceReducer from "./invoiceReducer";
-import homeReducer from "./home-reducer";
+import profileReducer from "./profile-reducer";
 
 const rootReducer = combineReducers({
   authentication,
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   users,
   alert,
   invoiceReducer,
-  homeReducer,
+  profileReducer,
 });
 
 export default rootReducer;
