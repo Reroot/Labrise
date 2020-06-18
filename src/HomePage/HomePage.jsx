@@ -18,7 +18,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 const HomePage = (props) => {
-  console.log(props);
   const users = useSelector((state) => state.users);
   const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
