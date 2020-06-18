@@ -1,43 +1,87 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import { ButtonGroup, Button } from "@material-ui/core";
+import { ButtonGroup, Button, Paper } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { navStyles } from "../Style/navBarStyle";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import HomeIcon from "@material-ui/icons/Home";
+import TocIcon from "@material-ui/icons/Toc";
 
 function Header() {
+  const navStyle = navStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
-    <Grid container id="headerGrid" direction="row" style={{ height: "10vh" }}>
-      <Grid item xs={3}></Grid>
-      <Grid item xs={7}>
-        <Grid item>
-          <ButtonGroup
-            variant="contained"
-            color="primary"
-            aria-label="contained primary button group"
+    <Paper>
+      <Grid
+        container
+        id="headerGrid"
+        direction="row"
+        className={navStyle.navBar}
+      >
+        <Grid item xs={3}></Grid>
+        <Grid item xs={8}>
+          <Grid item>
+            <ButtonGroup
+              variant="contained"
+              color="primary"
+              aria-label="contained primary button group"
+            >
+              <Button>
+                <Link to="/" className={navStyle.navButtonLink}></Link>
+                <HomeIcon></HomeIcon>
+                <div>Home</div>
+              </Button>
+              <Button>
+                <Link to="/5" className={navStyle.navButtonLink}>
+                  Two
+                </Link>
+              </Button>
+              <Button>
+                <Link
+                  to="/labresults"
+                  className={navStyle.navButtonLink}
+                ></Link>
+                <TocIcon></TocIcon>
+                <div>Lab results</div>
+              </Button>
+            </ButtonGroup>
+          </Grid>
+        </Grid>
+        <Grid item xs={1} style={{ elevation: 1 }}>
+          <Button
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+            className={navStyle.navProfileButton}
           >
-            <Button>
-              <Link to="/" style={{ color: "White" }}>
-                Home
-              </Link>
-            </Button>
-            <Button>
-              <Link to="/5" style={{ color: "White" }}>
-                Two
-              </Link>
-            </Button>
-            <Button>
-              <Link to="/labresults" style={{ color: "White" }}>
-                Lab results
-              </Link>
-            </Button>
-          </ButtonGroup>
+            <AccountBoxIcon
+              className={navStyle.accountBoxIcon}
+            ></AccountBoxIcon>
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link to="/login">Logout</Link>
+            </MenuItem>
+          </Menu>
         </Grid>
       </Grid>
-      <Grid item xs={2} style={{ textAlign: "right" }}>
-        <Button variant="outlined">
-          <Link to="/login">Logout</Link>
-        </Button>
-      </Grid>
-    </Grid>
+    </Paper>
   );
 }
 
