@@ -2,7 +2,9 @@ import Container from "@material-ui/core/Container";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
+import { ProfileStyles } from "../Style/profilestyle";
 function ProfilePage() {
+  const useStyles = ProfileStyles();
   const loggingIn = useSelector((state) => state.authentication.loggingIn);
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.alert);
@@ -20,6 +22,7 @@ function ProfilePage() {
         id="userID"
         label="Username"
         autoFocus
+        className={useStyles.textField}
       />
       <TextField
         variant="outlined"
@@ -30,6 +33,7 @@ function ProfilePage() {
         id="passwordID"
         label="Password"
         type="password"
+        className={useStyles.textField}
       />
     </Container>
   );
