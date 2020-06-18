@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Alert from "@material-ui/lab/Alert";
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -21,7 +22,7 @@ function LoginPage() {
   const { username, password } = inputs;
   const loggingIn = useSelector((state) => state.authentication.loggingIn);
   const dispatch = useDispatch();
-
+  const alert = useSelector((state) => state.alert);
   // reset login status
   useEffect(() => {
     dispatch(userActions.logout());
@@ -64,6 +65,7 @@ function LoginPage() {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
+        {alert.message && <Alert severity="error">{alert.message}</Alert>}
         <title>
           Please enter your log in or register into our Secure Portal
         </title>

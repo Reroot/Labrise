@@ -12,10 +12,8 @@ import { PatientPage } from "../PatientPage/PatientPage";
 import { Header } from "../_components";
 
 function App() {
-  const alert = useSelector((state) => state.alert);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authentication.loggedIn);
-  console.log(user);
 
   useEffect(() => {
     history.listen((location, action) => {
@@ -33,15 +31,12 @@ function App() {
         paddingRight: "1vh",
       }}
     >
-      {alert.message && (
-        <div className={`alert ${alert.type}`}>{alert.message}</div>
-      )}
-
       <Router history={history}>
         {/*
         Need to make this more fluid with pending before displaying
         */}
         {user && <Header />}
+
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
