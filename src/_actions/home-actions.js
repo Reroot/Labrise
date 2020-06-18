@@ -25,7 +25,6 @@ export const readProfile = () => {
       config
     )
       .then((res) => {
-        console.log("success action");
         dispatch(_readProfileSuccess(res));
       })
       .catch((error) => {

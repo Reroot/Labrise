@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 
 const HomeRender = (data) => {
-  console.log(data);
   function createHome(info) {
     return <Grid item>Your name is :{info.pData.value[0]["firstname"]}</Grid>;
   }
