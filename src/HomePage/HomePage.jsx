@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../_actions";
 import Pay from "./components/Artems_Pay_Component/Pay";
@@ -11,7 +11,7 @@ import { InvoiceRender } from "../Rory_Component";
 import { Link } from "react-router-dom";
 
 import { RetrieveInfo } from "../_services";
-
+import Corona from "./components/Corona_Component/Corona"
 import * as homeActions from "../_actions/home-actions";
 import HomeRender from "./home-render";
 import { connect } from "react-redux";
@@ -45,10 +45,19 @@ const HomePage = (props) => {
       </Grid>
       <Grid item style={{ height: "75vh" }}>
         <HomeRender {...info} />
+        {/* <Corona />   */}
       </Grid>
+      
+
       <Grid item style={{ height: "10vh" }}>
+      
+
+        
         <Pay />
-      </Grid>
+      </Grid> 
+        
+
+      
     </Grid>
   );
 };

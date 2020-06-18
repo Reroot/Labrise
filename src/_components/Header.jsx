@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
+import { Corona } from "../HomePage/components/Corona_Component/Corona"
 function Header() {
   return (
     <Grid container id="headerGrid" direction="row" style={{ height: "10vh" }}>
@@ -20,8 +20,8 @@ function Header() {
               </Link>
             </Button>
             <Button>
-              <Link to="/5" style={{ color: "White" }}>
-                Two
+              <Link to="/corona" style={{ color: "White" }}>
+              Corona Status & Updates
               </Link>
             </Button>
             <Button>

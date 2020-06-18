@@ -74,6 +74,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import  Rory_Component from "../Rory_Component/Rory_Component";
 // import  Kevin_Component from "../Kevin_Component/Kevin_Component";
 // import  Artem_Component from "../Artem_Component/Artem_Component";
+import Pay from "../HomePage/components/Artems_Pay_Component/Pay";
 
 export class PatientPage extends React.Component{
     render(){
@@ -90,6 +91,7 @@ export class PatientPage extends React.Component{
                 // <Rory_Component />
                 <Kevin_Component />
                 <Artem_Component /> */}
+                <Pay />
             </div>
         );    
     }

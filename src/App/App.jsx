@@ -10,6 +10,8 @@ import { LoginPage } from "../LoginPage";
 import { RegisterPage } from "../RegisterPage";
 import { PatientPage } from "../PatientPage/PatientPage";
 import { Header } from "../_components";
+import { Corona } from "../HomePage/components/Corona_Component/Corona";
+import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
 
 function App() {
   const alert = useSelector((state) => state.alert);
@@ -45,6 +47,7 @@ function App() {
           <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
+          <Route path="/corona" component={Corona} />
           <Route path="/labresults"></Route>
           <PrivateRoute path="/patient" component={PatientPage} />
           <Redirect from="*" to="/" />
