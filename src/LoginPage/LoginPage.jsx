@@ -1,7 +1,6 @@
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -30,7 +29,6 @@ function LoginPage() {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    console.log(inputs);
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   }
 
@@ -81,7 +79,6 @@ function LoginPage() {
               label="Username"
               value={username}
               onChange={handleChange}
-              autoComplete="user"
               autoFocus
             />
             <TextField
@@ -95,27 +92,22 @@ function LoginPage() {
               value={password}
               onChange={handleChange}
               type="password"
-              autoComplete="current-password"
             />
-            <div className="form-group">
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                {loggingIn && (
-                  <span className="spinner-border spinner-border-sm mr-1"></span>
-                )}
-                Sign In
-              </Button>
-              <Grid item>
-                <Link to="/register" className="btn btn-link">
-                  {" Don't have a account? Sign up here!"}
-                </Link>
-              </Grid>
-            </div>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              {loggingIn && (
+                <span className="spinner-border spinner-border-sm mr-1"></span>
+              )}
+              Sign In
+            </Button>
+            <Link to="/register" className="btn btn-link">
+              {" Don't have a account? Sign up here!"}
+            </Link>
           </div>
         </form>
       </div>

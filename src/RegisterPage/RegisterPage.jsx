@@ -4,6 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { userActions } from "../_actions";
 
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Container from "@material-ui/core/Container";
+import ContactsIcon from "@material-ui/icons/Contacts";
+
 function RegisterPage() {
   const [user, setUser] = useState({
     firstName: "",
@@ -22,6 +27,7 @@ function RegisterPage() {
 
   function handleChange(e) {
     const { name, value } = e.target;
+    console.log(e.target.value);
     setUser((user) => ({ ...user, [name]: value }));
   }
 
@@ -36,86 +42,76 @@ function RegisterPage() {
 
   return (
     <Container maxWidth="xs">
-      <div className="col-lg-8 offset-lg-2">
-        <h2>Register</h2>
-        <form name="form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>First Name</label>
-            <input
-              type="text"
-              name="firstName"
-              value={user.firstName}
-              onChange={handleChange}
-              className={
-                "form-control" +
-                (submitted && !user.firstName ? " is-invalid" : "")
-              }
-            />
-            {submitted && !user.firstName && (
-              <div className="invalid-feedback">First Name is required</div>
+      <h2 style={{ marginBottom: "0px" }}>
+        Register
+        <ContactsIcon style={{ fontSize: "3rem", marginLeft: "4.9rem" }} />
+      </h2>
+      <form name="form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="firstName"
+            id="firstnameID"
+            label="First Name"
+            value={user.firstName}
+            onChange={handleChange}
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="lastName"
+            id="lastnameID"
+            label="Last Name"
+            value={user.lastName}
+            onChange={handleChange}
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="username"
+            id="usernameID"
+            label="Username"
+            value={user.username}
+            onChange={handleChange}
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            id="passwordID"
+            label="Password"
+            value={user.password}
+            onChange={handleChange}
+            autoFocus
+          />
+          <Button type="submit" fullWidth variant="contained" color="primary">
+            {registering && (
+              <span className="spinner-border spinner-border-sm mr-1"></span>
             )}
-          </div>
-          <div className="form-group">
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              value={user.lastName}
-              onChange={handleChange}
-              className={
-                "form-control" +
-                (submitted && !user.lastName ? " is-invalid" : "")
-              }
-            />
-            {submitted && !user.lastName && (
-              <div className="invalid-feedback">Last Name is required</div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Username</label>
-            <input
-              type="text"
-              name="username"
-              value={user.username}
-              onChange={handleChange}
-              className={
-                "form-control" +
-                (submitted && !user.username ? " is-invalid" : "")
-              }
-            />
-            {submitted && !user.username && (
-              <div className="invalid-feedback">Username is required</div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              value={user.password}
-              onChange={handleChange}
-              className={
-                "form-control" +
-                (submitted && !user.password ? " is-invalid" : "")
-              }
-            />
-            {submitted && !user.password && (
-              <div className="invalid-feedback">Password is required</div>
-            )}
-          </div>
-          <div className="form-group">
-            <button className="btn btn-primary">
-              {registering && (
-                <span className="spinner-border spinner-border-sm mr-1"></span>
-              )}
-              Register
-            </button>
-            <Link to="/login" className="btn btn-link">
-              Cancel
-            </Link>
-          </div>
-        </form>
-      </div>
+            Register
+          </Button>
+          <Button
+            href="/login"
+            fullWidth
+            variant="contained"
+            style={{ marginTop: ".5rem" }}
+          >
+            Cancel
+          </Button>
+        </div>
+      </form>
     </Container>
   );
 }
