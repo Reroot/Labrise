@@ -36,11 +36,11 @@ const HomePage = (props) => {
   }
 
   return (
-    <Grid container direction="column" style={{ height: "89vh" }}>
+    <Grid container direction="column" style={{ height: "84vh" }}>
       <Grid item style={{ height: "4vh" }}>
         <Link to="/patient">Your Patient History</Link>
       </Grid>
-      <Grid item style={{ height: "75vh" }}>
+      <Grid item style={{ height: "70vh" }}>
         <HomeRender {...info} />
       </Grid>
       <Grid item style={{ height: "10vh" }}>

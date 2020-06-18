@@ -14,10 +14,12 @@ function ProfilePage() {
     <Container maxWidth="xs">
       <title>Please enter your log in or register into our Secure Portal</title>
       <TextField
-        variant="outlined"
+        variant="filled"
         margin="normal"
-        required
-        fullWidth
+        InputProps={{
+          readOnly: true,
+        }}
+        defaultValue="Username Here"
         name="username"
         id="userID"
         label="Username"
@@ -28,7 +30,6 @@ function ProfilePage() {
         variant="outlined"
         margin="normal"
         required
-        fullWidth
         name="password"
         id="passwordID"
         label="Password"
