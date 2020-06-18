@@ -47,16 +47,17 @@ function App() {
             container
             id="headerGrid"
             direction="row"
+            justify="center"
             style={{ height: "10vh" }}
           >
             <Grid item xs={3}>
               <h1>Hi {user.firstName}!</h1>
             </Grid>
-            <Grid item xs={7}>
+            <Grid container item xs={7} justify="center">
               <Grid item>
                 <ButtonGroup
                   variant="contained"
-                  color="white"
+                  // color="secondary"
                   aria-label="contained primary button group"
                 >
                   <Button>
@@ -65,8 +66,8 @@ function App() {
                     </Link>
                   </Button>
                   <Button>
-                    <Link to="/5" style={{ color: "black" }}>
-                      Two
+                    <Link to="/patient" style={{ color: "black" }}>
+                      Invoices
                     </Link>
                   </Button>
                   <Button>

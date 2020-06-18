@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button } from "@material-ui/core";
 import {PatientPage} from '../PatientPage';
 import {InvoiceRender} from '../Rory_Component';
+import Corona from './components/Corona_Component/Corona';
 
 function HomePage() {
   const users = useSelector((state) => state.users);
@@ -23,15 +24,17 @@ function HomePage() {
   }
 
   return (
-    <Grid container direction="column" style={{ height: "90vh" }}>
-      <Grid item style={{ height: "80vh" }}>
-        Content Home Page
+    // <Grid container direction="column" style={{ height: "90vh" }}>
+    <Grid container direction="column" >
+      {/* <Grid item style={{ height: "80vh" }}> */}
+      <Grid item>
+        {/* Content Home Page */}
+        <Corona />
       </Grid>
-      <Link to="/patient">Your Patient History</Link>
-
-      <Grid item style={{ height: "10vh" }}>
+      {/* <Grid item style={{ height: "10vh" }}> */}
+      {/* <Grid item>
         <Pay />
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }
