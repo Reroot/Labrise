@@ -53,6 +53,16 @@ function Header() {
                   Lab results
                 </Link>
               </Button>
+              <Button>
+                <Link to="/" className={useStyles.navButtonLink}>
+                  Corona News Alerts
+                </Link>
+              </Button>
+              <Button>
+                <Link to="/" className={useStyles.navButtonLink}>
+                  Appointments
+                </Link>
+              </Button>
             </ButtonGroup>
           </Grid>
         </Grid>

@@ -42,7 +42,7 @@ function App() {
         {user && <Header />}
         
         <Switch>
-          <PrivateRoute exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component={<Dashboard patient="Hyperlipidemia" />}/>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           {/* <Route path="/corona" component={Corona} /> */}
