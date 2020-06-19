@@ -15,7 +15,7 @@ import { ProfilePage } from "../_components/profile";
 // import { Corona } from "../HomePage/components/Corona_Component/Corona";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
 import { Dashboard } from "../HomePage/components/lai_components/dashboard";
-import Paperbase from "./paperbase/Paperbase";
+
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authentication.loggedIn);
@@ -40,9 +40,9 @@ function App() {
         Need to make this more fluid with pending before displaying
         */}
         {user && <Header />}
-
+        
         <Switch>
-          <PrivateRoute exact path="/" component={Paperbase} />
+          <PrivateRoute exact path="/" component={Dashboard} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           {/* <Route path="/corona" component={Corona} /> */}
