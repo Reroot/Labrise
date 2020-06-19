@@ -43,8 +43,8 @@ function Header() {
                 </Link>
               </Button>
               <Button>
-                <Link to="/5" className={useStyles.navButtonLink}>
-                  Two
+                <Link to="/patient" className={useStyles.navButtonLink}>
+                  Invoice
                 </Link>
               </Button>
               <Button>
