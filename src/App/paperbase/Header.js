@@ -51,7 +51,6 @@ function Header(props) {
     //const { actions } = props;
     // dispatch(userActions.getAll());
     // dispatch(homeActions.readProfile());
-    // console.log("useeffect");
     // console.log(info);
   }, []);
 
