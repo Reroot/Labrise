@@ -18,12 +18,13 @@ function ProfilePage() {
   if (info && info.requestSuccessful) {
     return (
       <Container className={useStyles.container}>
+        <div>General Information</div>
         <TextField
           variant="outlined"
           margin="normal"
           name="firstName"
           id="firstNameID"
-          value={info.pData.value[0]["firstname"]}
+          defaultValue={info.pData.value[0]["firstname"]}
           label="First Name"
           type="text"
           className={useStyles.textField}
@@ -34,7 +35,7 @@ function ProfilePage() {
           margin="normal"
           name="lastName"
           id="lastNameID"
-          value={info.pData.value[0]["lastname"]}
+          defaultValue={info.pData.value[0]["lastname"]}
           label="Last Name"
           type="text"
           autoComplete="off"
@@ -45,7 +46,7 @@ function ProfilePage() {
           margin="normal"
           name="mobilePhone"
           id="mobilePhoneID"
-          value={info.pData.value[0]["mobilephone"]}
+          defaultValue={info.pData.value[0]["mobilephone"]}
           label="Mobile Phone"
           type="text"
           autoComplete="off"
@@ -56,7 +57,7 @@ function ProfilePage() {
           margin="normal"
           name="emailAddress"
           id="emailAddressID"
-          value={info.pData.value[0]["emailaddress1"]}
+          defaultValue={info.pData.value[0]["emailaddress1"]}
           label="Email Address"
           type="text"
           className={useStyles.textField}
@@ -67,7 +68,7 @@ function ProfilePage() {
           InputProps={{
             endAdornment: <InputAdornment position="start">Kg</InputAdornment>,
           }}
-          value={info.pData.value[0]["new_weight"]}
+          defaultValue={info.pData.value[0]["new_weight"]}
           variant="filled"
           autoComplete="off"
         />

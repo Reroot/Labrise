@@ -6,6 +6,7 @@ import { adalApiFetch } from "../Config/adalConfig";
 
 export const readProfile = () => {
   // header info for the fetchUrl
+  // add TIMER HEADER
   let config = {
     method: "get",
     "OData-MaxVersion": 4.0,
