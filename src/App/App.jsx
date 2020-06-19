@@ -42,12 +42,12 @@ function App() {
         {user && <Header />}
         
         <Switch>
-          <PrivateRoute exact path="/" ><Dashboard patient="Hyperlipidemia" /></PrivateRoute>
+          <PrivateRoute exact path="/" ></PrivateRoute>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           {/* <Route path="/corona" component={Corona} /> */}
           <Route path="/labresults">
-            
+            <Dashboard patient="Hyperlipidemia" />
           </Route>
           <Route path="/profile" component={ProfilePage} />
           <Route path="/patient">
