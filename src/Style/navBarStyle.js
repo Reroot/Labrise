@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 const navStyles = makeStyles({
-  navBar: {},
   navButton: { height: "4.5rem" },
   navButtonLink: {
     color: "White",
