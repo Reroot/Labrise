@@ -12,6 +12,7 @@ const navStyles = makeStyles({
     fontSize: "4.5rem",
   },
   navProfileButton: { padding: ".25rem 0rem 0rem .125rem" },
+  navProfile: { textAlign: "center" },
 });
 
 export { navStyles };

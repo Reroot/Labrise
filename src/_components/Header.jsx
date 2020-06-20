@@ -67,7 +67,7 @@ function Header() {
             </ButtonGroup>
           </Grid>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={1} className={useStyles.navProfile}>
           <Button
             aria-controls="simple-menu"
             aria-haspopup="true"
