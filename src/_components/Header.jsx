@@ -28,13 +28,14 @@ function Header() {
         direction="row"
         className={useStyles.navBar}
       >
-        <Grid item xs={3}></Grid>
-        <Grid item xs={8}>
+        <Grid item xs={2}></Grid>
+        <Grid item xs={9}>
           <Grid item>
             <ButtonGroup
               variant="contained"
               color="primary"
               aria-label="contained primary button group"
+              fullWidth
             >
               <Button className={useStyles.navButton}>
                 <Link to="/" className={useStyles.navButtonLink}>
@@ -66,7 +67,7 @@ function Header() {
             </ButtonGroup>
           </Grid>
         </Grid>
-        <Grid item xs={1} style={{ elevation: 1 }}>
+        <Grid item xs={1}>
           <Button
             aria-controls="simple-menu"
             aria-haspopup="true"
