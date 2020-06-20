@@ -36,29 +36,29 @@ function Header() {
               color="primary"
               aria-label="contained primary button group"
             >
-              <Button>
+              <Button className={useStyles.navButton}>
                 <Link to="/" className={useStyles.navButtonLink}>
                   <HomeIcon></HomeIcon>
                   Home
                 </Link>
               </Button>
-              <Button>
+              <Button className={useStyles.navButton}>
                 <Link to="/patient" className={useStyles.navButtonLink}>
                   Invoice
                 </Link>
               </Button>
-              <Button>
+              <Button className={useStyles.navButton}>
                 <Link to="/labresults" className={useStyles.navButtonLink}>
                   <TocIcon></TocIcon>
                   Lab results
                 </Link>
               </Button>
-              <Button>
+              <Button className={useStyles.navButton}>
                 <Link to="/" className={useStyles.navButtonLink}>
                   Corona News Alerts
                 </Link>
               </Button>
-              <Button>
+              <Button className={useStyles.navButton}>
                 <Link to="/" className={useStyles.navButtonLink}>
                   Appointments
                 </Link>

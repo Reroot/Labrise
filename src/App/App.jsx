@@ -40,9 +40,11 @@ function App() {
         Need to make this more fluid with pending before displaying
         */}
         {user && <Header />}
-        
+
         <Switch>
-          <PrivateRoute exact path="/" ></PrivateRoute>
+          <PrivateRoute exact path="/">
+            <Dashboard patient="Hyperlipidemia" />
+          </PrivateRoute>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           {/* <Route path="/corona" component={Corona} /> */}
