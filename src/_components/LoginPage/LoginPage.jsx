@@ -42,8 +42,20 @@ function LoginPage() {
     }
   }
 
-
-  const classes = useStyles();
+  const useStyles = makeStyles({
+    paper: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    avatar: {
+      background: "#ff0000",
+    },
+    form: {
+      width: "100%", // Fix IE 11 issue.
+    },
+    submit: {},
+  });
   return (
     <Container maxWidth="xs">
       <div id="loginDiv" className={classes.paper}>
