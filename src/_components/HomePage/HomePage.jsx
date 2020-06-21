@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../_actions";
-import Pay from "../Artems_Pay_Component/Pay";
+import Pay from "../PayComponent/Pay";
 
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";

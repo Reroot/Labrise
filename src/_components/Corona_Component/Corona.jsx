@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 import * as coronaActions from "../../_actions/coronaActions";
 import CoronaRender from "./CoronaRender";
 import { ThemeProvider, useTheme } from "@material-ui/core";
-import CustomTheme from "../../MUITheme";
+import CustomTheme from "../../_styles/MUITheme";
 
 const Corona = (props) => {
   useEffect(() => {

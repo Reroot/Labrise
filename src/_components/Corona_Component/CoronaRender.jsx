@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, makeStyles, useTheme } from '@material-ui/core';
-import CustomTheme from '../../MUITheme';
+import CustomTheme from '../../_styles/MUITheme';
 // import DefaultTheme from '@material-ui/styles/defaultTheme';
 import { getThemeProps } from '@material-ui/styles';
 
