@@ -56,7 +56,7 @@ function LoginPage() {
     },
     submit: {},
   });
-  const classes = useStyles();
+  
   return (
     <Container maxWidth="xs">
       <div id="loginDiv" className={classes.paper}>
