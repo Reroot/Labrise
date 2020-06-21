@@ -15,6 +15,7 @@ import { ThemeProvider } from "@material-ui/core";
 import Corona from "../_components/Corona_Component/Corona";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
 import { Dashboard } from "../_components/LabResultsComponent/dashboard";
+import { HomePage } from "../_components/HomePage/HomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,20 +28,7 @@ function App() {
     });
   }, []);
 
-  // const useStyles = makeStyles({
-  //   paper: {
-  //     display: "flex",
-  //     flexDirection: "column",
-  //     alignItems: "center",
-  //   },
-  //   avatar: {
-  //     background: "#ff0000",
-  //   },
-  //   form: {
-  //     width: "100%", // Fix IE 11 issue.
-  //   },
-  //   submit: {},
-  // });
+
   return (
     <div
       style={{
@@ -54,22 +42,22 @@ function App() {
         Need to make this more fluid with pending before displaying
         */}
         {user && <Header />}
-              <Switch>
-              <PrivateRoute exact path="/">
-                <Dashboard patient="Hyperlipidemia" />
-              </PrivateRoute>
-              <Route path="/login" component={LoginPage} />
-              <Route path="/register" component={RegisterPage} />
-              <Route path="/corona" component={Corona} />
-              <Route path="/labresults">
-                <Dashboard patient="Hyperlipidemia" />
-              </Route>
-              <Route path="/profile" component={ProfilePage} />
-              <Route path="/patient">
-                <PatientPage />
-              </Route>
-              <Redirect from="*" to="/" />
-            </Switch>
+
+        <Switch>
+          <PrivateRoute exact path="/" component={HomePage}>
+          </PrivateRoute>
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/corona" component={Corona} />
+          <Route path="/labresults">
+            <Dashboard patient="Hyperlipidemia" />
+          </Route>
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/patient">
+            <PatientPage />
+          </Route>
+          <Redirect from="*" to="/" />
+        </Switch>
       </Router>
     </div>
   );

@@ -56,6 +56,7 @@ function LoginPage() {
     },
     submit: {},
   });
+  
   return (
     <Container maxWidth="xs">
       <div id="loginDiv" className={classes.paper}>

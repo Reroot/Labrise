@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userActions } from "../_actions";
+import { userActions } from "../../_actions";
 import Pay from "../PayComponent/Pay";
 
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
 import HomeRender from "./home-render";
-import { Dashboard } from "../lai_components/dashboard";
+import { Dashboard } from "../LabResultsComponent/dashboard";
 
 const HomePage = (props) => {
   console.log(props);
