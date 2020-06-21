@@ -34,7 +34,7 @@ function Header() {
             <Image
               src="src/images/LabRise_logo.png"
               style={{
-                width: "145px",
+                width: "200px",
                 height: "68px",
               }}
             />
@@ -66,7 +66,7 @@ function Header() {
                 </Link>
               </Button>
               <Button className={useStyles.navButton}>
-                <Link to="/" className={useStyles.navButtonLink}>
+                <Link to="/corona" className={useStyles.navButtonLink}>
                   Corona News Alerts
                 </Link>
               </Button>
