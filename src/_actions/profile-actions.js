@@ -22,7 +22,7 @@ export const readProfile = () => {
     ///////////Your api azure function here
     adalApiFetch(
       axios,
-      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,new_weight,emailaddress1&$filter=contains(emailaddress1,(%27will.cao@smoothstack.com%27))",
+      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,new_weight,emailaddress1,new_bloodtype,new_birthdate,new_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27will.cao@smoothstack.com%27))",
       config
     )
       .then((res) => {
