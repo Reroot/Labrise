@@ -5,16 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { history } from "../_helpers";
 import { alertActions } from "../_actions";
 import { PrivateRoute } from "../_components";
-import { HomePage } from "../HomePage/HomePage";
-import { LoginPage } from "../LoginPage";
-import { RegisterPage } from "../RegisterPage";
-import { PatientPage } from "../PatientPage/PatientPage";
+// import { HomePage } from "../HomePage/HomePage";
+import { LoginPage } from "../_components/LoginPage/LoginPage";
+import { RegisterPage } from "../_components/RegisterPage";
+import { PatientPage } from "../_components/PatientPage/PatientPage";
 import { Header } from "../_components";
 import { ProfilePage } from "../_components/profile";
-
-import Corona from "../HomePage/components/Corona_Component/Corona";
+import { ThemeProvider } from "@material-ui/core";
+import Corona from "../_components/Corona_Component/Corona";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
-import { Dashboard } from "../HomePage/components/lai_components/dashboard";
+import { Dashboard } from "../_components/lai_components/dashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +27,20 @@ function App() {
     });
   }, []);
 
+  // const useStyles = makeStyles({
+  //   paper: {
+  //     display: "flex",
+  //     flexDirection: "column",
+  //     alignItems: "center",
+  //   },
+  //   avatar: {
+  //     background: "#ff0000",
+  //   },
+  //   form: {
+  //     width: "100%", // Fix IE 11 issue.
+  //   },
+  //   submit: {},
+  // });
   return (
     <div
       style={{
@@ -40,23 +54,22 @@ function App() {
         Need to make this more fluid with pending before displaying
         */}
         {user && <Header />}
-
-        <Switch>
-          <PrivateRoute exact path="/">
-            <Dashboard patient="Hyperlipidemia" />
-          </PrivateRoute>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/corona" component={Corona} />
-          <Route path="/labresults">
-            <Dashboard patient="Hyperlipidemia" />
-          </Route>
-          <Route path="/profile" component={ProfilePage} />
-          <Route path="/patient">
-            <PatientPage />
-          </Route>
-          <Redirect from="*" to="/" />
-        </Switch>
+              <Switch>
+              <PrivateRoute exact path="/">
+                <Dashboard patient="Hyperlipidemia" />
+              </PrivateRoute>
+              <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={RegisterPage} />
+              <Route path="/corona" component={Corona} />
+              <Route path="/labresults">
+                <Dashboard patient="Hyperlipidemia" />
+              </Route>
+              <Route path="/profile" component={ProfilePage} />
+              <Route path="/patient">
+                <PatientPage />
+              </Route>
+              <Redirect from="*" to="/" />
+            </Switch>
       </Router>
     </div>
   );

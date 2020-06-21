@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { userActions } from "../_actions";
+import { userActions } from "../../_actions/user.actions";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";

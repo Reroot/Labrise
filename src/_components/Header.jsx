@@ -32,7 +32,7 @@ function Header() {
         <Grid item xs={2}>
           <div style={{ width: "0%", height: "0%" }}>
             <Image
-              src="src/images/LabRise_logo.png"
+              src="../../res/LabRise_logo.png"
               style={{
                 width: "200px",
                 height: "68px",

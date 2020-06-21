@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as invoiceActions from '../_actions/invoiceActions';
+import * as invoiceActions from '../../_actions/invoiceActions';
 import InvoiceRender from './InvoiceRender';
 
 const InvoiceContainer = (props) => {

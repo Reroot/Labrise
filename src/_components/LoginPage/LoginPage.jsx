@@ -5,13 +5,13 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
+import { ThemeProvider } from "@material-ui/core";
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { userActions } from "../_actions";
-import Navbar from "./Navbar";
+import { userActions } from "../../_actions/user.actions";
 
 function LoginPage() {
   const [inputs, setInputs] = useState({
@@ -42,20 +42,6 @@ function LoginPage() {
     }
   }
 
-  const useStyles = makeStyles({
-    paper: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    avatar: {
-      background: "#ff0000",
-    },
-    form: {
-      width: "100%", // Fix IE 11 issue.
-    },
-    submit: {},
-  });
 
   const classes = useStyles();
   return (

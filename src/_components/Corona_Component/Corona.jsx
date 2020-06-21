@@ -4,10 +4,10 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as coronaActions from "../../../_actions/coronaActions";
+import * as coronaActions from "../../_actions/coronaActions";
 import CoronaRender from "./CoronaRender";
 import { ThemeProvider, useTheme } from "@material-ui/core";
-import CustomTheme from "../../../MUITheme";
+import CustomTheme from "../../MUITheme";
 
 const Corona = (props) => {
   useEffect(() => {
