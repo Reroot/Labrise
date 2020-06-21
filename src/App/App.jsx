@@ -12,7 +12,7 @@ import { PatientPage } from "../PatientPage/PatientPage";
 import { Header } from "../_components";
 import { ProfilePage } from "../_components/profile";
 
-// import { Corona } from "../HomePage/components/Corona_Component/Corona";
+import Corona from "../HomePage/components/Corona_Component/Corona";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
 import { Dashboard } from "../HomePage/components/lai_components/dashboard";
 
@@ -47,7 +47,7 @@ function App() {
           </PrivateRoute>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
-          {/* <Route path="/corona" component={Corona} /> */}
+          <Route path="/corona" component={Corona} />
           <Route path="/labresults">
             <Dashboard patient="Hyperlipidemia" />
           </Route>
