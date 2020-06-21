@@ -42,7 +42,20 @@ function LoginPage() {
     }
   }
 
-
+  const useStyles = makeStyles({
+    paper: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    avatar: {
+      background: "#ff0000",
+    },
+    form: {
+      width: "100%", // Fix IE 11 issue.
+    },
+    submit: {},
+  });
   const classes = useStyles();
   return (
     <Container maxWidth="xs">
