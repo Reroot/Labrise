@@ -18,7 +18,7 @@ function ProfilePage() {
   if (info && info.requestSuccessful) {
     return (
       <Container className={useStyles.container}>
-        <div>General Information</div>
+        <h2>General Information</h2>
         <TextField
           variant="outlined"
           margin="normal"
@@ -66,11 +66,13 @@ function ProfilePage() {
           label="Weight"
           id="filled-start-adornment"
           InputProps={{
-            endAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+            endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
           }}
           defaultValue={info.pData.value[0]["new_weight"]}
-          variant="filled"
+          variant="outlined"
           autoComplete="off"
+          margin="nomral"
+          className={useStyles.text}
         />
       </Container>
     );

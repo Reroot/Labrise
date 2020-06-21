@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import HomeIcon from "@material-ui/icons/Home";
 import TocIcon from "@material-ui/icons/Toc";
 
+import Image from "material-ui-image";
 function Header() {
   const useStyles = navStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,7 +29,17 @@ function Header() {
         direction="row"
         className={useStyles.navBar}
       >
-        <Grid item xs={2}></Grid>
+        <Grid item xs={2}>
+          <div style={{ width: "0%", height: "0%" }}>
+            <Image
+              src="src/images/LabRise_logo.png"
+              style={{
+                width: "145px",
+                height: "68px",
+              }}
+            />
+          </div>
+        </Grid>
         <Grid item xs={9}>
           <Grid item>
             <ButtonGroup
