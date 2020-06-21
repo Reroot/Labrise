@@ -2,7 +2,7 @@ import Container from "@material-ui/core/Container";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
-import { ProfileStyles } from "../Style/profilestyle";
+import { ProfileStyles } from "../_styles/profilestyle";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import * as profileActions from "../_actions/profile-actions";
 

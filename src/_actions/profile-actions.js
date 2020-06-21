@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { profileConstants } from "../_constants";
 
-import { adalApiFetch } from "../Config/adalConfig";
+import { adalApiFetch } from "../_adalconfig/adalConfig";
 
 export const readProfile = () => {
   // header info for the fetchUrl

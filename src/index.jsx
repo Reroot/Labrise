@@ -6,7 +6,7 @@ import { App } from "./App";
 // setup fake backend
 import { configureFakeBackend } from "./_helpers";
 import { runWithAdal } from "react-adal";
-import { authContext } from "./Config/adalConfig";
+import { authContext } from "./_adalconfig/adalConfig";
 import { ThemeProvider } from "@material-ui/styles";
 const DO_NOT_LOGIN = false;
 
