@@ -18,6 +18,21 @@ export default function profileReducer(state = {}, action) {
         ...state,
         profileData: { requestFailed: true },
       };
+    case profileConstants.UPDATE_REQUEST:
+      return {
+        ...state,
+        requestPending: true,
+      };
+    case profileConstants.UPDATE_SUCCESS:
+      return {
+        ...state,
+        requestSuccessful: true,
+      };
+    case profileConstants.UPDATE_FAILURE:
+      return {
+        ...state,
+        requestFailed: true,
+      };
     default:
       return state;
   }

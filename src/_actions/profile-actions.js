@@ -56,25 +56,53 @@ const _readProfileStarted = () => {
   };
 };
 
-// post profile data to dynamics
-return (dispatch) => {};
-
-const _postProfileSuccess = (res) => {
-  return {
-    type: profileConstants.GET_SUCCESS,
-    data: res.data,
+export const updateProfile = () => {
+  // post profile data to dynamics
+  //change to put
+  let config = {
+    method: "put",
+    "OData-MaxVersion": 4.0,
+    "OData-Version": 4.0,
+    Accept: "application/json",
+    "Content-Type": "application/json; charset=utf-8",
+    headers: {
+      Prefer: "odata.include-annotations=*",
+    },
+  };
+  return (dispatch) => {
+    dispatch(_updateProfileStarted);
+    adalApiFetch(
+      axios,
+      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,new_weight,emailaddress1,new_bloodtype,new_birthdate,new_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27will.cao@smoothstack.com%27))",
+      config
+    )
+      .then((res) => {
+        console.log("Put success");
+        dispatch(_updateProfileSuccess(res));
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("Put error");
+        dispatch(_updateProfileFailed(error));
+      });
   };
 };
 
-const _postProfileFailed = (error) => {
+const _updateProfileSuccess = (res) => {
   return {
-    type: profileConstants.GET_FAILURE,
+    type: profileConstants.UPDATE_SUCCESS,
+  };
+};
+
+const _updateProfileFailed = (error) => {
+  return {
+    type: profileConstants.UPDATE_FAILURE,
     error,
   };
 };
 
-const _postProfileStarted = () => {
+const _updateProfileStarted = () => {
   return {
-    type: profileConstants.GET_REQUEST,
+    type: profileConstants.UPDATE_REQUEST,
   };
 };
