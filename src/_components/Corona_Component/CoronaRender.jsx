@@ -174,7 +174,7 @@ const CoronaRender = ({ coronaData }) => {
             <div className="alert alert-danger" role="alert">
                 Error while loading corona data!
             </div>
-        )
+        );
     }
         
     return(

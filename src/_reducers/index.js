@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   alert,
   invoiceReducer,
   profileReducer,
-  CoronaReducer,
+  CoronaReducer
 });
 
 export default rootReducer;

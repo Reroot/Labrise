@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../_actions";
 import Pay from "../PayComponent/Pay";
@@ -10,16 +10,19 @@ import HomeRender from "./home-render";
 import { Dashboard } from "../LabResultsComponent/dashboard";
 
 const HomePage = (props) => {
+  console.log("these are the props in homePage");
   console.log(props);
   const dispatch = useDispatch();
-  // let info = useSelector((state) => state.homeReducer.profileData);
-  useEffect(() => {
-    //const { actions } = props;
-    // dispatch(userActions.getAll());
-    // dispatch(homeActions.readProfile());
-    // console.log("useeffect");
-    // console.log(info);
-  }, []);
+  // useEffect(() => {
+  //   const { actions } = props;
+  //   dispatch(actions.readProfile());
+  //   // this.setState(info.value[0]);
+  // }, []);
+  const [patientDynamicsRecord, setPatientDynamicsRecord] = useState({});
+  let info = useSelector((state) => state.profileReducer.profileData);
+  console.log("this is info in homePage after calling useSelector on profile reducer");
+  console.log(info);
+  //let info = useSelector((state) => state.homeReducer.profileData);
 
   return (
     <Grid container direction="column" style={{ height: "84vh" }}>

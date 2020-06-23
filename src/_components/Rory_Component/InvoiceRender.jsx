@@ -7,10 +7,10 @@ const InvoiceRender = ({ invoiceData }) => {
 
     function createInvoiceRow(invoice){
         return (
-            <tr key={invoice.invoice_ID}>
-                <td> {invoice.invoice_ID} </td>
-                <td> {invoice.amount} </td>
-                <td> {invoice.due_date} </td>
+            <tr key={invoice.invoicenumber}>
+                <td> {invoice.invoicenumber} </td>
+                <td> {invoice.name} </td>
+                <td> {"$" + invoice.msdyn_amountdue} </td>
             </tr>
         );
     }
@@ -34,12 +34,12 @@ const InvoiceRender = ({ invoiceData }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Name</th>
                         <th>Amount</th>
-                        <th>DueDate</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {invoiceData.invoices.map((invoice) => createInvoiceRow(invoice))}
+                    {invoiceData.invoices.value.map((invoice) => createInvoiceRow(invoice))}
                 </tbody>    
             </table>)
     }
@@ -62,7 +62,7 @@ const InvoiceRender = ({ invoiceData }) => {
 }
 
 InvoiceRender.propTypes = {
-    invocieData: PropTypes.object
+    invoiceData: PropTypes.object
 };
 
 export default InvoiceRender;
