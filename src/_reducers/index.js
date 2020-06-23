@@ -7,6 +7,7 @@ import { alert } from "./alert.reducer";
 import invoiceReducer from "./invoiceReducer";
 import profileReducer from "./profile-reducer";
 import CoronaReducer from "./CoronaReducer";
+import CoronaStateReducer from "./CoronaStateReducer";
 
 const rootReducer = combineReducers({
   authentication,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   alert,
   invoiceReducer,
   profileReducer,
-  CoronaReducer
+  CoronaReducer,
+  CoronaStateReducer
 });
 
 export default rootReducer;
