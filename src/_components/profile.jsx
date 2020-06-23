@@ -11,11 +11,11 @@ function ProfilePage() {
   const dispatch = useDispatch();
   let info = useSelector((state) => state.profileReducer.profileData);
   // reset login status
-  console.log(info);
   useEffect(() => {
     dispatch(profileActions.readProfile());
   }, []);
   if (info && info.requestSuccessful) {
+    const date = info.pData.value[0]["new_birthdate"].split("T");
     return (
       <Container className={useStyles.container}>
         <Container>
@@ -54,21 +54,19 @@ function ProfilePage() {
             defaultValue={info.pData.value[0]["mobilephone"]}
             label="Mobile Phone"
             type="text"
-            InputProps={{
-              readOnly: true,
-            }}
             autoComplete="off"
+            placeholder="###-###-####"
             className={useStyles.textField}
           />
           <TextField
             id="birthDate"
             label="Birth Date"
             type="date"
-            defaultValue={info.pData.value[0]["new_birthdate"]}
+            defaultValue={date[0]}
             className={useStyles.textField}
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true,
+            variant="filled"
+            InputProps={{
+              readOnly: true,
             }}
           />
           <TextField
@@ -132,7 +130,6 @@ function ProfilePage() {
         </Container>
         <Container>
           <h2>Address</h2>
-          {console.log(info.pData.value)}
           <TextField
             variant="outlined"
             margin="normal"
