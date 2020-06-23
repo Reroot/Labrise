@@ -18,7 +18,7 @@ function login(username, password) {
     userService.login(username, password).then(
       (user) => {
         dispatch(success(user));
-        history.push("/");
+        history.push("/profile");
       },
       (error) => {
         dispatch(failure(error.toString()));

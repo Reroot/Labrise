@@ -12,10 +12,11 @@ import { PatientPage } from "../_components/PatientPage/PatientPage";
 import { Header } from "../_components";
 import { ProfilePage } from "../_components/profile";
 import { ThemeProvider } from "@material-ui/core";
-import Corona from "../_components/Corona_Component/Corona";
+import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
 import { Dashboard } from "../_components/LabResultsComponent/dashboard";
-import { HomePage } from "../_components/HomePage/HomePage";
+//import { HomePage } from "../_components/HomePage/HomePage";
+import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,11 +45,11 @@ function App() {
         {user && <Header />}
 
         <Switch>
-          <PrivateRoute exact path="/" component={HomePage}>
+          <PrivateRoute exact path="/" component={PatientContextWrapper}>
           </PrivateRoute>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
-          <Route path="/corona" component={Corona} />
+          <Route path="/corona" component={CoronaPanel} />
           <Route path="/labresults">
             <Dashboard patient="Hyperlipidemia" />
           </Route>

@@ -9,7 +9,7 @@ import CoronaRender from "./CoronaRender";
 import { ThemeProvider, useTheme } from "@material-ui/core";
 import CustomTheme from "../../_styles/MUITheme";
 
-const Corona = (props) => {
+const CoronaNational = (props) => {
   useEffect(() => {
     const { actions } = props;
     const coronaParams = { state: "US", date: null };
@@ -18,9 +18,8 @@ const Corona = (props) => {
 
   return (
     <div>
-      <ThemeProvider theme={CustomTheme}>
+        <h1>National Data</h1>
         <CoronaRender {...props} />
-      </ThemeProvider>
     </div>
   );
 };
@@ -37,8 +36,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-Corona.propTypes = {
+CoronaNational.propTypes = {
   actions: PropTypes.object,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Corona);
+export default connect(mapStateToProps, mapDispatchToProps)(CoronaNational);

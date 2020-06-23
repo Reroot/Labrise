@@ -56,6 +56,8 @@ function LoginPage() {
     },
     submit: {},
   });
+
+  const classes = useStyles();
   
   return (
     <Container maxWidth="xs">
