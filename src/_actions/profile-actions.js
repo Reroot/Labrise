@@ -4,6 +4,7 @@ import { profileConstants } from "../_constants";
 
 import { adalApiFetch } from "../Config/adalConfig";
 
+/// read profile Data
 export const readProfile = () => {
   // header info for the fetchUrl
   // add TIMER HEADER
@@ -50,6 +51,29 @@ const _readProfileFailed = (error) => {
 };
 
 const _readProfileStarted = () => {
+  return {
+    type: profileConstants.GET_REQUEST,
+  };
+};
+
+// post profile data to dynamics
+return (dispatch) => {};
+
+const _postProfileSuccess = (res) => {
+  return {
+    type: profileConstants.GET_SUCCESS,
+    data: res.data,
+  };
+};
+
+const _postProfileFailed = (error) => {
+  return {
+    type: profileConstants.GET_FAILURE,
+    error,
+  };
+};
+
+const _postProfileStarted = () => {
   return {
     type: profileConstants.GET_REQUEST,
   };
