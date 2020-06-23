@@ -6,6 +6,8 @@ const ProfileStyles = makeStyles({
   },
   container: {
     height: "84vh",
+    backgroundImage:
+      "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4));",
   },
 });
 

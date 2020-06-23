@@ -21,24 +21,28 @@ function ProfilePage() {
         <Container>
           <h2>General Information</h2>
           <TextField
-            variant="outlined"
+            variant="filled"
             margin="normal"
             name="firstName"
             id="firstNameID"
             defaultValue={info.pData.value[0]["firstname"]}
             label="First Name"
-            type="text"
+            InputProps={{
+              readOnly: true,
+            }}
             className={useStyles.textField}
             autoComplete="off"
           />
           <TextField
-            variant="outlined"
+            variant="filled"
             margin="normal"
             name="lastName"
             id="lastNameID"
             defaultValue={info.pData.value[0]["lastname"]}
             label="Last Name"
-            type="text"
+            InputProps={{
+              readOnly: true,
+            }}
             autoComplete="off"
             className={useStyles.textField}
           />
@@ -50,59 +54,12 @@ function ProfilePage() {
             defaultValue={info.pData.value[0]["mobilephone"]}
             label="Mobile Phone"
             type="text"
-            autoComplete="off"
-            className={useStyles.textField}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            name="emailAddress"
-            id="emailAddressID"
-            defaultValue={info.pData.value[0]["emailaddress1"]}
-            label="Email Address"
-            type="text"
-            className={useStyles.textField}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            name="bloodType"
-            id="bloodTypeID"
-            defaultValue={
-              info.pData.value[0][
-                "new_bloodtype@OData.Community.Display.V1.FormattedValue"
-              ]
-            }
-            label="Blood Type"
-            type="text"
-            className={useStyles.textField}
-          />
-          <TextField
-            label="Weight"
-            id="weight-filled-end-adornment"
             InputProps={{
-              endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+              readOnly: true,
             }}
-            defaultValue={info.pData.value[0]["new_weight"]}
-            variant="outlined"
             autoComplete="off"
             className={useStyles.textField}
           />
-          <TextField
-            label="Height"
-            id="height-filled-end-adornment"
-            InputProps={{
-              endAdornment: <InputAdornment position="end">CM</InputAdornment>,
-            }}
-            defaultValue={info.pData.value[0]["new_height"]}
-            variant="outlined"
-            autoComplete="off"
-            className={useStyles.textField}
-          />
-        </Container>
-        <Container>
-          <h2>Address</h2>
-          {console.log(info.pData.value)}
           <TextField
             id="birthDate"
             label="Birth Date"
@@ -114,6 +71,68 @@ function ProfilePage() {
               shrink: true,
             }}
           />
+          <TextField
+            variant="filled"
+            margin="normal"
+            name="emailAddress"
+            id="emailAddressID"
+            defaultValue={info.pData.value[0]["emailaddress1"]}
+            label="Email Address"
+            type="text"
+            InputProps={{
+              readOnly: true,
+            }}
+            className={useStyles.textField}
+          />
+          <TextField
+            variant="filled"
+            margin="normal"
+            name="bloodType"
+            id="bloodTypeID"
+            defaultValue={
+              info.pData.value[0][
+                "new_bloodtype@OData.Community.Display.V1.FormattedValue"
+              ]
+            }
+            label="Blood Type"
+            type="text"
+            InputProps={{
+              readOnly: true,
+            }}
+            className={useStyles.textField}
+          />
+          <TextField
+            label="Weight"
+            id="weight-filled-end-adornment"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+            }}
+            defaultValue={info.pData.value[0]["new_weight"]}
+            variant="filled"
+            autoComplete="off"
+            InputProps={{
+              readOnly: true,
+            }}
+            className={useStyles.textField}
+          />
+          <TextField
+            label="Height"
+            id="height-filled-end-adornment"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">CM</InputAdornment>,
+            }}
+            defaultValue={info.pData.value[0]["new_height"]}
+            variant="filled"
+            InputProps={{
+              readOnly: true,
+            }}
+            autoComplete="off"
+            className={useStyles.textField}
+          />
+        </Container>
+        <Container>
+          <h2>Address</h2>
+          {console.log(info.pData.value)}
           <TextField
             variant="outlined"
             margin="normal"
