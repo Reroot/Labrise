@@ -78,6 +78,7 @@ const CoronaState = (props) => {
 function mapStateToProps(state) {
   return {
     coronaStateData: state.CoronaStateReducer.coronaStateData,
+
   };
 }
 

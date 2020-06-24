@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect, useSelector } from "react-redux";
+
 import { bindActionCreators } from "redux";
 import * as coronaActions from "../../_actions/coronaActions";
 import CoronaRender from "./CoronaRender";
@@ -11,12 +12,14 @@ import CustomTheme from "../../_styles/MUITheme";
 
 import CoronaNational from "./CoronaNational";
 import CoronaState from "./CoronaState";
-import * as profileActions from '../../_actions/profile-actions';
 
+import * as profileActions from '../../_actions/profile-actions';
 const CoronaPanel = (props) => {
     console.log("props in the CoronaPanel");
     console.log(props);
+
     useSelector((state) => state.profileReducer.profileData);
+
   return (
     <div>
         <CoronaNational {...props} />
@@ -24,6 +27,7 @@ const CoronaPanel = (props) => {
     </div>
   );
 };
+
 
 function mapStateToProps(state){
     return {
