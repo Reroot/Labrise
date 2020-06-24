@@ -5,16 +5,30 @@ import TextField from "@material-ui/core/TextField";
 import { ProfileStyles } from "../Style/profilestyle";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import * as profileActions from "../_actions/profile-actions";
+import { Button } from "@material-ui/core";
 
 function ProfilePage() {
   const useStyles = ProfileStyles();
   const dispatch = useDispatch();
   let info = useSelector((state) => state.profileReducer.profileData);
-  // reset login status
+  const [textValues, setTextValues] = useState({});
+  const [buttonDisable, setButtonDisable] = useState(true);
+
+  const handleTextFieldChange = (e) => {
+    setButtonDisable(false);
+    const { name, value } = e.target;
+    setTextValues({
+      ...textValues,
+      [name]: value,
+      ["contactid"]: info.pData.value[0]["contactid"],
+    });
+  };
   useEffect(() => {
+    console.log("effect");
     dispatch(profileActions.readProfile());
   }, []);
-  if (info && info.requestSuccessful) {
+
+  if (info && info.requestSuccessful === true) {
     const date = info.pData.value[0]["new_birthdate"].split("T");
     return (
       <Container className={useStyles.container}>
@@ -47,18 +61,7 @@ function ProfilePage() {
             className={useStyles.textField}
           />
           <TextField
-            variant="outlined"
-            margin="normal"
-            name="mobilePhone"
-            id="mobilePhoneID"
-            defaultValue={info.pData.value[0]["mobilephone"]}
-            label="Mobile Phone"
-            type="text"
-            autoComplete="off"
-            placeholder="###-###-####"
-            className={useStyles.textField}
-          />
-          <TextField
+            name="birthDate"
             id="birthDate"
             label="Birth Date"
             type="date"
@@ -68,19 +71,6 @@ function ProfilePage() {
             InputProps={{
               readOnly: true,
             }}
-          />
-          <TextField
-            variant="filled"
-            margin="normal"
-            name="emailAddress"
-            id="emailAddressID"
-            defaultValue={info.pData.value[0]["emailaddress1"]}
-            label="Email Address"
-            type="text"
-            InputProps={{
-              readOnly: true,
-            }}
-            className={useStyles.textField}
           />
           <TextField
             variant="filled"
@@ -102,29 +92,53 @@ function ProfilePage() {
           <TextField
             label="Weight"
             id="weight-filled-end-adornment"
+            name="weight"
             InputProps={{
               endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+              readOnly: true,
             }}
             defaultValue={info.pData.value[0]["new_weight"]}
             variant="filled"
             autoComplete="off"
+            className={useStyles.textFieldAdornment}
+          />
+          <TextField
+            label="Height"
+            name="height"
+            id="height-filled-end-adornment"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">CM</InputAdornment>,
+              readOnly: true,
+            }}
+            defaultValue={info.pData.value[0]["new_height"]}
+            variant="filled"
+            autoComplete="off"
+            className={useStyles.textFieldAdornment}
+          />
+          <TextField
+            variant="filled"
+            margin="normal"
+            name="emailAddress"
+            id="emailAddressID"
+            defaultValue={info.pData.value[0]["emailaddress1"]}
+            label="Email Address"
+            type="text"
             InputProps={{
               readOnly: true,
             }}
             className={useStyles.textField}
           />
           <TextField
-            label="Height"
-            id="height-filled-end-adornment"
-            InputProps={{
-              endAdornment: <InputAdornment position="end">CM</InputAdornment>,
-            }}
-            defaultValue={info.pData.value[0]["new_height"]}
-            variant="filled"
-            InputProps={{
-              readOnly: true,
-            }}
+            variant="outlined"
+            margin="normal"
+            name="mobilePhone"
+            id="mobilePhoneID"
+            defaultValue={info.pData.value[0]["mobilephone"]}
+            label="Mobile Phone"
+            type="text"
             autoComplete="off"
+            placeholder="###-###-####"
+            onChange={(e) => handleTextFieldChange(e)}
             className={useStyles.textField}
           />
         </Container>
@@ -139,6 +153,8 @@ function ProfilePage() {
             label="Address"
             type="text"
             className={useStyles.textField}
+            onChange={(e) => handleTextFieldChange(e)}
+            autoComplete="off"
           />
           <TextField
             variant="outlined"
@@ -149,6 +165,8 @@ function ProfilePage() {
             label="City"
             type="text"
             className={useStyles.textField}
+            onChange={(e) => handleTextFieldChange(e)}
+            autoComplete="off"
           />
           <TextField
             variant="outlined"
@@ -159,6 +177,8 @@ function ProfilePage() {
             label="State"
             type="text"
             className={useStyles.textField}
+            onChange={(e) => handleTextFieldChange(e)}
+            autoComplete="off"
           />
           <TextField
             variant="outlined"
@@ -169,7 +189,22 @@ function ProfilePage() {
             label="Postal Code"
             type="text"
             className={useStyles.textField}
+            onChange={(e) => handleTextFieldChange(e)}
+            autoComplete="off"
           />
+        </Container>
+        <Container className={useStyles.buttonContainer}>
+          <Button
+            disabled={buttonDisable}
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              dispatch(profileActions.updateProfile(textValues));
+              setButtonDisable(true);
+            }}
+          >
+            Save
+          </Button>
         </Container>
       </Container>
     );
