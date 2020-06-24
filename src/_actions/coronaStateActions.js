@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-import { READ_CORONA_SUCCESFUL, READ_CORONA_FAILURE, READ_CORONA_PENDING} from '../_constants/corona.constants';
+import { READ_CORONA_STATE_SUCCESSFUL, READ_CORONA_STATE_FAILURE, READ_CORONA_STATE_PENDING} from '../_constants/corona.state.constants';
 
-export const readCoronaData = (params) => {
+export const readCoronaStateData = (params) => {
   return dispatch => {
-      dispatch(_readCoronaDataStarted());
+      dispatch(_readCoronaStateDataStarted());
 
       let first = "";
       let last = "";
@@ -25,33 +25,33 @@ export const readCoronaData = (params) => {
 
       return axios.get(url)
       .then(res => {
-          dispatch(_readCoronaDataSuccess(res));
+          dispatch(_readCoronaStateDataSuccess(res));
       })
       .catch( (error) => {
           console.log(error);
-          dispatch(_readCoronaDataFailed(error));
+          dispatch(_readCoronaStateDataFailed(error));
       });
   };
 }
 
-const _readCoronaDataSuccess = (res) => {
-    console.log("corona data request successful");
+const _readCoronaStateDataSuccess = (res) => {
+    console.log("corona state data request successful");
     console.log(res.data);
     return {
-        type: READ_CORONA_SUCCESFUL,
+        type: READ_CORONA_STATE_SUCCESSFUL,
         data:  res.data
     };
 }
 
-const _readCoronaDataFailed = (error) => {
+const _readCoronaStateDataFailed = (error) => {
     return {
-        type: READ_CORONA_FAILURE,
+        type: READ_CORONA_STATE_FAILURE,
         error  
     };
 }
 
-const _readCoronaDataStarted = () => {
+const _readCoronaStateDataStarted = () => {
     return {
-        type: READ_CORONA_PENDING
+        type: READ_CORONA_STATE_PENDING
     };
 }
