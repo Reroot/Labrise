@@ -8,6 +8,7 @@ export const AdalConfig = {
     api: "https://notsmooth.crm.dynamics.com/",
   },
   cacheLocation: "localStorage",
+  
   //secret: "~8A.kP~IqxjC64_pCVICcR38pQIuJ13N6T",
 };
 
