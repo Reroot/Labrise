@@ -1,7 +1,6 @@
 /*****************************************************
 This is the root Dashboard component
 *****************************************************/
-// Import some code libraries
 import React from "react";
 import Dropdown from "react-dropdown";
 // Import some Kevin Lai files
