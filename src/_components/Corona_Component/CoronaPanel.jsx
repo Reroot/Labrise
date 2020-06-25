@@ -21,7 +21,7 @@ const CoronaPanel = (props) => {
     useSelector((state) => state.profileReducer.profileData);
 
   return (
-    <div>
+    <div style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4))",}}>
         <CoronaNational {...props} />
         <CoronaState {...props} />
     </div>
