@@ -82,16 +82,9 @@ export class PatientPage extends React.Component{
         return (
             <div className="col-lg-8 offset-lg-2">
                 {/* <h2>Welcome {user.firstName + " " + user.lastName}</h2> */}
-                <h2>Welcome!</h2>
                 <title>Review your patient history below</title>
-                <Link to="/">Home</Link>
                 <Rory_Component />
                 <Pay />
-                {/* <Will_Component />
-                <Scott_Component />
-                // <Rory_Component />
-                <Kevin_Component />
-                <Artem_Component /> */}
             </div>
         );    
     }

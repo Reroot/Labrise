@@ -6,6 +6,7 @@ import { ProfileStyles } from "../_styles/profilestyle";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import * as profileActions from "../_actions/profile-actions";
 
+
 function ProfilePage() {
   const useStyles = ProfileStyles();
   const dispatch = useDispatch();

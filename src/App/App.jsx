@@ -17,7 +17,7 @@ import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 import { Dashboard } from "../_components/LabResultsComponent/dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
-
+import ScottsComponent from "../_components/ScottStuff/Scott_Component"
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authentication.loggedIn);
@@ -56,6 +56,9 @@ function App() {
           <Route path="/profile" component={ProfilePage} />
           <Route path="/patient">
             <PatientPage />
+          </Route>
+          <Route path="/reports">
+            <ScottsComponent />
           </Route>
           <Redirect from="*" to="/" />
         </Switch>
