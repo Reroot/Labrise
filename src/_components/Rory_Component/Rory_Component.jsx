@@ -35,12 +35,11 @@ const InvoiceContainer = (props) => {
     useEffect(() => {
         dispatch(invoiceActions.readInvoices(info.pData.value[0]["contactid"]));
     }, []);
-    console.log("info after useEffect");
+    console.log("info before useEffect");
         console.log(info);
    
     return(
         <div>
-         {/* <div style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4))",}}> */}
             <InvoiceRender {...props} />
         </div>
     );

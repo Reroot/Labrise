@@ -13,13 +13,12 @@ export class PatientPage extends React.Component{
     render(){
         //const user = useSelector(state => state.authentication.user);
         return (
-            <div className="col-lg-8 offset-lg-2" style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4))",}}>
+            <div className="col-lg-8 offset-lg-2">
                 {/* <h2>Welcome {user.firstName + " " + user.lastName}</h2> */}
-                {/* <h2>Welcome!</h2>
+                <h2>Welcome!</h2>
                 <title>Review your patient history below</title>
-                <Link to="/">Home</Link> */}
+                <Link to="/">Home</Link>
                 <Rory_Component />
-                <br />
                 <Pay />
                 {/* <Will_Component />
                 <Scott_Component />
