@@ -8,6 +8,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import HomeIcon from "@material-ui/icons/Home";
 import TocIcon from "@material-ui/icons/Toc";
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 
 import Image from "material-ui-image";
 function Header() {
@@ -32,10 +33,10 @@ function Header() {
         <Grid item xs={2}>
           <div style={{ width: "0%", height: "0%" }}>
             <Image
-              src="../../res/LabRise_logo.png"
+              src="../../res/LabRise_logo -- v2,  350px.png"
               style={{
-                width: "200px",
-                height: "68px",
+                width: "210px",
+                height: "55px",
               }}
             />
           </div>
@@ -50,21 +51,39 @@ function Header() {
             >
               <Button className={useStyles.navButton}>
                 <Link to="/" className={useStyles.navButtonLink}>
-                  <HomeIcon></HomeIcon>
+                  <HomeIcon></HomeIcon>&nbsp;&nbsp;
                   Home
                 </Link>
               </Button>
+
+
+              {/* This button is for the Lab Report Viewer component */}
+              <Button className={useStyles.navButton}>
+                <Link to="/labreports" className={useStyles.navButtonLink}>
+                  <TocIcon />&nbsp;&nbsp;
+                  Lab Reports
+                </Link>
+              </Button>
+              {/* This button is for the Dashboard component */}
+              <Button className={useStyles.navButton}>
+                <Link to="/dashboard" className={useStyles.navButtonLink}>
+                  <TrendingUpIcon />&nbsp;&nbsp;
+                  Dashboard
+                </Link>
+              </Button>
+              
+              
               <Button className={useStyles.navButton}>
                 <Link to="/patient" className={useStyles.navButtonLink}>
                   Invoice
                 </Link>
               </Button>
-              <Button className={useStyles.navButton}>
+              {/* <Button className={useStyles.navButton}>
                 <Link to="/labresults" className={useStyles.navButtonLink}>
                   <TocIcon></TocIcon>
                   Lab results
                 </Link>
-              </Button>
+              </Button> */}
               <Button className={useStyles.navButton}>
                 <Link to="/corona" className={useStyles.navButtonLink}>
                   Corona News Alerts

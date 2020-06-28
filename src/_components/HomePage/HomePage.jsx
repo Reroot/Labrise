@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
 import HomeRender from "./home-render";
-import { Dashboard } from "../LabResultsComponent/dashboard";
+// import { Dashboard } from "../LabResultsComponent/dashboard";
 
 const HomePage = (props) => {
   console.log("these are the props in homePage");
@@ -30,7 +30,7 @@ const HomePage = (props) => {
         <Link to="/patient">Your Patient History</Link>
       </Grid>
       <Grid item style={{ height: "75vh" }}>
-        <Dashboard />
+        {/* <Dashboard /> */}
         {/* <Corona />   */}
       </Grid>
       <Pay />
