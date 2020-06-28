@@ -4,9 +4,9 @@ This is the root Dashboard component
 import React from "react";
 import Dropdown from "react-dropdown";
 // Import some Kevin Lai files
-import { FilterCondition, ParseLineData, ParseBarData } from "./dataPrep";
-import { LineChart, TornadoChart } from "./chartTypes";
-import rawJSON from "./dummyData.json";
+import { FilterCondition, ParseLineData, ParseBarData } from "./_dataPrep";
+import { LineChart, TornadoChart } from "./_chartTypes";
+import rawJSON from "./_dummyData.json";
 import "react-dropdown/style.css";
 import "./styling.css";
 
