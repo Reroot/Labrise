@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-import { useDispatch, useSelector, connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { history } from "../_backend";
 import { alertActions } from "../_actions";
@@ -17,11 +17,10 @@ import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 import { Dashboard } from "../_components/LabResultsComponent/dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
-import PropTypes from "prop-types";
 
-function App(props) {
+function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.authentication.user);
+  const user = useSelector((state) => state.authentication.loggedIn);
 
   useEffect(() => {
     history.listen((location, action) => {
@@ -43,19 +42,19 @@ function App(props) {
         {/*
         Need to make this more fluid with pending before displaying
         */}
-        {/* {user && <Header />} */}
-        <Header/>
+        {user && <Header />}
+
         <Switch>
-          <PrivateRoute exact path="/" component={PatientContextWrapper} {...props}>
+          <PrivateRoute exact path="/" component={PatientContextWrapper}>
           </PrivateRoute>
-          <Route path="/login" component={LoginPage} {...props}/>
-          <Route path="/register" component={RegisterPage} {...props}/>
-          <Route path="/corona" component={CoronaPanel} {...props}/>
-          <Route path="/labresults" {...props}>
-            <Dashboard patient="Hyperlipidemia" {...props}/>
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/corona" component={CoronaPanel} />
+          <Route path="/labresults">
+            <Dashboard patient="Hyperlipidemia" />
           </Route>
-          <Route path="/profile" component={ProfilePage} loggedInUser={user} {...props}/>
-          <Route path="/patient" {...props}>
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/patient">
             <PatientPage />
           </Route>
           <Redirect from="*" to="/" />
@@ -64,26 +63,5 @@ function App(props) {
     </div>
   );
 }
-
-function mapStateToProps(state){
-  return {
-      user: state.authentication.user
-  }
-}
-
-function mapDispatchToProps(dispatch){
-  return { 
-      actions: bindActionCreators(userActions, dispatch)
-  }
-}
-
-App.propTypes = {
-  actions: PropTypes.object
-};
-
-// export default connect( 
-//   mapStateToProps,
-//   mapDispatchToProps
-//   )(App);
 
 export { App };

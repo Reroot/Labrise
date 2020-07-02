@@ -13,7 +13,6 @@ function RegisterPage() {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
-    email: "",
     username: "",
     password: "",
   });
@@ -36,7 +35,7 @@ function RegisterPage() {
     e.preventDefault();
 
     setSubmitted(true);
-    if (user.firstName && user.lastName && user.email && user.username && user.password) {
+    if (user.firstName && user.lastName && user.username && user.password) {
       dispatch(userActions.register(user));
     }
   }
@@ -70,18 +69,6 @@ function RegisterPage() {
             id="lastnameID"
             label="Last Name"
             value={user.lastName}
-            onChange={handleChange}
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="email"
-            id="emailID"
-            label="E-mail Address"
-            value={user.email}
             onChange={handleChange}
             autoFocus
           />

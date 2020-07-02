@@ -44,8 +44,6 @@ function logout() {
 }
 
 function register(user) {
-  console.log("this is the user object sent to useractions.register");
-  console.log(user);
   return (dispatch) => {
     dispatch(request(user));
 

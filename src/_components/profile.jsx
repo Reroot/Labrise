@@ -6,21 +6,14 @@ import { ProfileStyles } from "../_styles/profilestyle";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import * as profileActions from "../_actions/profile-actions";
 
-function ProfilePage(props) {
-  console.log("props in profile page");
-  console.log(props);
+function ProfilePage() {
   const useStyles = ProfileStyles();
   const dispatch = useDispatch();
   let info = useSelector((state) => state.profileReducer.profileData);
-  let info2 = useSelector((state) => state.authentication.user);
   // reset login status
-  console.log("this is the selector for profile");
   console.log(info);
-  console.log("this is the selector for authenticated user");
-  console.log(info2);
-
   useEffect(() => {
-    dispatch(profileActions.readProfile(info2["email"]));
+    dispatch(profileActions.readProfile());
   }, []);
   if (info && info.requestSuccessful) {
     return (

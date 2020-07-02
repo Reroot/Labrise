@@ -67,7 +67,7 @@ function Header() {
               </Button>
               <Button className={useStyles.navButton}>
                 <Link to="/corona" className={useStyles.navButtonLink}>
-                  Corona Tracker
+                  Corona News Alerts
                 </Link>
               </Button>
               <Button className={useStyles.navButton}>
