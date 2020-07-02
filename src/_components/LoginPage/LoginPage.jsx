@@ -47,7 +47,13 @@ function LoginPage() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      fontfamily: 'Titillium Web'
+      
     },
+    color: {
+      primary: "blue",
+    },
+    
     avatar: {
       background: "#ff0000",
     },
@@ -62,7 +68,7 @@ function LoginPage() {
   return (
     <Container maxWidth="xs">
       <div id="loginDiv" className={classes.paper}>
-        <h2>Welcome to Labrise! Your Personal Health Assistant</h2>
+        <h2 style={{ color: 'darkBlue'}}>Welcome to Labrise! Your Personal Health Assistant</h2>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
