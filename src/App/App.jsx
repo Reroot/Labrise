@@ -19,6 +19,7 @@ import { Dashboard } from "../_components/LabResultsComponent/dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
 import PropTypes from "prop-types";
+import Scott_Component from "../_components/ScottStuff/Scott_Component";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -54,12 +55,17 @@ function App(props) {
           <Route path="/corona" component={CoronaPanel} {...props}/>
           <Route path="/labresults" >
             <Dashboard patient="Hyperlipidemia" {...props}/>
-          </Route>
+          </Route>     
+          
+          
           <Route path="/profile" component={ProfilePage} loggedInUser={user} {...props}/>
           <Route path="/patient" >
             <PatientPage {...props}/>
           </Route>
+
+          <Route path="/appointments" component={Scott_Component} loggedInUser={user} {...props}/>
           <Redirect from="*" to="/" />
+          
         </Switch>
       </Router>
     </div>

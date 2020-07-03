@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { READ_PATINFO_SUCCESFUL, READ_PATINFO_FAILURE, READ_PATINFO_PENDING} from '../_constants/patEventConstants';
-import { adalApiFetch } from "../_adalConfig/adalConfig";
+import { adalApiFetch } from "../_adalconfig/adalConfig";
 
 export const readPatInfo = () => {
 

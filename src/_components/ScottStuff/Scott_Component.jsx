@@ -23,7 +23,7 @@ const PatEventContainer = (props) => {
     //console.log("debugrory2"+JSON.stringify(typeof props.patInfoData));
    
     return(
-        <div>
+        <div style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4))",}}>
             <PatEventRender {...props} />
             
         </div>

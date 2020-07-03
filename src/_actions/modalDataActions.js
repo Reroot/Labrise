@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { READ_MODALDATA_SUCCESFUL, READ_MODALDATA_FAILURE, READ_MODALDATA_PENDING, UPDATE_MODAL_DATA_STRING} from '../_constants/modalDataConstants';
-import { adalApiFetch } from "../_adalConfig/adalConfig";
+import { adalApiFetch } from "../_adalconfig/adalConfig";
 
 export const readModalDataInfo = (number) => {//default nonsense value
     //console.log(number+"this is the number"+(number=="1"))

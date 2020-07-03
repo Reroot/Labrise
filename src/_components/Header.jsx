@@ -71,7 +71,7 @@ function Header() {
                 </Link>
               </Button>
               <Button className={useStyles.navButton}>
-                <Link to="/" className={useStyles.navButtonLink}>
+                <Link to="/appointments" className={useStyles.navButtonLink}>
                   Appointments
                 </Link>
               </Button>

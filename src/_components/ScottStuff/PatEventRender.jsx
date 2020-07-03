@@ -36,7 +36,7 @@ const PatEventRender = ({ patInfoData,action2,action3 }) => {
     }
     const tableStyle={
         'border': '4px solid #555555',
-        'background-color': '#555555',
+        'background-color': '#D4E6F6',
         'width': '400px',
         'text-align': 'center',
         'border-collapse': 'collapse'
@@ -49,10 +49,10 @@ const PatEventRender = ({ patInfoData,action2,action3 }) => {
     const tableTBTD={
         'font-size': '12px',
         'font-weight': 'bold',
-        'color': '#FFFFFF'
+        'color': '#0B3450'
     }
     const titleStyle={
-        'background-color': '#555555',
+        'color': '0B3450',
         'width': '400px',
         'text-align': 'center',
     }
