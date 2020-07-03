@@ -2,28 +2,43 @@ import Container from "@material-ui/core/Container";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
-import { ProfileStyles } from "../_styles/profilestyle";
+import { ProfileStyles } from "../../_styles/profilestyle";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import * as profileActions from "../_actions/profile-actions";
+import * as profileActions from "../../_actions/profile-actions";
 
-function ProfilePage(props) {
-  console.log("props in profile page");
-  console.log(props);
+function ProfilePage( {profileData} ) {
+  // console.log("props in profile page");
+  // console.log(props);
   const useStyles = ProfileStyles();
-  const dispatch = useDispatch();
-  let info = useSelector((state) => state.profileReducer.profileData);
-  let info2 = useSelector((state) => state.authentication.user);
-  // reset login status
-  console.log("this is the selector for profile");
-  console.log(info);
-  console.log("this is the selector for authenticated user");
-  console.log(info2);
+  
+  // let info = useSelector((state) => state.profileReducer.profileData);
+  // let info2 = useSelector((state) => state.authentication.user);
+  // // reset login status
+  // console.log("this is the selector for profile");
+  // console.log(info);
+  // console.log("this is the selector for authenticated user");
+  // console.log(info2);
 
-  useEffect(() => {
-    dispatch(profileActions.readProfile(info2["email"]));
-  }, []);
-  if (info && info.requestSuccessful) {
-    return (
+  // useEffect(() => {
+  //   dispatch(profileActions.readProfile(info2["email"]));
+  // }, []);
+
+  let content = "";
+
+  if(!profileData || profileData.requestPending){
+    content = (
+        <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div> 
+        </div>
+    );
+  }
+
+  if (profileData && profileData.requestSuccessful) {
+    console.log("profile data after successful load");
+    console.log(profileData.pData);
+    content = (
       <Container className={useStyles.container}>
         <Container>
           <h2>General Information</h2>
@@ -32,7 +47,7 @@ function ProfilePage(props) {
             margin="normal"
             name="firstName"
             id="firstNameID"
-            defaultValue={info.pData.value[0]["firstname"]}
+            defaultValue={profileData.pData.value[0]["firstname"]}
             label="First Name"
             type="text"
             className={useStyles.textField}
@@ -43,7 +58,7 @@ function ProfilePage(props) {
             margin="normal"
             name="lastName"
             id="lastNameID"
-            defaultValue={info.pData.value[0]["lastname"]}
+            defaultValue={profileData.pData.value[0]["lastname"]}
             label="Last Name"
             type="text"
             autoComplete="off"
@@ -54,7 +69,7 @@ function ProfilePage(props) {
             margin="normal"
             name="mobilePhone"
             id="mobilePhoneID"
-            defaultValue={info.pData.value[0]["mobilephone"]}
+            defaultValue={profileData.pData.value[0]["mobilephone"]}
             label="Mobile Phone"
             type="text"
             autoComplete="off"
@@ -65,7 +80,7 @@ function ProfilePage(props) {
             margin="normal"
             name="emailAddress"
             id="emailAddressID"
-            defaultValue={info.pData.value[0]["emailaddress1"]}
+            defaultValue={profileData.pData.value[0]["emailaddress1"]}
             label="Email Address"
             type="text"
             className={useStyles.textField}
@@ -76,7 +91,7 @@ function ProfilePage(props) {
             name="bloodType"
             id="bloodTypeID"
             defaultValue={
-              info.pData.value[0][
+              profileData.pData.value[0][
                 "new_bloodtype@OData.Community.Display.V1.FormattedValue"
               ]
             }
@@ -90,7 +105,7 @@ function ProfilePage(props) {
             InputProps={{
               endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
             }}
-            defaultValue={info.pData.value[0]["new_weight"]}
+            defaultValue={profileData.pData.value[0]["new_weight"]}
             variant="outlined"
             autoComplete="off"
             className={useStyles.textField}
@@ -101,7 +116,7 @@ function ProfilePage(props) {
             InputProps={{
               endAdornment: <InputAdornment position="end">CM</InputAdornment>,
             }}
-            defaultValue={info.pData.value[0]["new_height"]}
+            defaultValue={profileData.pData.value[0]["new_height"]}
             variant="outlined"
             autoComplete="off"
             className={useStyles.textField}
@@ -109,12 +124,12 @@ function ProfilePage(props) {
         </Container>
         <Container>
           <h2>Address</h2>
-          {console.log(info.pData.value)}
+          {console.log(profileData.pData.value)}
           <TextField
             id="birthDate"
             label="Birth Date"
             type="date"
-            defaultValue={info.pData.value[0]["new_birthdate"]}
+            defaultValue={profileData.pData.value[0]["new_birthdate"]}
             className={useStyles.textField}
             variant="outlined"
             InputLabelProps={{
@@ -126,7 +141,7 @@ function ProfilePage(props) {
             margin="normal"
             name="addressName"
             id="addressNameID"
-            defaultValue={info.pData.value[0]["address1_name"]}
+            defaultValue={profileData.pData.value[0]["address1_name"]}
             label="Address"
             type="text"
             className={useStyles.textField}
@@ -136,7 +151,7 @@ function ProfilePage(props) {
             margin="normal"
             name="addressCity"
             id="addressCityID"
-            defaultValue={info.pData.value[0]["address1_city"]}
+            defaultValue={profileData.pData.value[0]["address1_city"]}
             label="City"
             type="text"
             className={useStyles.textField}
@@ -146,7 +161,7 @@ function ProfilePage(props) {
             margin="normal"
             name="addressState"
             id="addressStateID"
-            defaultValue={info.pData.value[0]["address1_stateorprovince"]}
+            defaultValue={profileData.pData.value[0]["address1_stateorprovince"]}
             label="State"
             type="text"
             className={useStyles.textField}
@@ -156,7 +171,7 @@ function ProfilePage(props) {
             margin="normal"
             name="addressPostal"
             id="addressPostalID"
-            defaultValue={info.pData.value[0]["address1_postalcode"]}
+            defaultValue={profileData.pData.value[0]["address1_postalcode"]}
             label="Postal Code"
             type="text"
             className={useStyles.textField}
@@ -164,9 +179,22 @@ function ProfilePage(props) {
         </Container>
       </Container>
     );
-  } else {
-    return "";
   }
+
+  if(profileData && profileData.requestFailed){
+    content = 
+    (
+        <div className="alert alert-danger" role="alert">
+            Error while loading profile data!
+        </div>
+    );
+  }
+
+  return(
+    <div>
+        {content}
+    </div>
+  );
 }
 
 export { ProfilePage };
