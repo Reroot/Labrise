@@ -15,7 +15,7 @@ import  { ProfilePage }  from "../_components/Profile/profile";
 import { ThemeProvider } from "@material-ui/core";
 import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
-// import { Dashboard } from "../_components/LabResultsComponent/dashboard";
+import { Dashboard } from "../_components/LabResultsComponent/_dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
 import PropTypes from "prop-types";
@@ -59,11 +59,11 @@ function App(props) {
           <Route path="/login" component={LoginPage} {...props}/>
           <Route path="/register" component={RegisterPage} {...props}/>
           <Route path="/corona" component={CoronaPanel} {...props}/>
-          <Route path="/labresults" >
+          {/* <Route path="/labresults" >
             <Dashboard patient="Hyperlipidemia" {...props}/>
           </Route>     
           
-          
+           */}
           <Route path="/profile" component={ProfilePage} loggedInUser={user} {...props}/>
           <Route path="/patient" >
             <PatientPage {...props}/>
