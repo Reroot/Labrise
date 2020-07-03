@@ -15,11 +15,17 @@ import  { ProfilePage }  from "../_components/Profile/profile";
 import { ThemeProvider } from "@material-ui/core";
 import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
-import { Dashboard } from "../_components/LabResultsComponent/dashboard";
+// import { Dashboard } from "../_components/LabResultsComponent/dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
 import PropTypes from "prop-types";
 import Scott_Component from "../_components/ScottStuff/Scott_Component";
+
+
+
+// Import the Lab Report Viewer component & the Dashboard component
+import { LabReports_Component, Dashboard_Component } from "../_components/LabResultsComponent/labResults-Container";
+
 
 function App(props) {
   const dispatch = useDispatch();
@@ -62,6 +68,18 @@ function App(props) {
           <Route path="/patient" >
             <PatientPage {...props}/>
           </Route>
+
+                  {/* This is the Lab Report Viewer component */}
+          <Route path="/labreports">
+            <LabReports_Component />
+          </Route>
+          {/* This is the Dashboard component */}
+          <Route path="/dashboard">
+            <Dashboard_Component />
+          </Route>
+
+
+
 
           <Route path="/appointments" component={Scott_Component} loggedInUser={user} {...props}/>
           <Redirect from="*" to="/" />

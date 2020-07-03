@@ -11,6 +11,7 @@ import CoronaStateReducer from "./CoronaStateReducer";
 import modalDataReducer from "./modalDataReducer";
 import patEventReducer from "./patEventReducer";
 import rModalReducer from "./rModalReducer";
+import labResults_Reducer from "./labResults-Reducer";
 
 const rootReducer = combineReducers({
   authentication,
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   CoronaStateReducer,
   modalDataReducer,
   rModalReducer,
-  patEventReducer
+  patEventReducer,
+  labResults_Reducer
 });
 
 export default rootReducer;
