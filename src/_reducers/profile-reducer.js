@@ -18,11 +18,13 @@ export default function profileReducer(state = {}, action) {
         profileData: { requestFailed: true },
       };
     case profileConstants.UPDATE_REQUEST:
+      console.log("update request sent");
       return {
         ...state,
         updatedProfileData: { requestPending: true },
       };
     case profileConstants.UPDATE_SUCCESS:
+      alert("Profile Updated");
       return {
         ...state,
         updatedProfileData: { requestSuccessful: true },

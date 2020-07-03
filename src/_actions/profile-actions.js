@@ -87,7 +87,7 @@ export const updateProfile = (updateObj) => {
     )
       .then((res) => {
         dispatch(_updateProfileSuccess(res));
-        dispatch(readProfile());
+        dispatch(readProfile(updateObj.email));
       })
       .catch((error) => {
         console.log(error);
@@ -110,6 +110,7 @@ const _updateProfileFailed = (error) => {
 };
 
 const _updateProfileStarted = () => {
+  console.log("started");
   return {
     type: profileConstants.UPDATE_REQUEST,
   };

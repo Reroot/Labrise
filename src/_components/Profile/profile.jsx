@@ -15,50 +15,44 @@ import { Button } from "@material-ui/core";
 // import * as profileActions from '../../_actions/profile-actions';
 // import { ProfilePage } from './profile';
 
-
-function ProfilePage( props ) {
-  console.log("props in profile page");
-  console.log(props);
+function ProfilePage() {
   const useStyles = ProfileStyles();
   const dispatch = useDispatch();
   const [textValues, setTextValues] = useState({});
   const [buttonDisable, setButtonDisable] = useState(true);
-  
+
   // const dispatch = useDispatch();
-  let info = useSelector((state) => state.authentication.user);
-  let info2 = useSelector((state) => state.profileReducer.profileData);
-  
-  
+  let userEmail = useSelector((state) => state.authentication.user);
+  let pInfo = useSelector((state) => state.profileReducer.profileData);
+
   const handleTextFieldChange = (e) => {
     setButtonDisable(false);
     const { name, value } = e.target;
     setTextValues({
       ...textValues,
       [name]: value,
-      ["contactid"]: info2.pData.value[0]["contactid"],
+      ["contactid"]: pInfo.pData.value[0]["contactid"],
+      ["email"]: userEmail["email"],
     });
   };
   useEffect(() => {
-      dispatch(profileActions.readProfile(info["email"]));
-    }, []);
-
+    dispatch(profileActions.readProfile(userEmail["email"]));
+  }, []);
 
   let content = "";
 
-  // if(!info2 || info2.requestPending){
-  //   content = (
-  //       <div className="d-flex justify-content-center">
-  //           <div className="spinner-border" role="status">
-  //               <span className="sr-only">Loading...</span>
-  //           </div> 
-  //       </div>
-  //   );
-  // }
+  if (!pInfo || pInfo.requestPending) {
+    content = (
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
+  }
 
-  if (info2 && info2.requestSuccessful === true) {
-    // const date = info2.pData.value[0]["new_birthdate"].split("T");
-    console.log("profile data after successful load");
-    console.log(info2.pData);
+  if (pInfo && pInfo.requestSuccessful === true) {
+    const date = pInfo.pData.value[0]["new_birthdate"].split("T");
     content = (
       <Container className={useStyles.container}>
         <Container>
@@ -68,7 +62,7 @@ function ProfilePage( props ) {
             margin="normal"
             name="firstName"
             id="firstNameID"
-            defaultValue={info2.pData.value[0]["firstname"]}
+            defaultValue={pInfo.pData.value[0]["firstname"]}
             label="First Name"
             InputProps={{
               readOnly: true,
@@ -81,23 +75,9 @@ function ProfilePage( props ) {
             margin="normal"
             name="lastName"
             id="lastNameID"
-            defaultValue={info2.pData.value[0]["lastname"]}
+            defaultValue={pInfo.pData.value[0]["lastname"]}
             label="Last Name"
             type="text"
-            autoComplete="off"
-            className={useStyles.textField}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            name="mobilePhone"
-            id="mobilePhoneID"
-            defaultValue={info2.pData.value[0]["mobilephone"]}
-            label="Mobile Phone"
-            type="text"
-            InputProps={{
-              readOnly: true,
-            }}
             autoComplete="off"
             className={useStyles.textField}
           />
@@ -106,7 +86,7 @@ function ProfilePage( props ) {
             id="birthDate"
             label="Birth Date"
             type="date"
-            defaultValue={info2.pData.value[0]["new_birthdate"]}
+            defaultValue={date[0]}
             className={useStyles.textField}
             variant="filled"
             InputProps={{
@@ -119,7 +99,7 @@ function ProfilePage( props ) {
             name="bloodType"
             id="bloodTypeID"
             defaultValue={
-              info2.pData.value[0][
+              pInfo.pData.value[0][
                 "new_bloodtype@OData.Community.Display.V1.FormattedValue"
               ]
             }
@@ -138,7 +118,7 @@ function ProfilePage( props ) {
               endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
               readOnly: true,
             }}
-            defaultValue={info2.pData.value[0]["new_weight"]}
+            defaultValue={pInfo.pData.value[0]["new_weight"]}
             variant="filled"
             autoComplete="off"
             className={useStyles.textFieldAdornment}
@@ -151,7 +131,7 @@ function ProfilePage( props ) {
               endAdornment: <InputAdornment position="end">CM</InputAdornment>,
               readOnly: true,
             }}
-            defaultValue={info2.pData.value[0]["new_height"]}
+            defaultValue={pInfo.pData.value[0]["new_height"]}
             variant="filled"
             autoComplete="off"
             className={useStyles.textFieldAdornment}
@@ -161,7 +141,7 @@ function ProfilePage( props ) {
             margin="normal"
             name="emailAddress"
             id="emailAddressID"
-            defaultValue={info2.pData.value[0]["emailaddress1"]}
+            defaultValue={pInfo.pData.value[0]["emailaddress1"]}
             label="Email Address"
             type="text"
             InputProps={{
@@ -174,7 +154,7 @@ function ProfilePage( props ) {
             margin="normal"
             name="mobilePhone"
             id="mobilePhoneID"
-            defaultValue={info2.pData.value[0]["mobilephone"]}
+            defaultValue={pInfo.pData.value[0]["mobilephone"]}
             label="Mobile Phone"
             type="text"
             autoComplete="off"
@@ -190,7 +170,7 @@ function ProfilePage( props ) {
             margin="normal"
             name="addressName"
             id="addressNameID"
-            defaultValue={info2.pData.value[0]["address1_name"]}
+            defaultValue={pInfo.pData.value[0]["address1_name"]}
             label="Address"
             type="text"
             className={useStyles.textField}
@@ -202,7 +182,7 @@ function ProfilePage( props ) {
             margin="normal"
             name="addressCity"
             id="addressCityID"
-            defaultValue={info2.pData.value[0]["address1_city"]}
+            defaultValue={pInfo.pData.value[0]["address1_city"]}
             label="City"
             type="text"
             className={useStyles.textField}
@@ -214,7 +194,7 @@ function ProfilePage( props ) {
             margin="normal"
             name="addressState"
             id="addressStateID"
-            defaultValue={info2.pData.value[0]["address1_stateorprovince"]}
+            defaultValue={pInfo.pData.value[0]["address1_stateorprovince"]}
             label="State"
             type="text"
             className={useStyles.textField}
@@ -226,7 +206,7 @@ function ProfilePage( props ) {
             margin="normal"
             name="addressPostal"
             id="addressPostalID"
-            defaultValue={info2.pData.value[0]["address1_postalcode"]}
+            defaultValue={pInfo.pData.value[0]["address1_postalcode"]}
             label="Postal Code"
             type="text"
             className={useStyles.textField}
@@ -242,7 +222,6 @@ function ProfilePage( props ) {
             onClick={() => {
               dispatch(profileActions.updateProfile(textValues));
               setButtonDisable(true);
-              window.location.reload(false);
             }}
           >
             Save
@@ -252,20 +231,15 @@ function ProfilePage( props ) {
     );
   }
 
-  // if(info2 && info2.requestFailed){
-  //   content = 
-  //   (
-  //       <div className="alert alert-danger" role="alert">
-  //           Error while loading profile data!
-  //       </div>
-  //   );
-  // }
+  if (pInfo && pInfo.requestFailed) {
+    content = (
+      <div className="alert alert-danger" role="alert">
+        Error while loading profile data!
+      </div>
+    );
+  }
 
-  return(
-    <div>
-        {content}
-    </div>
-  );
+  return <div>{content}</div>;
 }
 
 export { ProfilePage };
