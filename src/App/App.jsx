@@ -43,8 +43,8 @@ function App(props) {
         {/*
         Need to make this more fluid with pending before displaying
         */}
-        {/* {user && <Header />} */}
-        <Header/>
+        {user && <Header />}
+        {/* <Header/> */}
         <Switch>
           <PrivateRoute exact path="/" component={ProfileContainer} >
           </PrivateRoute>
