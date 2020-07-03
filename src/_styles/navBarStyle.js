@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 const navStyles = makeStyles({
-  navButton: { padding: "0rem 0rem 0rem 0rem" },
+  navButton: { padding: "0rem 0rem 0rem 0rem", height: "4.75rem" },
   navButtonLink: {
     color: "White",
     flexDirection: "row",
