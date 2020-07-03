@@ -61,8 +61,10 @@ function LoginPage() {
   
   return (
     <Container maxWidth="xs">
-      <div id="loginDiv" className={classes.paper}>
-        <h2>Welcome to Labrise! Your Personal Health Assistant</h2>
+
+
+      <div id="loginDiv" className={classes.paper} style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.3))",}}>
+      <h2 style={{ color: 'darkBlue'}}>Welcome to Labrise! Your Personal Health Assistant</h2>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>

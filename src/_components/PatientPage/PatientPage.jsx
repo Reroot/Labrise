@@ -16,7 +16,7 @@ class PatientPage extends React.Component{
     render(props){
         //const user = useSelector(state => state.authentication.user);
         return (
-            <div className="col-lg-8 offset-lg-2">
+            <div className="col-lg-8 offset-lg-2" style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4))",}}>
                 {/* <h2>Welcome {user.firstName + " " + user.lastName}</h2> */}
                 <h2>Welcome!</h2>
                 <title>Review your patient history below</title>
