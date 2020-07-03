@@ -8,9 +8,9 @@ import { PrivateRoute } from "../_components";
 // import { HomePage } from "../HomePage/HomePage";
 import { LoginPage } from "../_components/LoginPage/LoginPage";
 import { RegisterPage } from "../_components/RegisterPage";
-import { PatientPage } from "../_components/PatientPage/PatientPage";
+import  PatientPage  from "../_components/PatientPage/PatientPage";
 import { Header } from "../_components";
-import { ProfilePage } from "../_components/profile";
+import  ProfileContainer  from "../_components/Profile/ProfileContainer";
 import { ThemeProvider } from "@material-ui/core";
 import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
@@ -43,20 +43,36 @@ function App(props) {
         {/*
         Need to make this more fluid with pending before displaying
         */}
+<<<<<<< HEAD
         {/* {user && <Header />} */}
         <Header/>
         <Switch>
           <PrivateRoute exact path="/" component={PatientContextWrapper} {...props}>
+=======
+        {user && <Header />}
+        {/* <Header/> */}
+        <Switch>
+          <PrivateRoute exact path="/" component={ProfileContainer} >
+>>>>>>> 0a1b7df6d0979afdae319fa51784095c86273ec2
           </PrivateRoute>
           <Route path="/login" component={LoginPage} {...props}/>
           <Route path="/register" component={RegisterPage} {...props}/>
           <Route path="/corona" component={CoronaPanel} {...props}/>
+<<<<<<< HEAD
           <Route path="/labresults" {...props}>
             <Dashboard patient="Hyperlipidemia" {...props}/>
           </Route>
           <Route path="/profile" component={ProfilePage} loggedInUser={user} {...props}/>
           <Route path="/patient" {...props}>
             <PatientPage />
+=======
+          <Route path="/labresults" >
+            <Dashboard patient="Hyperlipidemia" {...props}/>
+          </Route>
+          <Route path="/profile" component={ProfileContainer} loggedInUser={user} {...props}/>
+          <Route path="/patient" >
+            <PatientPage {...props}/>
+>>>>>>> 0a1b7df6d0979afdae319fa51784095c86273ec2
           </Route>
           <Redirect from="*" to="/" />
         </Switch>
@@ -86,4 +102,8 @@ App.propTypes = {
 //   mapDispatchToProps
 //   )(App);
 
+<<<<<<< HEAD
 export { App };
+=======
+export { App };
+>>>>>>> 0a1b7df6d0979afdae319fa51784095c86273ec2
