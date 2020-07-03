@@ -10,7 +10,8 @@ import { LoginPage } from "../_components/LoginPage/LoginPage";
 import { RegisterPage } from "../_components/RegisterPage";
 import  PatientPage  from "../_components/PatientPage/PatientPage";
 import { Header } from "../_components";
-import  ProfileContainer  from "../_components/Profile/ProfileContainer";
+// import  ProfileContainer  from "../_components/Profile/ProfileContainer";
+import  { ProfilePage }  from "../_components/Profile/profile";
 import { ThemeProvider } from "@material-ui/core";
 import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
@@ -46,7 +47,7 @@ function App(props) {
         {user && <Header />}
         {/* <Header/> */}
         <Switch>
-          <PrivateRoute exact path="/" component={ProfileContainer} >
+          <PrivateRoute exact path="/" component={ProfilePage} loggedInUser={user} {...props}>
           </PrivateRoute>
           <Route path="/login" component={LoginPage} {...props}/>
           <Route path="/register" component={RegisterPage} {...props}/>
@@ -54,7 +55,7 @@ function App(props) {
           <Route path="/labresults" >
             <Dashboard patient="Hyperlipidemia" {...props}/>
           </Route>
-          <Route path="/profile" component={ProfileContainer} loggedInUser={user} {...props}/>
+          <Route path="/profile" component={ProfilePage} loggedInUser={user} {...props}/>
           <Route path="/patient" >
             <PatientPage {...props}/>
           </Route>

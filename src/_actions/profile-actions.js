@@ -3,6 +3,7 @@ import axios from "axios";
 import { profileConstants } from "../_constants";
 
 import { adalApiFetch } from "../_adalconfig/adalConfig";
+import { update } from "lodash";
 
 export const readProfile = (email) => {
   // header info for the fetchUrl
@@ -53,5 +54,65 @@ const _readProfileFailed = (error) => {
 const _readProfileStarted = () => {
   return {
     type: profileConstants.GET_REQUEST,
+  };
+};
+
+export const updateProfile = (updateObj) => {
+  // post profile data to dynamics
+  //change to put
+  let updateData = {
+    mobilephone: updateObj.mobilePhone,
+    address1_name: updateObj.addressName,
+    address1_city: updateObj.addressCity,
+    address1_stateorprovince: updateObj.addressState,
+    address1_postalcode: updateObj.addressPostal,
+  };
+  const config = {
+    method: "patch",
+    "OData-MaxVersion": 4.0,
+    "OData-Version": 4.0,
+    Accept: "application/json",
+    "Content-Type": "application/json; charset=utf-8",
+    headers: {
+      Prefer: "odata.include-annotations=*",
+    },
+    data: updateData,
+  };
+  return (dispatch) => {
+    dispatch(_updateProfileStarted);
+    adalApiFetch(
+      axios,
+      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts(" +
+        updateObj.contactid +
+        ")",
+      config
+    )
+      .then((res) => {
+        dispatch(_updateProfileSuccess(res));
+        dispatch(readProfile());
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(_updateProfileFailed(error));
+      });
+  };
+};
+
+const _updateProfileSuccess = (res) => {
+  return {
+    type: profileConstants.UPDATE_SUCCESS,
+  };
+};
+
+const _updateProfileFailed = (error) => {
+  return {
+    type: profileConstants.UPDATE_FAILURE,
+    error,
+  };
+};
+
+const _updateProfileStarted = () => {
+  return {
+    type: profileConstants.UPDATE_REQUEST,
   };
 };
