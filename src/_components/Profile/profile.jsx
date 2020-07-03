@@ -6,26 +6,6 @@ import { ProfileStyles } from "../../_styles/profilestyle";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import * as profileActions from "../../_actions/profile-actions";
 
-<<<<<<< HEAD:src/_components/profile.jsx
-function ProfilePage(props) {
-  console.log("props in profile page");
-  console.log(props);
-  const useStyles = ProfileStyles();
-  const dispatch = useDispatch();
-  let info = useSelector((state) => state.profileReducer.profileData);
-  let info2 = useSelector((state) => state.authentication.user);
-  // reset login status
-  console.log("this is the selector for profile");
-  console.log(info);
-  console.log("this is the selector for authenticated user");
-  console.log(info2);
-
-  useEffect(() => {
-    dispatch(profileActions.readProfile(info2["email"]));
-  }, []);
-  if (info && info.requestSuccessful) {
-    return (
-=======
 function ProfilePage( {profileData} ) {
   // console.log("props in profile page");
   // console.log(props);
@@ -59,7 +39,6 @@ function ProfilePage( {profileData} ) {
     console.log("profile data after successful load");
     console.log(profileData.pData);
     content = (
->>>>>>> 0a1b7df6d0979afdae319fa51784095c86273ec2:src/_components/Profile/profile.jsx
       <Container className={useStyles.container}>
         <Container>
           <h2>General Information</h2>
