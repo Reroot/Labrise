@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import { ButtonGroup, Button, Paper } from "@material-ui/core";
+import { ButtonGroup, Button, Paper, Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { navStyles } from "../_styles/navbarstyle";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
@@ -8,7 +8,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import HomeIcon from "@material-ui/icons/Home";
 import TocIcon from "@material-ui/icons/Toc";
-import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 
 import Image from "material-ui-image";
 function Header() {
@@ -49,36 +49,44 @@ function Header() {
               aria-label="contained primary button group"
               fullWidth
             >
-              <Button className={useStyles.navButton}>
-                <Link to="/" className={useStyles.navButtonLink}>
-                  {/* <HomeIcon></HomeIcon>&nbsp;&nbsp; */}
-                  <HomeIcon></HomeIcon>&nbsp;&nbsp;
+              <Button className={useStyles.navButton} component={Link} to="/">
+                <Container className={useStyles.navButtonLink}>
+                  <HomeIcon></HomeIcon>
                   Home
-                  
-                </Link>
+                </Container>
               </Button>
-
 
               {/* This button is for the Lab Report Viewer component */}
-              <Button className={useStyles.navButton}>
-                <Link to="/labreports" className={useStyles.navButtonLink}>
-                  <TocIcon />&nbsp;&nbsp;
+              <Button
+                className={useStyles.navButton}
+                component={Link}
+                to="/labreports"
+              >
+                <Container className={useStyles.navButtonLink}>
+                  <TocIcon />
                   Lab Reports
-                </Link>
+                </Container>
               </Button>
               {/* This button is for the Dashboard component */}
-              <Button className={useStyles.navButton}>
-                <Link to="/dashboard" className={useStyles.navButtonLink}>
-                  <TrendingUpIcon />&nbsp;&nbsp;
+              <Button
+                className={useStyles.navButton}
+                component={Link}
+                to="/dashboard"
+              >
+                <Container className={useStyles.navButtonLink}>
+                  <TrendingUpIcon />
                   Dashboard
-                </Link>
+                </Container>
               </Button>
-              
-              
-              <Button className={useStyles.navButton}>
-                <Link to="/patient" className={useStyles.navButtonLink}>
+
+              <Button
+                className={useStyles.navButton}
+                component={Link}
+                to="/patient"
+              >
+                <Container className={useStyles.navButtonLink}>
                   Invoice
-                </Link>
+                </Container>
               </Button>
               {/* <Button className={useStyles.navButton}>
                 <Link to="/labresults" className={useStyles.navButtonLink}>
@@ -86,15 +94,23 @@ function Header() {
                   Lab results
                 </Link>
               </Button> */}
-              <Button className={useStyles.navButton}>
-                <Link to="/corona" className={useStyles.navButtonLink}>
+              <Button
+                className={useStyles.navButton}
+                component={Link}
+                to="/corona"
+              >
+                <Container className={useStyles.navButtonLink}>
                   Corona Tracker
-                </Link>
+                </Container>
               </Button>
-              <Button className={useStyles.navButton}>
-                <Link to="/appointments" className={useStyles.navButtonLink}>
+              <Button
+                className={useStyles.navButton}
+                component={Link}
+                to="/appointments"
+              >
+                <Container className={useStyles.navButtonLink}>
                   Appointments
-                </Link>
+                </Container>
               </Button>
             </ButtonGroup>
           </Grid>

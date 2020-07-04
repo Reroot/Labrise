@@ -3,7 +3,6 @@ import axios from "axios";
 import { profileConstants } from "../_constants";
 
 import { adalApiFetch } from "../_adalconfig/adalConfig";
-import { update } from "lodash";
 
 export const readProfile = (email) => {
   // header info for the fetchUrl
@@ -21,12 +20,11 @@ export const readProfile = (email) => {
   return (dispatch) => {
     dispatch(_readProfileStarted);
     ///////////Your api azure function here
-    let url = "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,new_weight,emailaddress1,new_bloodtype,new_birthdate,new_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27" + email + "%27))";
-    adalApiFetch(
-      axios,
-      url,
-      config
-    )
+    let url =
+      "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,new_weight,emailaddress1,new_bloodtype,new_birthdate,new_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27" +
+      email +
+      "%27))";
+    adalApiFetch(axios, url, config)
       .then((res) => {
         dispatch(_readProfileSuccess(res));
       })
@@ -89,7 +87,7 @@ export const updateProfile = (updateObj) => {
     )
       .then((res) => {
         dispatch(_updateProfileSuccess(res));
-        dispatch(readProfile());
+        dispatch(readProfile(updateObj.email));
       })
       .catch((error) => {
         console.log(error);
@@ -112,6 +110,7 @@ const _updateProfileFailed = (error) => {
 };
 
 const _updateProfileStarted = () => {
+  console.log("started");
   return {
     type: profileConstants.UPDATE_REQUEST,
   };

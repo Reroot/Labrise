@@ -8,24 +8,23 @@ import { PrivateRoute } from "../_components";
 // import { HomePage } from "../HomePage/HomePage";
 import { LoginPage } from "../_components/LoginPage/LoginPage";
 import { RegisterPage } from "../_components/RegisterPage";
-import  PatientPage  from "../_components/PatientPage/PatientPage";
+import PatientPage from "../_components/PatientPage/PatientPage";
 import { Header } from "../_components";
 // import  ProfileContainer  from "../_components/Profile/ProfileContainer";
-import  { ProfilePage }  from "../_components/Profile/profile";
+import { ProfilePage } from "../_components/Profile/profile";
 import { ThemeProvider } from "@material-ui/core";
 import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
 import { Dashboard } from "../_components/LabResultsComponent/_dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
-import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
 import PropTypes from "prop-types";
 import Scott_Component from "../_components/ScottStuff/Scott_Component";
 
-
-
 // Import the Lab Report Viewer component & the Dashboard component
-import { LabReports_Component, Dashboard_Component } from "../_components/LabResultsComponent/labResults-Container";
-
+import {
+  LabReports_Component,
+  Dashboard_Component,
+} from "../_components/LabResultsComponent/labResults-Container";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -37,7 +36,6 @@ function App(props) {
       dispatch(alertActions.clear());
     });
   }, []);
-
 
   return (
     <div
@@ -54,22 +52,25 @@ function App(props) {
         {user && <Header />}
         {/* <Header/> */}
         <Switch>
-          <PrivateRoute exact path="/" component={ProfilePage} loggedInUser={user} {...props}>
-          </PrivateRoute>
-          <Route path="/login" component={LoginPage} {...props}/>
-          <Route path="/register" component={RegisterPage} {...props}/>
-          <Route path="/corona" component={CoronaPanel} {...props}/>
+          <PrivateRoute
+            exact
+            path="/"
+            component={Dashboard_Component}
+          ></PrivateRoute>
+          <Route path="/login" component={LoginPage} {...props} />
+          <Route path="/register" component={RegisterPage} {...props} />
+          <Route path="/corona" component={CoronaPanel} {...props} />
           {/* <Route path="/labresults" >
             <Dashboard patient="Hyperlipidemia" {...props}/>
           </Route>     
           
            */}
-          <Route path="/profile" component={ProfilePage} loggedInUser={user} {...props}/>
-          <Route path="/patient" >
-            <PatientPage {...props}/>
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/patient">
+            <PatientPage {...props} />
           </Route>
 
-                  {/* This is the Lab Report Viewer component */}
+          {/* This is the Lab Report Viewer component */}
           <Route path="/labreports">
             <LabReports_Component />
           </Route>
@@ -78,35 +79,36 @@ function App(props) {
             <Dashboard_Component />
           </Route>
 
-
-
-
-          <Route path="/appointments" component={Scott_Component} loggedInUser={user} {...props}/>
+          <Route
+            path="/appointments"
+            component={Scott_Component}
+            loggedInUser={user}
+            {...props}
+          />
           <Redirect from="*" to="/" />
-          
         </Switch>
       </Router>
     </div>
   );
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-      user: state.authentication.user
-  }
+    user: state.authentication.user,
+  };
 }
 
-function mapDispatchToProps(dispatch){
-  return { 
-      actions: bindActionCreators(userActions, dispatch)
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(userActions, dispatch),
+  };
 }
 
 App.propTypes = {
-  actions: PropTypes.object
+  actions: PropTypes.object,
 };
 
-// export default connect( 
+// export default connect(
 //   mapStateToProps,
 //   mapDispatchToProps
 //   )(App);
