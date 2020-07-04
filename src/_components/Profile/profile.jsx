@@ -52,7 +52,13 @@ function ProfilePage() {
   }
 
   if (pInfo && pInfo.requestSuccessful === true) {
-    const date = pInfo.pData.value[0]["new_birthdate"].split("T");
+    let fDate;
+    if (pInfo.pData.value[0]["new_birthdate"] != null) {
+      const date = pInfo.pData.value[0]["new_birthdate"].split("T");
+      fDate = date[0];
+    } else {
+      fDate = "";
+    }
     content = (
       <Container className={useStyles.container}>
         <Container>
@@ -86,7 +92,7 @@ function ProfilePage() {
             id="birthDate"
             label="Birth Date"
             type="date"
-            defaultValue={date[0]}
+            defaultValue={fDate}
             className={useStyles.textField}
             variant="filled"
             InputProps={{
