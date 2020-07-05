@@ -2,16 +2,25 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { InvoiceStyles } from "../../_styles/InvoiceStyle";
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableCell from '@material-ui/core/TableCell';
+import Paper from '@material-ui/core/Paper';
 
 const InvoiceRender = ({ invoiceData }) => {
+    const useStyles = InvoiceStyles();
 
     function createInvoiceRow(invoice){
         return (
-            <tr key={invoice.invoicenumber}>
-                <td> {invoice.invoicenumber} </td>
-                <td> {invoice.name} </td>
-                <td> {"$" + invoice.msdyn_amountdue} </td>
-            </tr>
+            <TableRow key={invoice.invoicenumber}>
+                <TableCell > {invoice.invoicenumber} </TableCell>
+                <TableCell> {invoice.name} </TableCell>
+                <TableCell> {"$" + invoice.msdyn_amountdue} </TableCell>
+            </TableRow>
         );
     }
 
@@ -30,18 +39,22 @@ const InvoiceRender = ({ invoiceData }) => {
 
     if(invoiceData && invoiceData.requestSucessful){
         content = 
-            (<table className="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {invoiceData.invoices.value.map((invoice) => createInvoiceRow(invoice))}
-                </tbody>    
-            </table>)
+            (
+                <TableContainer component={Paper} className={useStyles.TableContainer}>
+                    <Table className={useStyles.Table} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>ID</TableCell>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Amount</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {invoiceData.invoices.value.map((invoice) => createInvoiceRow(invoice))}
+                        </TableBody>    
+                    </Table>
+                </TableContainer>
+            )
     }
 
     if(invoiceData && invoiceData.requestFailed){
@@ -55,7 +68,7 @@ const InvoiceRender = ({ invoiceData }) => {
         
     return(
         <div>
-            <h1>Invoices</h1>
+            <h1 className={useStyles.HeadingText}>Invoices:</h1>
             {content}
         </div>
     );

@@ -17,6 +17,9 @@ const ProfileStyles = makeStyles({
     textAlign: "center",
     marginTop: "1rem",
   },
+  HeadingText: {
+    font: "normal normal bold large/normal Domine, sans-serif",
+  },
 });
 
 export { ProfileStyles };

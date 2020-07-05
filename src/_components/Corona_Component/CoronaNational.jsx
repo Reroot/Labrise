@@ -8,8 +8,10 @@ import * as coronaActions from "../../_actions/coronaActions";
 import CoronaRender from "./CoronaRender";
 import { ThemeProvider, useTheme } from "@material-ui/core";
 import CustomTheme from "../../_styles/MUITheme";
+import  CoronaStyles  from "../../_styles/CoronaStyle";
 
 const CoronaNational = (props) => {
+  const useStyles = CoronaStyles();
   useEffect(() => {
     const { actions } = props;
     const coronaParams = { state: "US", date: null };
@@ -18,7 +20,8 @@ const CoronaNational = (props) => {
 
   return (
     <div>
-        <h1>National Data</h1>
+        <h1 className={useStyles.HeadingText}>National Data --</h1>
+        <br />
         <CoronaRender {...props} />
     </div>
   );

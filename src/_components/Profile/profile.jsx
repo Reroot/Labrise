@@ -62,7 +62,7 @@ function ProfilePage() {
     content = (
       <Container className={useStyles.container}>
         <Container>
-          <h2>General Information</h2>
+          <h2 className={useStyles.HeadingText}>General Information:</h2>
           <TextField
             variant="filled"
             margin="normal"
@@ -170,7 +170,7 @@ function ProfilePage() {
           />
         </Container>
         <Container>
-          <h2>Address</h2>
+          <h2 className={useStyles.HeadingText}>Address:</h2>
           <TextField
             variant="outlined"
             margin="normal"

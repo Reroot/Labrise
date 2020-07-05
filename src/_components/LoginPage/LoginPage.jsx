@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userActions } from "../../_actions/user.actions";
+import { Paper } from '@material-ui/core';
 
 function LoginPage() {
   const [inputs, setInputs] = useState({
@@ -72,49 +73,59 @@ function LoginPage() {
         <title>
           Please enter your log in or register into our Secure Portal
         </title>
-        <form name="form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="username"
-              id="userID"
-              label="Username"
-              value={username}
-              onChange={handleChange}
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              id="passwordID"
-              label="Password"
-              value={password}
-              onChange={handleChange}
-              type="password"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              {loggingIn && (
-                <span className="spinner-border spinner-border-sm mr-1"></span>
-              )}
-              Sign In
-            </Button>
-            <Link to="/register" className="btn btn-link">
-              {" Don't have a account? Sign up here!"}
-            </Link>
-          </div>
-        </form>
+          <form name="form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <Paper elevation={24}>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="username"
+                  id="userID"
+                  label="Username"
+                  value={username}
+                  onChange={handleChange}
+                  autoFocus
+                  />
+              </Paper>
+              <br />
+              <Paper elevation={24}>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  id="passwordID"
+                  label="Password"
+                  value={password}
+                  onChange={handleChange}
+                  type="password"
+                  />
+                </Paper>
+              <br />
+              <Paper elevation={24}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  >
+                  {loggingIn && (
+                    <span className="spinner-border spinner-border-sm mr-1"></span>
+                    )}
+                  Sign In
+                </Button>
+              </Paper>
+              <br />
+              <Link to="/register" className="btn btn-link">
+                {" Don't have an account? Sign up here!"}
+              </Link>
+            <br />
+            </div>
+          </form>
       </div>
     </Container>
   );

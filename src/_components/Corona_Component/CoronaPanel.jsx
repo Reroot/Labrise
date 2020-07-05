@@ -23,6 +23,7 @@ const CoronaPanel = (props) => {
   return (
     <div className="col-lg-8 offset-lg-2" style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4))",}}>
         <CoronaNational {...props} />
+        <br />
         <CoronaState {...props} />
     </div>
   );

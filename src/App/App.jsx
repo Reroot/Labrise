@@ -9,7 +9,8 @@ import { PrivateRoute } from "../_components";
 import { LoginPage } from "../_components/LoginPage/LoginPage";
 import { RegisterPage } from "../_components/RegisterPage";
 import PatientPage from "../_components/PatientPage/PatientPage";
-import { Header } from "../_components";
+// import { Header } from "../_components";
+import { NewHeader } from "../_components";
 // import  ProfileContainer  from "../_components/Profile/ProfileContainer";
 import { ProfilePage } from "../_components/Profile/profile";
 import { ThemeProvider } from "@material-ui/core";
@@ -49,13 +50,13 @@ function App(props) {
         {/*
         Need to make this more fluid with pending before displaying
         */}
-        {user && <Header />}
+        {user && <NewHeader />}
         {/* <Header/> */}
         <Switch>
           <PrivateRoute
             exact
             path="/"
-            component={Dashboard_Component}
+            component={ProfilePage}
           ></PrivateRoute>
           <Route path="/login" component={LoginPage} {...props} />
           <Route path="/register" component={RegisterPage} {...props} />

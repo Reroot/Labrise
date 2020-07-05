@@ -11,7 +11,7 @@ import TocIcon from "@material-ui/icons/Toc";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import Image from "material-ui-image";
 
-function Header() {
+function NewHeader() {
   const useStyles = navStyles();
  
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -31,26 +31,29 @@ function Header() {
         direction="row"
         className={useStyles.navBar}
       >
-        <Grid container item xs={2}>
-          <div style={{ width: "0%", height: "0%" }}>
+        <Grid container item xs={2} className={useStyles.logo}>
+          <div style={{ width: "100%", height: "100%"}}>
+          {/* <div> */}
             <Image
               src="../../res/LabRise_logo -- v2,  350px.png"
+              aspectRatio={(1024 / 1)}
               style={{
-                width: "210px",
-                height: "55px",
+                width: "100%",
+                height: "100%",
               }}
             />
           </div>
         </Grid>
         <Grid container item xs={9}>
-          <Grid container item>
+          {/* <Grid container item> */}
             <ButtonGroup
               variant="contained"
               color="primary"
               aria-label="contained primary button group"
               fullWidth
+              className={useStyles.navButtonGroup}
             >
-              <Button className={useStyles.navButton} component={Link} to="/">
+              <Button className={useStyles.navButton} component={Link} to="/" >
                 <Container className={useStyles.navButtonLink}>
                   <HomeIcon></HomeIcon>
                   Home
@@ -114,13 +117,19 @@ function Header() {
                 </Container>
               </Button>
             </ButtonGroup>
-          </Grid>
+          {/* </Grid> */}
         </Grid>
-        <Grid container item xs={1} className={useStyles.navProfile}>
+        <Grid
+            container item
+            xs={1}
+            className={useStyles.navProfile}
+            justify="center"
+        >
           <Button
             aria-controls="simple-menu"
             aria-haspopup="true"
             onClick={handleClick}
+            // color="primary"
             className={useStyles.navProfileButton}
           >
             <AccountBoxIcon
@@ -134,9 +143,9 @@ function Header() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>
+            {/* <MenuItem onClick={handleClose}>
               <Link to="/profile">Profile</Link>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem onClick={handleClose}>
               <Link to="/login">Logout</Link>
             </MenuItem>
@@ -147,4 +156,4 @@ function Header() {
   );
 }
 
-export { Header };
+export { NewHeader };
