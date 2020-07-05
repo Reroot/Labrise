@@ -22,6 +22,7 @@ function NewHeader() {
 
   const handleClose = () => {
     setAnchorEl(null);
+    document.location.reload(true);
   };
   return (
     <Paper>

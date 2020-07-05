@@ -11,8 +11,8 @@ import { RegisterPage } from "../_components/RegisterPage";
 import PatientPage from "../_components/PatientPage/PatientPage";
 // import { Header } from "../_components";
 import { NewHeader } from "../_components";
-// import  ProfileContainer  from "../_components/Profile/ProfileContainer";
-import { ProfilePage } from "../_components/Profile/profile";
+import  ProfileContainer  from "../_components/Profile/ProfileWrapper";
+// import  ProfilePage  from "../_components/Profile/profile";
 import { ThemeProvider } from "@material-ui/core";
 import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 // import {CoronaRender} from "../HomePage/components/Corona_Component/CoronaRender";
@@ -56,7 +56,9 @@ function App(props) {
           <PrivateRoute
             exact
             path="/"
-            component={ProfilePage}
+            component={ProfileContainer}
+            // component={ProfilePage}
+            {...props}
           ></PrivateRoute>
           <Route path="/login" component={LoginPage} {...props} />
           <Route path="/register" component={RegisterPage} {...props} />
@@ -66,7 +68,8 @@ function App(props) {
           </Route>     
           
            */}
-          <Route path="/profile" component={ProfilePage} />
+          <Route path="/profile" component={ProfileContainer} {...props} />
+          {/* <Route path="/profile" component={ProfilePage} {...props} /> */}
           <Route path="/patient">
             <PatientPage {...props} />
           </Route>

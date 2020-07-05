@@ -2,6 +2,7 @@ import { userConstants } from "../_constants";
 import { userService } from "../_services";
 import { alertActions } from ".";
 import { history } from "../_backend";
+import ProfilePage from "../_components/Profile/profile";
 
 export const userActions = {
   login,
@@ -18,7 +19,9 @@ function login(username, password) {
     userService.login(username, password).then(
       (user) => {
         dispatch(success(user));
-        history.push("/profile");
+        // history.push("/profile");
+        history.push("/");
+        // ProfilePage.forceUpdate();
       },
       (error) => {
         dispatch(failure(error.toString()));

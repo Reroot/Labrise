@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as invoiceActions from '../../_actions/invoiceActions';
-import InvoiceRender from './InvoiceRender';
+import * as profileActions from '../../_actions/profile-actions';
+import ProfilePage from './profile';
 
-const InvoiceContainer = (props) => {
+const ProfileContainer = (props) => {
 //     console.log("these are the props in InvoiceContainer");
 //   console.log(props);
     const dispatch = useDispatch();
@@ -16,39 +16,39 @@ const InvoiceContainer = (props) => {
 //     useEffect(() => {
     //         dispatch(profileActions.readProfile());
     //     }, []);
-    let info = useSelector((state) => state.profileReducer.profileData);
+    let info = useSelector((state) => state.authentication.user);
     console.log("info before useEffect");
     console.log(info);
     useEffect(() => {
-        dispatch(invoiceActions.readInvoices(info.pData.value[0]["contactid"]));
+        dispatch(profileActions.readProfile(info["email"]));
     }, []);
     console.log("info before useEffect");
         console.log(info);
    
     return(
         <div>
-            <InvoiceRender {...props} />
+            <ProfilePage {...props} />
         </div>
     );
 }
 
 function mapStateToProps(state){
     return {
-        invoiceData: state.invoiceReducer.invoiceData
+        profileData: state.profileReducer.profileData
     }
 }
 
 function mapDispatchToProps(dispatch){
     return { 
-        actions: bindActionCreators(invoiceActions, dispatch)
+        actions: bindActionCreators(profileActions, dispatch)
     }
 }
 
-InvoiceContainer.propTypes = {
+ProfileContainer.propTypes = {
     actions: PropTypes.object
 };
 
 export default connect( 
     mapStateToProps,
     mapDispatchToProps
-    )(InvoiceContainer);
+    )(ProfileContainer);

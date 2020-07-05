@@ -1,6 +1,6 @@
 import Container from "@material-ui/core/Container";
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import { ProfileStyles } from "../../_styles/profilestyle";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -8,14 +8,16 @@ import * as profileActions from "../../_actions/profile-actions";
 import { Button } from "@material-ui/core";
 
 // import React, { useEffect } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import { connect, useSelector, useDispatch } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 
 // import * as profileActions from '../../_actions/profile-actions';
 // import { ProfilePage } from './profile';
 
-function ProfilePage() {
+const ProfilePage = ({profileData}) => {
+  console.log("props in profilePage");
+  console.log(profileData);
   const useStyles = ProfileStyles();
   const dispatch = useDispatch();
   const [textValues, setTextValues] = useState({});
@@ -23,7 +25,7 @@ function ProfilePage() {
 
   // const dispatch = useDispatch();
   let userEmail = useSelector((state) => state.authentication.user);
-  let pInfo = useSelector((state) => state.profileReducer.profileData);
+  // let profileData = useSelector((state) => state.profileReducer.profileData);
 
   const handleTextFieldChange = (e) => {
     setButtonDisable(false);
@@ -31,17 +33,17 @@ function ProfilePage() {
     setTextValues({
       ...textValues,
       [name]: value,
-      ["contactid"]: pInfo.pData.value[0]["contactid"],
+      ["contactid"]: profileData.pData.value[0]["contactid"],
       ["email"]: userEmail["email"],
     });
   };
-  useEffect(() => {
-    dispatch(profileActions.readProfile(userEmail["email"]));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(profileActions.readProfile(userEmail["email"]));
+  // }, []);
 
   let content = "";
 
-  if (!pInfo || pInfo.requestPending) {
+  if (!profileData || profileData.requestPending) {
     content = (
       <div className="d-flex justify-content-center">
         <div className="spinner-border" role="status">
@@ -51,10 +53,10 @@ function ProfilePage() {
     );
   }
 
-  if (pInfo && pInfo.requestSuccessful === true) {
+  if (profileData && profileData.requestSuccessful === true) {
     let fDate;
-    if (pInfo.pData.value[0]["new_birthdate"] != null) {
-      const date = pInfo.pData.value[0]["new_birthdate"].split("T");
+    if (profileData.pData.value[0]["new_birthdate"] != null) {
+      const date = profileData.pData.value[0]["new_birthdate"].split("T");
       fDate = date[0];
     } else {
       fDate = "";
@@ -68,7 +70,7 @@ function ProfilePage() {
             margin="normal"
             name="firstName"
             id="firstNameID"
-            defaultValue={pInfo.pData.value[0]["firstname"]}
+            defaultValue={profileData.pData.value[0]["firstname"]}
             label="First Name"
             InputProps={{
               readOnly: true,
@@ -81,7 +83,7 @@ function ProfilePage() {
             margin="normal"
             name="lastName"
             id="lastNameID"
-            defaultValue={pInfo.pData.value[0]["lastname"]}
+            defaultValue={profileData.pData.value[0]["lastname"]}
             label="Last Name"
             type="text"
             autoComplete="off"
@@ -105,7 +107,7 @@ function ProfilePage() {
             name="bloodType"
             id="bloodTypeID"
             defaultValue={
-              pInfo.pData.value[0][
+              profileData.pData.value[0][
                 "new_bloodtype@OData.Community.Display.V1.FormattedValue"
               ]
             }
@@ -124,7 +126,7 @@ function ProfilePage() {
               endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
               readOnly: true,
             }}
-            defaultValue={pInfo.pData.value[0]["new_weight"]}
+            defaultValue={profileData.pData.value[0]["new_weight"]}
             variant="filled"
             autoComplete="off"
             className={useStyles.textFieldAdornment}
@@ -137,7 +139,7 @@ function ProfilePage() {
               endAdornment: <InputAdornment position="end">CM</InputAdornment>,
               readOnly: true,
             }}
-            defaultValue={pInfo.pData.value[0]["new_height"]}
+            defaultValue={profileData.pData.value[0]["new_height"]}
             variant="filled"
             autoComplete="off"
             className={useStyles.textFieldAdornment}
@@ -147,7 +149,7 @@ function ProfilePage() {
             margin="normal"
             name="emailAddress"
             id="emailAddressID"
-            defaultValue={pInfo.pData.value[0]["emailaddress1"]}
+            defaultValue={profileData.pData.value[0]["emailaddress1"]}
             label="Email Address"
             type="text"
             InputProps={{
@@ -160,7 +162,7 @@ function ProfilePage() {
             margin="normal"
             name="mobilePhone"
             id="mobilePhoneID"
-            defaultValue={pInfo.pData.value[0]["mobilephone"]}
+            defaultValue={profileData.pData.value[0]["mobilephone"]}
             label="Mobile Phone"
             type="text"
             autoComplete="off"
@@ -176,7 +178,7 @@ function ProfilePage() {
             margin="normal"
             name="addressName"
             id="addressNameID"
-            defaultValue={pInfo.pData.value[0]["address1_name"]}
+            defaultValue={profileData.pData.value[0]["address1_name"]}
             label="Address"
             type="text"
             className={useStyles.textField}
@@ -188,7 +190,7 @@ function ProfilePage() {
             margin="normal"
             name="addressCity"
             id="addressCityID"
-            defaultValue={pInfo.pData.value[0]["address1_city"]}
+            defaultValue={profileData.pData.value[0]["address1_city"]}
             label="City"
             type="text"
             className={useStyles.textField}
@@ -200,7 +202,7 @@ function ProfilePage() {
             margin="normal"
             name="addressState"
             id="addressStateID"
-            defaultValue={pInfo.pData.value[0]["address1_stateorprovince"]}
+            defaultValue={profileData.pData.value[0]["address1_stateorprovince"]}
             label="State"
             type="text"
             className={useStyles.textField}
@@ -212,7 +214,7 @@ function ProfilePage() {
             margin="normal"
             name="addressPostal"
             id="addressPostalID"
-            defaultValue={pInfo.pData.value[0]["address1_postalcode"]}
+            defaultValue={profileData.pData.value[0]["address1_postalcode"]}
             label="Postal Code"
             type="text"
             className={useStyles.textField}
@@ -228,6 +230,7 @@ function ProfilePage() {
             onClick={() => {
               dispatch(profileActions.updateProfile(textValues));
               setButtonDisable(true);
+              this.forceUpdate();
             }}
           >
             Save
@@ -237,7 +240,7 @@ function ProfilePage() {
     );
   }
 
-  if (pInfo && pInfo.requestFailed) {
+  if (profileData && profileData.requestFailed) {
     content = (
       <div className="alert alert-danger" role="alert">
         Error while loading profile data!
@@ -248,4 +251,26 @@ function ProfilePage() {
   return <div>{content}</div>;
 }
 
-export { ProfilePage };
+// function mapStateToProps(state){
+//   return {
+//       profileData: state.profileReducer.profileData
+//   }
+// }
+
+// function mapDispatchToProps(dispatch){
+//   return { 
+//       actions: bindActionCreators(profileActions, dispatch)
+//   }
+// }
+
+// ProfilePage.propTypes = {
+//   actions: PropTypes.object
+// };
+
+// export default connect( 
+//   mapStateToProps,
+//   mapDispatchToProps
+//   )(ProfilePage);
+
+// export { ProfilePage };
+export default ProfilePage;
