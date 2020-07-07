@@ -8,16 +8,14 @@ import * as profileActions from "../../_actions/profile-actions";
 import { Button } from "@material-ui/core";
 
 // import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // import { connect, useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from "redux";
 
 // import * as profileActions from '../../_actions/profile-actions';
 // import { ProfilePage } from './profile';
 
-const ProfilePage = ({profileData}) => {
-  console.log("props in profilePage");
-  console.log(profileData);
+const ProfilePage = ({ profileData }) => {
   const useStyles = ProfileStyles();
   const dispatch = useDispatch();
   const [textValues, setTextValues] = useState({});
@@ -37,13 +35,14 @@ const ProfilePage = ({profileData}) => {
       ["email"]: userEmail["email"],
     });
   };
-  // useEffect(() => {
-  //   dispatch(profileActions.readProfile(userEmail["email"]));
-  // }, []);
+  useEffect(() => {
+    dispatch(profileActions.readProfile(userEmail["email"]));
+  }, []);
 
   let content = "";
 
   if (!profileData || profileData.requestPending) {
+    console.log("DATA FETCHING");
     content = (
       <div className="d-flex justify-content-center">
         <div className="spinner-border" role="status">
@@ -54,6 +53,7 @@ const ProfilePage = ({profileData}) => {
   }
 
   if (profileData && profileData.requestSuccessful === true) {
+    console.log("DISPLAY DATA BEEP");
     let fDate;
     if (profileData.pData.value[0]["new_birthdate"] != null) {
       const date = profileData.pData.value[0]["new_birthdate"].split("T");
@@ -202,7 +202,9 @@ const ProfilePage = ({profileData}) => {
             margin="normal"
             name="addressState"
             id="addressStateID"
-            defaultValue={profileData.pData.value[0]["address1_stateorprovince"]}
+            defaultValue={
+              profileData.pData.value[0]["address1_stateorprovince"]
+            }
             label="State"
             type="text"
             className={useStyles.textField}
@@ -230,7 +232,6 @@ const ProfilePage = ({profileData}) => {
             onClick={() => {
               dispatch(profileActions.updateProfile(textValues));
               setButtonDisable(true);
-              this.forceUpdate();
             }}
           >
             Save
@@ -249,7 +250,7 @@ const ProfilePage = ({profileData}) => {
   }
 
   return <div>{content}</div>;
-}
+};
 
 // function mapStateToProps(state){
 //   return {
@@ -258,7 +259,7 @@ const ProfilePage = ({profileData}) => {
 // }
 
 // function mapDispatchToProps(dispatch){
-//   return { 
+//   return {
 //       actions: bindActionCreators(profileActions, dispatch)
 //   }
 // }
@@ -267,7 +268,7 @@ const ProfilePage = ({profileData}) => {
 //   actions: PropTypes.object
 // };
 
-// export default connect( 
+// export default connect(
 //   mapStateToProps,
 //   mapDispatchToProps
 //   )(ProfilePage);

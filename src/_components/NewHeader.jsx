@@ -13,7 +13,6 @@ import Image from "material-ui-image";
 
 function NewHeader() {
   const useStyles = navStyles();
- 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -22,7 +21,6 @@ function NewHeader() {
 
   const handleClose = () => {
     setAnchorEl(null);
-    document.location.reload(true);
   };
   return (
     <Paper>
@@ -33,11 +31,11 @@ function NewHeader() {
         className={useStyles.navBar}
       >
         <Grid container item xs={2} className={useStyles.logo}>
-          <div style={{ width: "100%", height: "100%"}}>
-          {/* <div> */}
+          <div style={{ width: "100%", height: "100%" }}>
+            {/* <div> */}
             <Image
               src="../../res/LabRise_logo -- v2,  350px.png"
-              aspectRatio={(1024 / 1)}
+              aspectRatio={1024 / 1}
               style={{
                 width: "100%",
                 height: "100%",
@@ -47,84 +45,83 @@ function NewHeader() {
         </Grid>
         <Grid container item xs={9}>
           {/* <Grid container item> */}
-            <ButtonGroup
-              variant="contained"
-              color="primary"
-              aria-label="contained primary button group"
-              fullWidth
-              className={useStyles.navButtonGroup}
+          <ButtonGroup
+            variant="contained"
+            color="primary"
+            aria-label="contained primary button group"
+            fullWidth
+            className={useStyles.navButtonGroup}
+          >
+            <Button className={useStyles.navButton} component={Link} to="/">
+              <Container className={useStyles.navButtonLink}>
+                <HomeIcon></HomeIcon>
+                Home
+              </Container>
+            </Button>
+
+            {/* This button is for the Lab Report Viewer component */}
+            <Button
+              className={useStyles.navButton}
+              component={Link}
+              to="/labreports"
             >
-              <Button className={useStyles.navButton} component={Link} to="/" >
-                <Container className={useStyles.navButtonLink}>
-                  <HomeIcon></HomeIcon>
-                  Home
-                </Container>
-              </Button>
+              <Container className={useStyles.navButtonLink}>
+                <TocIcon />
+                Lab Reports
+              </Container>
+            </Button>
+            {/* This button is for the Dashboard component */}
+            <Button
+              className={useStyles.navButton}
+              component={Link}
+              to="/dashboard"
+            >
+              <Container className={useStyles.navButtonLink}>
+                <TrendingUpIcon />
+                Dashboard
+              </Container>
+            </Button>
 
-              {/* This button is for the Lab Report Viewer component */}
-              <Button
-                className={useStyles.navButton}
-                component={Link}
-                to="/labreports"
-              >
-                <Container className={useStyles.navButtonLink}>
-                  <TocIcon />
-                  Lab Reports
-                </Container>
-              </Button>
-              {/* This button is for the Dashboard component */}
-              <Button
-                className={useStyles.navButton}
-                component={Link}
-                to="/dashboard"
-              >
-                <Container className={useStyles.navButtonLink}>
-                  <TrendingUpIcon />
-                  Dashboard
-                </Container>
-              </Button>
-
-              <Button
-                className={useStyles.navButton}
-                component={Link}
-                to="/patient"
-              >
-                <Container className={useStyles.navButtonLink}>
-                  Invoice
-                </Container>
-              </Button>
-              {/* <Button className={useStyles.navButton}>
+            <Button
+              className={useStyles.navButton}
+              component={Link}
+              to="/patient"
+            >
+              <Container className={useStyles.navButtonLink}>Invoice</Container>
+            </Button>
+            {/* <Button className={useStyles.navButton}>
                 <Link to="/labresults" className={useStyles.navButtonLink}>
                   <TocIcon></TocIcon>
                   Lab results
                 </Link>
               </Button> */}
-              <Button
-                className={useStyles.navButton}
-                component={Link}
-                to="/corona"
-              >
-                <Container className={useStyles.navButtonLink}>
-                  Corona Tracker
-                </Container>
-              </Button>
-              <Button
-                className={useStyles.navButton}
-                component={Link}
-                to="/appointments"
-              >
-                <Container className={useStyles.navButtonLink}>
-                  Appointments
-                </Container>
-              </Button>
-            </ButtonGroup>
+            <Button
+              className={useStyles.navButton}
+              component={Link}
+              to="/corona"
+            >
+              <Container className={useStyles.navButtonLink}>
+                Corona Tracker
+              </Container>
+            </Button>
+            <Button
+              className={useStyles.navButton}
+              component={Link}
+              to="/appointments"
+            >
+              <Container className={useStyles.navButtonLink}>
+                Appointments
+              </Container>
+            </Button>
+          </ButtonGroup>
           {/* </Grid> */}
         </Grid>
         <Grid
-            container item
-            xs={1}
-            className={useStyles.navProfile}
-            justify="center"
+          container
+          item
+          xs={1}
+          className={useStyles.navProfile}
+          justify="center"
         >
           <Button
             aria-controls="simple-menu"

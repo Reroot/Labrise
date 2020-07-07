@@ -110,8 +110,31 @@ const _updateProfileFailed = (error) => {
 };
 
 const _updateProfileStarted = () => {
-  console.log("started");
   return {
     type: profileConstants.UPDATE_REQUEST,
   };
+};
+
+export const logoutProfile = () => {
+  console.log("call");
+  // logout profile and clear the state
+  return (dispatch) => {
+    try {
+      dispatch(_logoutProfileSuccess);
+    } catch {
+      console.log("ERROR");
+    }
+    ///////////Your api azure function here
+  };
+};
+
+const _logoutProfileSuccess = () => {
+  console.log("IN ACT->REDUCER");
+  try {
+    return {
+      type: profileConstants.CLEAR_PROFILE_DATA,
+    };
+  } catch {
+    console.log("ERROR)");
+  }
 };

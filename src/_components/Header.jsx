@@ -13,7 +13,7 @@ import Image from "material-ui-image";
 
 function Header() {
   const useStyles = navStyles();
- 
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -134,9 +134,6 @@ function Header() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>
-              <Link to="/profile">Profile</Link>
-            </MenuItem>
             <MenuItem onClick={handleClose}>
               <Link to="/login">Logout</Link>
             </MenuItem>

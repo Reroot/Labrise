@@ -12,7 +12,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userActions } from "../../_actions/user.actions";
-import { Paper } from '@material-ui/core';
+import { Paper } from "@material-ui/core";
+import * as profileActions from "../../_actions/profile-actions";
 
 function LoginPage() {
   const [inputs, setInputs] = useState({
@@ -26,6 +27,7 @@ function LoginPage() {
   const alert = useSelector((state) => state.alert);
   // reset login status
   useEffect(() => {
+    console.log("USEEFFECT");
     dispatch(userActions.logout());
   }, []);
 
@@ -59,13 +61,20 @@ function LoginPage() {
   });
 
   const classes = useStyles();
-  
+
   return (
     <Container maxWidth="xs">
-
-
-      <div id="loginDiv" className={classes.paper} style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.3))",}}>
-      <h2 style={{ color: 'darkBlue'}}>Welcome to Labrise! Your Personal Health Assistant</h2>
+      <div
+        id="loginDiv"
+        className={classes.paper}
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom right, white, rgb(196, 180, 255,.3))",
+        }}
+      >
+        <h2 style={{ color: "darkBlue" }}>
+          Welcome to Labrise! Your Personal Health Assistant
+        </h2>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -73,59 +82,59 @@ function LoginPage() {
         <title>
           Please enter your log in or register into our Secure Portal
         </title>
-          <form name="form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <Paper elevation={24}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="username"
-                  id="userID"
-                  label="Username"
-                  value={username}
-                  onChange={handleChange}
-                  autoFocus
-                  />
-              </Paper>
-              <br />
-              <Paper elevation={24}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  id="passwordID"
-                  label="Password"
-                  value={password}
-                  onChange={handleChange}
-                  type="password"
-                  />
-                </Paper>
-              <br />
-              <Paper elevation={24}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                  >
-                  {loggingIn && (
-                    <span className="spinner-border spinner-border-sm mr-1"></span>
-                    )}
-                  Sign In
-                </Button>
-              </Paper>
-              <br />
-              <Link to="/register" className="btn btn-link">
-                {" Don't have an account? Sign up here!"}
-              </Link>
+        <form name="form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <Paper elevation={24}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="username"
+                id="userID"
+                label="Username"
+                value={username}
+                onChange={handleChange}
+                autoFocus
+              />
+            </Paper>
             <br />
-            </div>
-          </form>
+            <Paper elevation={24}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                id="passwordID"
+                label="Password"
+                value={password}
+                onChange={handleChange}
+                type="password"
+              />
+            </Paper>
+            <br />
+            <Paper elevation={24}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                {loggingIn && (
+                  <span className="spinner-border spinner-border-sm mr-1"></span>
+                )}
+                Sign In
+              </Button>
+            </Paper>
+            <br />
+            <Link to="/register" className="btn btn-link">
+              {" Don't have an account? Sign up here!"}
+            </Link>
+            <br />
+          </div>
+        </form>
       </div>
     </Container>
   );

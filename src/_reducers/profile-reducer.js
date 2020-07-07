@@ -1,6 +1,7 @@
 import { profileConstants } from "../_constants";
 
 export default function profileReducer(state = {}, action) {
+  console.log("reducer called" + action.type);
   switch (action.type) {
     case profileConstants.GET_SUCCESS:
       return {
@@ -33,6 +34,9 @@ export default function profileReducer(state = {}, action) {
         ...state,
         updatedprofileData: { requestFailed: true },
       };
+    case profileConstants.USERS_LOGOUT:
+      alert("CLEAR");
+      return {};
     default:
       return state;
   }
