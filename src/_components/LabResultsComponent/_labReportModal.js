@@ -26,7 +26,7 @@ export class LabReportModal extends React.Component {
         // Else, visibility is TRUE, then show the modal
         return (
             <div className="LabReport-modal">
-                <div className="LabReport-modal-content">
+                <div className="shadow LabReport-modal-content">
                     
                     {/* insert the modal Header & Body here */}
                     {this.props.children}

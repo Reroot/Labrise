@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 import * as labResults_Actions from '../../_actions/labResults-Actions';
 import { LabReports_Render } from './labReports-Render';
 import { Dashboard_Render  } from './dashboard-Render';
-import './_styling.css';
+import '../../_styles/lai_styling.css';
 
 
 // Define the Container for the Lab Report Viewer component

@@ -1,16 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button, Paper } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { navStyles } from "../_styles/navbarstyle";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Image from "material-ui-image";
+import { navStyles } from "../_styles/navbarstyle";
+
+// Import some navigation bar picture icons
 import HomeIcon from "@material-ui/icons/Home";
 import TocIcon from "@material-ui/icons/Toc";
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import BubbleChartIcon from '@material-ui/icons/BubbleChart';
+import ScheduleIcon from '@material-ui/icons/Schedule';
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
-import Image from "material-ui-image";
+
 function Header() {
   const useStyles = navStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,75 +34,82 @@ function Header() {
         container
         id="headerGrid"
         direction="row"
+        justify="space-between"
+        alignItems="center"
         className={useStyles.navBar}
       >
+        
+        {/* This is the LabRise logo.  It links to the Home Page. */}
         <Grid item xs={2}>
           <div style={{ width: "0%", height: "0%" }}>
-            <Image
-              src="../../res/LabRise_logo -- v2,  350px.png"
-              style={{
-                width: "210px",
-                height: "55px",
-              }}
-            />
+            <Link to="/" className={useStyles.logoLink}>
+              <Image
+                src="../../res/LabRise_logo -- v2,  350px.png"
+                style={{
+                  width: "210px",
+                  height: "55px",
+                  margin: "3px 0px",
+                }}
+              />
+            </Link>
           </div>
         </Grid>
+
+        {/* This is the horizontal navigation bar. */}
         <Grid item xs={9}>
-          <Grid item>
-            <ButtonGroup
-              variant="contained"
-              color="primary"
-              aria-label="contained primary button group"
-              fullWidth
-            >
-              <Button className={useStyles.navButton}>
-                <Link to="/" className={useStyles.navButtonLink}>
-                  <HomeIcon></HomeIcon>&nbsp;&nbsp;
-                  Home
-                </Link>
-              </Button>
+          <ButtonGroup
+            variant="contained"
+            color="primary"
+            aria-label="contained primary button group"
+            fullWidth
+          >
+            <Button className={useStyles.navButton}>
+              <Link to="/" className={useStyles.navButtonLink}>
+                <HomeIcon />&nbsp;
+                Home
+              </Link>
+            </Button>
+            
+            {/* This button is for the Lab Report Viewer component */}
+            <Button className={useStyles.navButton}>
+              <Link to="/labreports" className={useStyles.navButtonLink}>
+                <TocIcon />&nbsp;
+                Lab Reports
+              </Link>
+            </Button>
+            
+            {/* This button is for the Dashboard component */}
+            <Button className={useStyles.navButton}>
+              <Link to="/dashboard" className={useStyles.navButtonLink}>
+                <TrendingUpIcon />&nbsp;
+                Dashboard
+              </Link>
+            </Button>
+            
+            <Button className={useStyles.navButton}>
+              <Link to="/corona" className={useStyles.navButtonLink}>
+                <BubbleChartIcon />&nbsp;
+                COVID-19
+              </Link>
+            </Button>
 
-
-              {/* This button is for the Lab Report Viewer component */}
-              <Button className={useStyles.navButton}>
-                <Link to="/labreports" className={useStyles.navButtonLink}>
-                  <TocIcon />&nbsp;&nbsp;
-                  Lab Reports
-                </Link>
-              </Button>
-              {/* This button is for the Dashboard component */}
-              <Button className={useStyles.navButton}>
-                <Link to="/dashboard" className={useStyles.navButtonLink}>
-                  <TrendingUpIcon />&nbsp;&nbsp;
-                  Dashboard
-                </Link>
-              </Button>
-              
-              
-              <Button className={useStyles.navButton}>
-                <Link to="/patient" className={useStyles.navButtonLink}>
-                  Invoice
-                </Link>
-              </Button>
-              {/* <Button className={useStyles.navButton}>
-                <Link to="/labresults" className={useStyles.navButtonLink}>
-                  <TocIcon></TocIcon>
-                  Lab results
-                </Link>
-              </Button> */}
-              <Button className={useStyles.navButton}>
-                <Link to="/corona" className={useStyles.navButtonLink}>
-                  Corona News Alerts
-                </Link>
-              </Button>
-              <Button className={useStyles.navButton}>
-                <Link to="/" className={useStyles.navButtonLink}>
-                  Appointments
-                </Link>
-              </Button>
-            </ButtonGroup>
-          </Grid>
+            <Button className={useStyles.navButton}>
+              <Link to="/patient" className={useStyles.navButtonLink}>
+                <AttachMoneyIcon />&nbsp;
+                Invoices
+              </Link>
+            </Button>
+            
+            <Button className={useStyles.navButton}>
+              <Link to="/appointments" className={useStyles.navButtonLink}>
+                <ScheduleIcon />&nbsp;
+                Appointments
+              </Link>
+            </Button>
+          </ButtonGroup>
         </Grid>
+
+        {/* This is the button for User Profile/Logout. */}
         <Grid item xs={1} className={useStyles.navProfile}>
           <Button
             aria-controls="simple-menu"
