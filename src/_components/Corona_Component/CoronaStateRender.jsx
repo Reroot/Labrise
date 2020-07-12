@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Grid, Paper, makeStyles, useTheme } from '@material-ui/core';
 import CustomTheme from '../../_styles/MUITheme';
 import { getThemeProps } from '@material-ui/styles';
+import  CoronaStyles  from "../../_styles/CoronaStyle";
 
 
 const CoronaStateRender = ({ coronaStateData }) => {
@@ -25,39 +26,43 @@ const CoronaStateRender = ({ coronaStateData }) => {
 
 
     if(coronaStateData && coronaStateData.requestSuccessful){
-        const useStyles = makeStyles((theme) => ({
-            root: {
-                flexGrow: 1,
-            },
-            good: {
-                padding:theme.spacing(1),
-                textAlign: 'center',
-                background: theme.palette.success,                
-            },
-            bad: {
-                padding:theme.spacing(1),
-                textAlign: 'center',
-                color: theme.palette.error,
-            },
-            neutral: {
-                padding:theme.spacing(1),
-                textAlign: 'center',
-                color: theme.palette.warning,
-            },
-            paper: {
-                padding:theme.spacing(1),
-                textAlign: 'center',
-                color: theme.palette.text.secondary,
-            },
-        }));
+        // const useStyles = makeStyles((theme) => ({
+        //     root: {
+        //         flexGrow: 1,
+        //     },
+        //     good: {
+        //         padding:theme.spacing(1),
+        //         textAlign: 'center',
+        //         background: theme.palette.success,                
+        //     },
+        //     bad: {
+        //         padding:theme.spacing(1),
+        //         textAlign: 'center',
+        //         color: theme.palette.error,
+        //     },
+        //     neutral: {
+        //         padding:theme.spacing(1),
+        //         textAlign: 'center',
+        //         color: theme.palette.warning,
+        //     },
+        //     paper: {
+        //         padding:theme.spacing(1),
+        //         textAlign: 'center',
+        //         color: theme.palette.text.secondary,
+        //     },
+        // }));
+
+        const useStyles = CoronaStyles();
         
-        const classes  = useStyles(useTheme(CustomTheme));
+        // const classes  = useStyles(useTheme(CustomTheme));
         
         function DateRow (){
             return (
                 <React.Fragment>
                     <Grid item xs={12}>
-                        <Paper className={classes.paper}>Data Current As Of: {coronaStateData.coronaState["date"]}</Paper>
+                        <Paper className={useStyles.paper} elevation={24}>
+                            Data Current As Of: {coronaStateData.coronaState["date"]}
+                        </Paper>
                     </Grid>
                 </React.Fragment>
             );
@@ -67,10 +72,14 @@ const CoronaStateRender = ({ coronaStateData }) => {
             return (
                 <React.Fragment>
                     <Grid item xs={6}>
-                        <Paper className={classes.paper}>Total Death Count: {coronaStateData.coronaState["death"]}</Paper>
+                        <Paper className={useStyles.paper} elevation={12}>
+                            Total Death Count: {coronaStateData.coronaState["death"]}
+                        </Paper>
                     </Grid>
                     <Grid item xs={6}>
-                        <Paper className={classes.paper}>Total Recovery Count: {coronaStateData.coronaState["recovered"]}</Paper>
+                        <Paper className={useStyles.paper} elevation={12}>
+                            Total Recovery Count: {coronaStateData.coronaState["recovered"]}
+                        </Paper>
                     </Grid>
                 </React.Fragment>
             );
@@ -80,13 +89,19 @@ const CoronaStateRender = ({ coronaStateData }) => {
             return (
                 <React.Fragment>
                     <Grid item xs={4}>
-                        <Paper className={classes.paper}>Currently Hospitalized: {coronaStateData.coronaState["hospitalizedCurrently"]}</Paper>
+                        <Paper className={useStyles.paper} elevation={6}>
+                            Currently Hospitalized: {coronaStateData.coronaState["hospitalizedCurrently"]}
+                        </Paper>
                     </Grid>
                     <Grid item xs={4}>
-                        <Paper className={classes.paper}>Currently in ICU: {coronaStateData.coronaState["inIcuCurrently"]}</Paper>
+                        <Paper className={useStyles.paper} elevation={6}>
+                            Currently in ICU: {coronaStateData.coronaState["inIcuCurrently"]}
+                        </Paper>
                     </Grid>
                     <Grid item xs={4}>
-                        <Paper className={classes.paper}>Currently on Ventilator: {coronaStateData.coronaState["onVentilatorCurrently"]}</Paper>
+                        <Paper className={useStyles.paper} elevation={6}>
+                            Currently on Ventilator: {coronaStateData.coronaState["onVentilatorCurrently"]}
+                        </Paper>
                     </Grid>
                 </React.Fragment>
             );
@@ -96,13 +111,13 @@ const CoronaStateRender = ({ coronaStateData }) => {
             return (
                 <React.Fragment>
                     <Grid item xs={4}>
-                        <Paper className={classes.paper}>Total Positive Tests: {coronaStateData.coronaState["positive"]}</Paper>
+                        <Paper className={useStyles.paper}>Total Positive Tests: {coronaStateData.coronaState["positive"]}</Paper>
                     </Grid>
                     <Grid item xs={4}>
-                        <Paper className={classes.paper}>Total Negative Tests: {coronaStateData.coronaState["negative"]}</Paper>
+                        <Paper className={useStyles.paper}>Total Negative Tests: {coronaStateData.coronaState["negative"]}</Paper>
                     </Grid>
                     <Grid item xs={4}>
-                        <Paper className={classes.paper}>Currently Pending Tests: {coronaStateData.coronaState["pending"]}</Paper>
+                        <Paper className={useStyles.paper}>Currently Pending Tests: {coronaStateData.coronaState["pending"]}</Paper>
                     </Grid>
                 </React.Fragment>
             );

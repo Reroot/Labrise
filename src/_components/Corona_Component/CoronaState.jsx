@@ -8,6 +8,7 @@ import * as coronaStateActions from "../../_actions/coronaStateActions";
 import CoronaStateRender from "./CoronaStateRender";
 import { ThemeProvider, useTheme } from "@material-ui/core";
 import CustomTheme from "../../_styles/MUITheme";
+import  CoronaStyles  from "../../_styles/CoronaStyle";
 
 const CoronaState = (props) => {
     console.log("These are the props in CoronaState");
@@ -22,6 +23,7 @@ const CoronaState = (props) => {
     // }
     //const stateOrProvince = info.pData.value[0]["address1_stateorprovince"];
     const stateOrProvince = props.profileData.pData.value[0]["address1_stateorprovince"];
+    const useStyles = CoronaStyles();
     useEffect(() => {
         const { actions } = props;
         const coronaParams = { state: stateOrProvince, date: null };
@@ -69,7 +71,8 @@ const CoronaState = (props) => {
         {/* {content} */}
         {/* <h1>Data For Your State</h1>
         <CoronaRender {...props} /> */}
-        <h1>Data For Your State of: {stateOrProvince}</h1>
+        <h1 className={useStyles.HeadingText}>Data For Your State of: {stateOrProvince} --</h1>
+        <br />
         <CoronaStateRender {...props} />
     </div>
   );

@@ -31,6 +31,8 @@ export const readLabResults = (patientName) => {
     const endpoint = "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/";
     const entity = "wc_labtestresults";
     const fields = [
+      // Note:  The "wc_" prefix is the Microsoft Dynamics publisher prefix for Will Cao's custom solution
+      //   ****This publisher prefix is specific to this particular custom solution****
       "wc_orderdate",
       "wc_patient",
       "wc_doctor",

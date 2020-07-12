@@ -1,16 +1,3 @@
-/*import React from 'react';
-
-function Rory_Component(){
-    return(
-        <div className="col-lg-8 offset-lg-2">
-            <h2>This is where Rory's Component would go</h2>
-        </div>
-    );
-}
-
-export { Rory_Component };*/
-
-
 "use strict"
 
 import React, { useEffect } from 'react';

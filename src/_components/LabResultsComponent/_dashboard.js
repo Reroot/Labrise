@@ -156,7 +156,7 @@ export class Dashboard extends React.Component {
         
         return (
         <div className='background Dashboard-flexbox'>
-            <div>
+            <div className="shadow">
                 <div className='Dropdown-banner'>
                     <Dropdown options={this.testOptions} onChange={this.onSelectTest} value={testName} />
                 </div>
@@ -168,7 +168,7 @@ export class Dashboard extends React.Component {
                     }}
                 />
             </div>
-            <div>
+            <div className="shadow">
                 <div className='Dropdown-banner'>
                     <Dropdown options={this.dateOptions} onChange={this.onSelectDate} value={testDate} />
                 </div>
@@ -177,7 +177,7 @@ export class Dashboard extends React.Component {
                         if (elemArr[0]) {
                             const chosenTest = this.testOptions[elemArr[0]._index];
                             this.setState({selectedTest: chosenTest});
-                            this.setState({selectedUnit: rawJSON.find(row => row.test===chosenTest).units});
+                            this.setState({selectedUnit: this.rawJSON.find(row => row.wc_test===chosenTest).wc_units});
                         }
                     }}
                 />
