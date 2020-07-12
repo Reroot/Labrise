@@ -18,7 +18,7 @@ import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 import { Dashboard } from "../_components/LabResultsComponent/_dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PropTypes from "prop-types";
-import Scott_Component from "../_components/ScottStuff/Scott_Component";
+import BettleContainer from "../_components/ScottStuff/BeetleContainer";
 
 // Import the Lab Report Viewer component & the Dashboard component
 import {
@@ -81,7 +81,7 @@ function App(props) {
 
           <Route
             path="/appointments"
-            component={Scott_Component}
+            component={BettleContainer}
             loggedInUser={user}
             {...props}
           />

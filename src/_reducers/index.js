@@ -11,6 +11,8 @@ import CoronaStateReducer from "./CoronaStateReducer";
 import modalDataReducer from "./modalDataReducer";
 import patEventReducer from "./patEventReducer";
 import rModalReducer from "./rModalReducer";
+import shellReducer from "./shellReducer";
+import beetleReducer from "./beetleReducer";
 import labResults_Reducer from "./labResults-Reducer";
 
 const rootReducer = combineReducers({
@@ -25,7 +27,9 @@ const rootReducer = combineReducers({
   modalDataReducer,
   rModalReducer,
   patEventReducer,
-  labResults_Reducer
+  labResults_Reducer,
+  shellReducer,
+  beetleReducer
 });
 
 export default rootReducer;
