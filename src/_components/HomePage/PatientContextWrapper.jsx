@@ -4,20 +4,22 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { HomePage } from './HomePage';
+import  HomePage_Container  from './lai_home-Container';
 import * as profileActions from '../../_actions/profile-actions';
 
 
 const PatientContextWrapper = (props) => {
+    console.log("props in Patient Context Wrapper");
+    console.log(props);
     const dispatch = useDispatch();
     //let info = useSelector((state) => state.profileReducer.profileData);
     useEffect(() => {
-        dispatch(profileActions.readProfile());
+        dispatch(profileActions.readProfile(props.User["email"]));
     }, []);
    
     return(
         <div>
-            <HomePage {...props} />
+            <HomePage_Container {...props} />
         </div>
     );
 }

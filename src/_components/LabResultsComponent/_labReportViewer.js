@@ -3,6 +3,7 @@ This is the root Lab Report Viewer component
 ************************************************/
 import React from "react";
 import { LabReportModal } from './_labReportModal'
+import { groupbyLabOrders } from './_dataPrep'
 
 
 // Define the root Lab Report Viewer component
@@ -29,41 +30,6 @@ export class LabReportViewer extends React.Component {
         this.setState( {show: !this.state.show} );
         this.setState( {chosenDate: date} );
     };
-
-    // Method to aggregate/group by each Lab Order
-    //   This creates the data for the list of Lab Orders
-    //   The user can choose which LabReport to view from this list of Lab Orders
-    groupbyLabOrders(inputJSON) {
-        let labOrders = [];
-
-        // Group by each Lab Order date
-        for (const date of this.dateOptions) {
-            let rowData = {
-                orderDate: "",
-                doctor: "",
-                numLow:  0,
-                numHigh: 0
-            };
-            rowData.orderDate = date;
-            rowData.doctor = inputJSON.find(row => row.wc_orderdate===date).wc_doctor;
-            const orderResults = inputJSON.filter(row => row.wc_orderdate===date);
-            const orderFlags = orderResults.map(row => row.wc_flag);
-
-            // Count how many abnormal flags per Lab Order
-            for (const flag of orderFlags) {
-                if      (flag === "Low") {
-                    rowData.numLow++;
-                }
-                else if (flag === "High") {
-                    rowData.numHigh++;
-                }
-            }
-
-            // Write the aggregated results into the list of Lab Orders
-            labOrders.push(rowData);
-        }
-        return labOrders;
-    }
 
     // Method for preparing the data for a particular Lab Report
     prepareLabReport(inputJSON, orderDate) {
@@ -107,14 +73,14 @@ export class LabReportViewer extends React.Component {
     // Render the LabReport Viewer
     render() {
         // Prepare the data for the summarized Lab Orders
-        const labOrders = this.groupbyLabOrders(this.rawJSON);
-        
+        const labOrders = groupbyLabOrders(this.rawJSON, this.dateOptions);
+
         // Create the table of summarized Lab Orders
         const labOrdersContent = (
             <table>
                 <thead>
                     <tr className="LabOrders-header">
-                        <th>Lab Order<br/>Date</th>
+                        <th>Lab Report<br/>Date</th>
                         <th>Ordering<br/>Doctor</th>
                         <th>Abnormal Results:<br/>Low</th>
                         <th>Abnormal Results:<br/>High</th>
@@ -133,14 +99,14 @@ export class LabReportViewer extends React.Component {
         const labReportContent = (
             <div>
                 <div className="LabReport-modal-header">
-                    <pre>Lab Order Date:    {labReport.orderDate}</pre>
+                    <pre>Lab Report Date:   {labReport.orderDate}</pre>
                     <pre>Tested Patient:    {labReport.patient}</pre>
                     <pre>Ordering Doctor:   {labReport.doctor}</pre>
                 </div>
                 <table className="LabReport-modal-body">
                     <thead>
                         <tr className="LabReport-header">
-                            <th>Name of Test</th>
+                            <th>Name of <br/> Test</th>
                             <th>Healthy Min</th>
                             <th>Healthy Max</th>
                             <th>Unit of Measure</th>
@@ -157,8 +123,8 @@ export class LabReportViewer extends React.Component {
 
         return (
             <div className="background ReportViewer-flexbox">
-                <div>
-                    <h2>History of your Lab Orders</h2>
+                <div className="shadow">
+                    <h2>Summary of your Lab Reports</h2>
                     {labOrdersContent}
                     <LabReportModal
                         onClose={this.showLabReport}

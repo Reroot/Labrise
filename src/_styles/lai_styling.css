@@ -1,0 +1,411 @@
+/**********************************************************
+This is the CSS styling for the Lai React components
+**********************************************************/
+
+
+/******************************************************/
+/* Styles for the Lab Report Viewer & Dashboard backgrounds */
+.background {
+    margin: 11px 0px 0px 0px;
+    min-height: 86vh;
+    border-radius: 8px;
+    background-image: linear-gradient(to bottom right, rgba(210, 137, 252, 0.7), rgba(235, 109, 182, 0.6));
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8),0 6px 20px 0 rgba(0,0,0,0.6);
+}
+.shadow {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6),0 6px 20px 0 rgba(0,0,0,0.4);
+}
+
+/******************************************************/
+/* Custom styles for the React-Dropdown components */
+.Dropdown-banner {
+    width: 220px;
+    margin: 5px;
+}
+.Dropdown-menu {
+    max-height: 400px;
+    background-color: magenta;
+}
+
+/******************************************************/
+/* Styles for the Chart backgrounds */
+.Chart-background {
+    background-color: white;
+    padding: 8px;
+    margin: 0px;
+    height: 60vh;
+}
+
+/******************************************************/
+/* Styles for the Dashboard flexbox container */
+.Dashboard-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.Dashboard-flexbox > div {
+    box-sizing: border-box;
+    width: 45vw;
+    text-align: center;
+    font-size: 17px;
+    border: 1px solid rgb(90, 90, 90);
+    background-image: linear-gradient(to right,rgb(109, 109, 109),rgb(151, 102, 151));
+}
+
+/******************************************************/
+/* Styles for the Lab Report Viewer flexbox container */
+.ReportViewer-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.ReportViewer-flexbox > div {
+    background-color: white;
+    padding: 0px 20px 30px;
+    border: 1px solid #72ddb4;
+    border-top: 40px solid transparent;
+    border-image: linear-gradient(to right,rgb(199, 137, 199), rgb(112, 58, 112));
+    border-image-slice: 1;
+}
+.ReportViewer-flexbox > div > h2 {
+    text-align: center;
+    color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 2px;
+}
+
+/******************************************************/
+/* Styles for the table of Lab Orders */
+.LabOrders-header > th:first-child {
+    width: 140px;
+}
+.LabOrders-header > th {
+    padding: 5px 20px;
+    border-bottom: 5px solid palevioletred;
+}
+.LabOrders-row > td {
+    text-align: center;
+    padding: 4px;
+}
+.OrderDate-button {
+    font-size: 14px;
+    display: block;
+    margin: auto;
+    width: 120px;
+    padding: 4px;
+    cursor: pointer;
+    outline: none;
+}
+.OrderDate-button:hover {
+    color: rgb(0, 122, 0);
+    font-weight: bold;
+}
+
+
+/******************************************************/
+/* Styles for the pop-up Lab Report modal */
+/*    The overall Lab Report table */
+.LabReport-header > th:first-child {
+    width: 100px;
+}
+.LabReport-header > th {
+    padding: 5px 20px;
+    border-bottom: 5px solid palevioletred;
+}
+.LabReport-row > td {
+    text-align: center;
+}
+/*    The Modal background */
+.LabReport-modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 72px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+/*    The Modal content */
+.LabReport-modal-content {
+    position: relative;
+    background-image: linear-gradient(to bottom right, rgb(189, 109, 135), rgb(110, 25, 55));
+    margin: auto;
+    padding: 0px;
+    border: 1px solid rgb(23, 61, 16);
+    max-width: 780px;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.6s;
+    animation-name: animatetop;
+    animation-duration: 0.6s
+}
+.LabReport-modal-header {
+    padding: 5px 35px;
+}
+.LabReport-modal-header > pre {
+    color: white;
+    font-size: 15pt;
+    font-family: 'Courier New', Courier, monospace;
+}
+.LabReport-modal-body {
+    padding: 20px 16px;
+    background-color: white;
+}
+.LabReport-modal-footer {
+    padding: 20px;
+}
+/*    Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0.9} 
+    to {top:0; opacity:1}
+}
+@keyframes animatetop {
+    from {top:-300px; opacity:0.9}
+    to {top:0; opacity:1}
+}
+/*    The Lab Report Modal's Close Button */
+.Close-button {
+    color: rgb(37, 37, 37);
+    font-size: 18px;
+    width: 80px;
+    display: block;
+    margin: auto;
+    outline: none;
+}
+.Close-button:hover,
+.Close-button:focus {
+    color: rgb(0, 122, 0);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/******************************************************/
+/* Styles for the Alert Box */
+.Alert-box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 6px;
+    font-size: 17px;
+}
+.Alert-box > div {
+    padding: 0px 20px;
+}
+
+/******************************************************/
+/* Styles for the Info Card */
+.Info-card {
+    display: flex;
+    align-items: stretch;
+    max-width: 455px;
+    height: 145px;
+    border-radius: 40px 0px 0px 40px;
+    color: rgb(15, 15, 15);
+    font-size: 0.9rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    background-color: rgb(219, 219, 219);
+    transition: all 0.3s ease;
+}
+.Info-card:hover {
+    background-color: white;
+}
+.Info-card > div {
+    padding: 0px 7px;
+}
+.Info-card > div:first-child {
+    padding-top: 0.5rem;
+    background-image: linear-gradient(to bottom right,#3451f3, #000730);
+}
+.Info-card > div:nth-child(2) {
+    width: 100%;
+    padding-right: 0px;
+}
+.Info-card > div:nth-child(2) > p {
+    color: #0026ff;
+    margin: 8px 0px 0px 4px;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+}
+.Info-card  ul {
+    padding: 0rem 1.5rem 0rem 1.5rem;
+    margin: 7px 0px 0px 0px;
+}
+.Info-card  ul > li {
+    margin-bottom: 0.5rem;
+}
+
+/******************************************************/
+/* Styles for the Alert Box accordion */
+.accordion-section {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 830px;
+    position: relative;
+}
+/*   The button that toggles the accordion panel   */
+.accordion {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    cursor: pointer;
+    background-color: rgb(248, 248, 248);
+    color: rgb(44, 44, 44);
+    text-align: center;
+    padding: 0px 12px 5px;
+    border: 1px solid rgb(175, 163, 163);
+    outline: none;
+    transition: background-color 0.6s ease;
+}
+.accordion  b {
+    color: rgb(247, 0, 12);
+}
+.active {
+    background-color: rgb(230, 230, 230);
+    color: rgb(224, 224, 224);
+}
+.active  b {
+    color: rgb(224, 224, 224);
+}
+.accordion-title {
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 18px;
+}
+.accordion-icon {
+    color: black;
+    font-size: 25px;
+    margin-left: auto;
+    transition: transform 0.6s ease;
+}
+/*   Rotate the accordion icon when it is active   */
+.rotate {
+    transform: rotate(45deg);
+}
+.accordion-content {
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+}
+
+/******************************************************/
+/* Styles for the Info Card dropup menu */
+.dropup {
+    width: 100%;
+    position: relative;
+}
+.dropup-button {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 12px 0px;
+    font-size: 20px;
+    width: 100%;
+    border: none;
+    transition: all 0.6s ease;
+}
+.dropup-content {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transform: translateY(1.5em);
+    transition: all 0.5s ease;
+}
+.dropup:hover .dropup-button {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.dropup:hover .dropup-content {
+    visibility: visible;
+    opacity: 1;
+    z-index: 2;
+    transform: translateY(0%);
+}
+
+/******************************************************/
+/* Styles for the Image Overlay component */
+.image-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 455px;
+    background-image: radial-gradient(rgb(124, 192, 231), rgb(4, 0, 59));
+    border: 9px solid transparent;
+    border-image: linear-gradient(to right,rgb(152, 219, 178), rgb(58, 112, 65));
+    border-image-slice: 1;
+}
+.image-container  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 20px 0px;
+}
+.image-container  .image-content {
+    width: 100%;
+}
+
+/******************************************************/
+/* Styles for the Welcome Banner component */
+.welcome-container {
+    position: relative;
+    border-radius: 0px 0px 8px 8px;
+    max-height: 125px;
+    overflow: hidden;
+    transform: rotate(180deg);
+}
+.welcome-container  img {
+    display: block;
+    width: 100%;
+    transform: rotate(180deg);
+}
+.welcome-container  .welcome-content {
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    transform: rotate(180deg);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    letter-spacing: 0.12rem;
+}
+.welcome-container  .welcome-content  span {
+    text-transform: uppercase;
+}
+.welcome-container  .welcome-content  h3 {
+    margin-top: -12px;
+    color: whitesmoke;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+/******************************************************/
+/* Styles for the Home Page grid layout */
+.home-banner      { grid-area: banner; }
+.home-accordion   { grid-area: accordion; }
+.home-menuHealth  { grid-area: menuHealth; }
+.home-menuAccount { grid-area: menuAccount; }
+
+.home-grid {
+    display: grid;
+    grid-template-areas:
+        'banner      banner'
+        'accordion   accordion'
+        'menuHealth  menuAccount';
+    grid-gap: 5px;
+}

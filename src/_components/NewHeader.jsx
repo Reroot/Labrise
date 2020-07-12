@@ -33,6 +33,7 @@ function NewHeader() {
         <Grid container item xs={2} className={useStyles.logo}>
           <div style={{ width: "100%", height: "100%" }}>
             {/* <div> */}
+            <Link to="/" className={useStyles.logoLink}></Link>
             <Image
               src="../../res/LabRise_logo -- v2,  350px.png"
               aspectRatio={1024 / 1}
