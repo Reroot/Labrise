@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { READ_SHELLINFO_SUCCESSFUL, READ_SHELLINFO_FAILURE, READ_SHELLINFO_PENDING} from '../_constants/shellConstants';
-import { adalApiFetch } from "../_adalConfig/adalConfig";
+import { adalApiFetch } from "../_adalconfig/adalConfig";
 
 export const readShellInfo = (dates) => {
   let theDatesX=dates.slice();

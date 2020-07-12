@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { READ_BEETLEINFO_SUCCESSFUL, READ_BEETLEINFO_FAILURE, READ_BEETLEINFO_PENDING} from '../_constants/beetleConstants';
-import { adalApiFetch } from "../_adalConfig/adalConfig";
+import { adalApiFetch } from "../_adalconfig/adalConfig";
 
 export const readBeetleInfo = () => {
 
