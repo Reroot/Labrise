@@ -15,7 +15,7 @@ import ModalData from './ModalData';
 const ModalDataContainer = (props) => {
     let theString="";
     theString=props;
-    console.log("props:"+JSON.stringify(props))
+    //console.log("props:"+JSON.stringify(props))
     useEffect(() => {
         const { actions } = props;
         actions.readModalDataInfo(props.theValue);

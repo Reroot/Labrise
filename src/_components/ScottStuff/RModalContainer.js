@@ -3,11 +3,11 @@ import RModal from './RModal'
 import { rModalVis,RModalVisSt } from '../../_actions/modalActions'
 
 
-const mapStateToProps = (state,ownProps) => ({
+const mapStateToProps = (state) => ({
   active: state.rModalReducer,
   data: state.data
 })
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   onClick: () => dispatch(rModalVis(RModalVisSt.NONE))
 })
 

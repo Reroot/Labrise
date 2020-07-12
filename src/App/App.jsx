@@ -18,9 +18,14 @@ import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 import { Dashboard } from "../_components/LabResultsComponent/_dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PropTypes from "prop-types";
-import Scott_Component from "../_components/ScottStuff/Scott_Component";
+
+import BeetleContainer from "../_components/ScottStuff/BeetleContainer";
+//import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper"
+
+//import Scott_Component from "../_components/ScottStuff/Scott_Component";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper";
+
 
 
 // Import the Home Page component
@@ -96,7 +101,7 @@ function App(props) {
 
           <Route
             path="/appointments"
-            component={Scott_Component}
+            component={BeetleContainer}
             loggedInUser={user}
             {...props}
           />

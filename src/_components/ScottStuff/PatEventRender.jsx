@@ -3,69 +3,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RModalContainer from './RModalContainer';
-//import ModalButtonContainer from './ModalButtonContainer';
-var ModalDataToBeDisplayed;
-const PatEventRender = ({ patInfoData,action2,action3 }) => {
-    //console.log("debugxx111"+JSON.stringify(patInfoData));
-    let callValue="";
-    function call1(){
- 
-        callValue="2020-06-06T04:00:00Z";
-        action2(callValue)
-        action3();
-    }
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import { Box } from '@material-ui/core';
+
+
+const PatEventRender = ({ patInfoData,action2,action3}) => {
+
     function call2(iValue){
-        console.log(iValue)
-        callValue=iValue;
-        //action1();
-        //action2(callValue);
         action2(iValue)
         action3();
-        //console.log(callValue);
-    }
 
-    //const modalStuff ="Date: "+patInfoData.value[0].cr480_appointmentdate;
-    function four(data,key){
-        
-        //console.log('afqwad');
-        //console.log(JSON.stringify(data)+"what the fuck");
-        //const ModalDataToBeDisplayed ="Date: "+data["cr480_appointmentdate"] + "Resultname: "+data["crba3_resultname"];
-        //crba3_resultname
-        //cr480_appointmentdate
-   
-    }
-    const tableStyle={
-        'border': '4px solid #555555',
-        'background-color': '#D4E6F6',
-        'width': '400px',
-        'text-align': 'center',
-        'border-collapse': 'collapse'
-    }
-
-    const tableTHTD={
-        'border': '1px solid #555555',
-        'padding': '5px 10px'
-    }
-    const tableTBTD={
-        'font-size': '12px',
-        'font-weight': 'bold',
-        'color': '#0B3450'
-    }
-    const titleStyle={
-        'color': '0B3450',
-        'width': '400px',
-        'text-align': 'center',
     }
 
     function createPatRow(patsInfo,key){
-        const name=patsInfo.firstname
-        console.log(patsInfo)
+        let date= patsInfo.wc_appointmentdate
+        let dateCode= date.substring(5,7)+"/"+date.substring(8,10)+"/"+date.substring(0,4)
         return (
-            <tr >
-                <td key ={"1."+key}style={tableTBTD}> <button onClick={()=>call2(JSON.stringify(patsInfo["wc_appointmentdate"]))}>{patsInfo.wc_appointmentdate}</button> </td>
-                <td style={tableTBTD}> {patsInfo.lastname} </td>
-                <td style={tableTBTD}> {name} </td>
-            </tr>
+            <TableRow key={"0."+key} >
+                <TableCell key ={"1."+key}> <Button onClick={()=>call2(JSON.stringify(patsInfo["wc_appointmentdate"]))}>{dateCode}</Button> </TableCell>
+                <TableCell key ={"2."+key}> {patsInfo.wc_name} </TableCell>
+                <TableCell key ={"3."+key}> {patsInfo.firstname} </TableCell>
+            </TableRow>
         );
     }
 
@@ -84,20 +51,28 @@ const PatEventRender = ({ patInfoData,action2,action3 }) => {
 
     if(patInfoData && patInfoData.requestSucessful){//pData.value[0]["firstname"]
     //console.log("this is the pull"+patInfoData.value[0])
-        const dataToPass=patInfoData;
+        //const dataToPass=patInfoData;
         content = 
-        (<table style={tableStyle}>
-            <thead style={tableTHTD}>
-                <tr>
-                    <th style={tableTHTD}>Date of Appointment</th>
-                    <th style={tableTHTD}>ID</th>
-                    <th style={tableTHTD}>Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                {patInfoData.patInfo.value.map((patsInfo,i) => createPatRow(patsInfo,i))}
-            </tbody>    
-        </table>)
+        (<div>
+            <Box pl={"25%"} pt={5}>
+                <Paper style={{width:600}}>
+                    <TableContainer >
+                        <Table >
+                            <TableHead >
+                                <TableRow>
+                                    <TableCell key ={"DOA"}>Date of Appointment</TableCell>
+                                    <TableCell key ={"ID"}>ID</TableCell>
+                                    <TableCell key ={"R"}>Result</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                            {patInfoData.patInfo.value.map((patsInfo,i) => createPatRow(patsInfo,i))}
+                            </TableBody>    
+                        </Table>
+                    </TableContainer>
+                </Paper>
+            </Box>
+        </div>)
     }
 
     if(patInfoData && patInfoData.requestFailed){
@@ -108,11 +83,11 @@ const PatEventRender = ({ patInfoData,action2,action3 }) => {
             </div>
         )
     }
-        let dataToPass=ModalDataToBeDisplayed;
-        console.log(dataToPass+"datatopass")//this seems like a bad way to do this because if it fails i cant display
+        //let dataToPass=ModalDataToBeDisplayed;
+        //console.log(dataToPass+"datatopass")//this seems like a bad way to do this because if it fails i cant display
     return(
         <div>
-            <h1 style={titleStyle}>Patient Service Events</h1>
+            
             {content}
             <RModalContainer/>
             
