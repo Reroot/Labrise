@@ -24,18 +24,14 @@ function compareDates(dataStructure){//date given as string
 
 
     if(dataStructure.someButtonValue=="future"){
-        //console.log("future:O");
+
 
         let j=0;
         while(j< dataStructure.someOfTheShowDates.length){
 
             let dateValue2=dataStructure.someOfTheDates[j].substring(0,4)+dataStructure.someOfTheDates[j].substring(5,7)+dataStructure.someOfTheDates[j].substring(8,10);
-            //console.log("datevalue2:" +dateValue2);
-            //console.log(j+": "+Number(dateValue)+" > "+Number(dateValue2))
-            //console.log(Number(dateValue) > Number(dateValue2))
 
             if( Number(dateValue) > Number(dateValue2) ){
-                //dataStructure.someOfTheShowDates[y]=dataStructure.someOfTheDates[i];
                 dataStructure.someOfTheShowDates[j]="x";
   
             }
@@ -44,24 +40,20 @@ function compareDates(dataStructure){//date given as string
 
 
         
-        console.log("post mapping"+JSON.stringify(dataStructure))
     }
 
         else if (dataStructure.someButtonValue=="all"){
-            // dataStructure.someOfTheShowDates=dataStructure.someOfTheDates;
-            // console.log("all:O")
+
         }
 
         else if(dataStructure.someButtonValue=="past"){
-            console.log("past :O");
+
 
             let j=0;
             while(j< dataStructure.someOfTheShowDates.length){
 
                 let dateValue2=dataStructure.someOfTheDates[j].substring(0,4)+dataStructure.someOfTheDates[j].substring(5,7)+dataStructure.someOfTheDates[j].substring(8,10);
-                //console.log("datevalue2:" +dateValue2);
-                //console.log(j+": "+Number(dateValue)+" > "+Number(dateValue2))
-                //console.log(Number(dateValue) > Number(dateValue2))
+ 
 
                 if( Number(dateValue) < Number(dateValue2) ){
                     //dataStructure.someOfTheShowDates[y]=dataStructure.someOfTheDates[i];
@@ -73,11 +65,10 @@ function compareDates(dataStructure){//date given as string
 
 
             
-            console.log("post mapping"+JSON.stringify(dataStructure))
         }else{
-            console.log("error :O");
+
         }
-        console.log("ohman"+JSON.stringify(dataStructure))
+
     
 
 }

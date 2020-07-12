@@ -13,17 +13,12 @@ import PatEventRender from './patEventRender';
 import * as modalDataActions from '../../_actions/modalDataActions'
 
 const PatEventContainer = (props) => {
-    console.log("Fuck everything"+JSON.stringify("heckaheckahecka"+JSON.stringify(props.someData)))
+
     useEffect(() => {
         const { actions } = props;
         actions.readPatInfo(props.someData);
     }, [] );
-    //console.log("debugrory"+JSON.stringify(props));
-    //console.log("debugrory1"+JSON.stringify(props.patInfoData));
-    //console.log("debugrory2"+JSON.stringify(typeof props.patInfoData));
-    // if(props.someDates!=[]){
-    //     actions.readPatInfo(props.someDates)
-    // }
+
     return(
         <div>
             <PatEventRender {...props} />

@@ -18,7 +18,8 @@ import CoronaPanel from "../_components/Corona_Component/CoronaPanel";
 import { Dashboard } from "../_components/LabResultsComponent/_dashboard";
 //import { HomePage } from "../_components/HomePage/HomePage";
 import PropTypes from "prop-types";
-import BettleContainer from "../_components/ScottStuff/BeetleContainer";
+import BeetleContainer from "../_components/ScottStuff/BeetleContainer";
+import PatientContextWrapper from "../_components/HomePage/PatientContextWrapper"
 
 // Import the Lab Report Viewer component & the Dashboard component
 import {
@@ -81,7 +82,7 @@ function App(props) {
 
           <Route
             path="/appointments"
-            component={BettleContainer}
+            component={BeetleContainer}
             loggedInUser={user}
             {...props}
           />

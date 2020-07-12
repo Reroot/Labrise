@@ -15,8 +15,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { Box } from '@material-ui/core';
 
-//import ModalButtonContainer from './ModalButtonContainer';
-var ModalDataToBeDisplayed;
+
 const PatEventRender = ({ patInfoData,action2,action3}) => {
 
     function call2(iValue){
@@ -29,10 +28,10 @@ const PatEventRender = ({ patInfoData,action2,action3}) => {
         let date= patsInfo.wc_appointmentdate
         let dateCode= date.substring(5,7)+"/"+date.substring(8,10)+"/"+date.substring(0,4)
         return (
-            <TableRow >
+            <TableRow key={"0."+key} >
                 <TableCell key ={"1."+key}> <Button onClick={()=>call2(JSON.stringify(patsInfo["wc_appointmentdate"]))}>{dateCode}</Button> </TableCell>
-                <TableCell > {patsInfo.wc_name} </TableCell>
-                <TableCell> {patsInfo.firstname} </TableCell>
+                <TableCell key ={"2."+key}> {patsInfo.wc_name} </TableCell>
+                <TableCell key ={"3."+key}> {patsInfo.firstname} </TableCell>
             </TableRow>
         );
     }
@@ -56,24 +55,23 @@ const PatEventRender = ({ patInfoData,action2,action3}) => {
         content = 
         (<div>
             <Box pl={"25%"} pt={5}>
-            <Paper style={{width:600}}>
-            <TableContainer >
-            <Table >
-            <TableHead >
-           
-                <TableRow>
-                    <TableCell>Date of Appointment</TableCell>
-                    <TableCell >ID</TableCell>
-                    <TableCell >Result</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {patInfoData.patInfo.value.map((patsInfo,i) => createPatRow(patsInfo,i))}
-            </TableBody>    
-        </Table>
-        </TableContainer>
-        </Paper>
-        </Box>
+                <Paper style={{width:600}}>
+                    <TableContainer >
+                        <Table >
+                            <TableHead >
+                                <TableRow>
+                                    <TableCell key ={"DOA"}>Date of Appointment</TableCell>
+                                    <TableCell key ={"ID"}>ID</TableCell>
+                                    <TableCell key ={"R"}>Result</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                            {patInfoData.patInfo.value.map((patsInfo,i) => createPatRow(patsInfo,i))}
+                            </TableBody>    
+                        </Table>
+                    </TableContainer>
+                </Paper>
+            </Box>
         </div>)
     }
 
