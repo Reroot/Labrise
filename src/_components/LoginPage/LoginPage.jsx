@@ -63,7 +63,7 @@ function LoginPage() {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="xs" id="rcorners2">
+    <Container maxWidth="xs" id="rcorners2" >
 
 
       <div id="rounded-corners-gradient-borders" className={classes.paper} style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.5))", }}>
