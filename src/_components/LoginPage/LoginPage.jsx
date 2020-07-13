@@ -71,7 +71,7 @@ function LoginPage() {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        {alert.message && <Alert severity="error">{alert.message}</Alert>}
+        {alert.message && <Alert severity="success">{alert.message}</Alert>}
         <title id="loginText">
           Please enter your log in or register into our Secure Portal
         </title>

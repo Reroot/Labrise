@@ -35,7 +35,7 @@ export default function profileReducer(state = {}, action) {
         updatedprofileData: { requestFailed: true },
       };
     case profileConstants.USERS_LOGOUT:
-      alert("CLEAR");
+      // alert("CLEAR");
       return {};
     default:
       return state;
