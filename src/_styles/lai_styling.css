@@ -9,8 +9,8 @@ This is the CSS styling for the Lai React components
     margin: 11px 0px 0px 0px;
     min-height: 86vh;
     border-radius: 8px;
-    background-image: linear-gradient(to bottom right, rgba(210, 137, 252, 0.7), rgba(235, 109, 182, 0.6));
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8),0 6px 20px 0 rgba(0,0,0,0.6);
+    background-image: linear-gradient(to bottom right, rgba(240, 240, 240, 0.7), rgba(203, 206, 255, 0.6));
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8),0 6px 20px 0 rgba(175, 174, 174, 0.6);
     border-radius: 50px;
     border-color: rgb(34, 30, 66);
     border-style: solid;
@@ -28,7 +28,7 @@ This is the CSS styling for the Lai React components
 }
 .Dropdown-menu {
     max-height: 400px;
-    background-color: magenta;
+    background-color: rgb(255, 255, 255);
 }
 
 /******************************************************/
@@ -85,7 +85,7 @@ This is the CSS styling for the Lai React components
     padding: 0px 20px 30px;
     border: 1px solid #72ddb4;
     border-top: 40px solid transparent;
-    border-image: linear-gradient(to right,rgb(199, 137, 199), rgb(112, 58, 112));
+    border-image: linear-gradient(to right,rgb(243, 243, 243), rgb(63, 87, 138));
     border-image-slice: 1;
     
 }
