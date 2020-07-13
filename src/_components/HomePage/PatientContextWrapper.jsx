@@ -12,9 +12,11 @@ const PatientContextWrapper = (props) => {
     console.log("props in Patient Context Wrapper");
     console.log(props);
     const dispatch = useDispatch();
-    //let info = useSelector((state) => state.profileReducer.profileData);
+    let info = useSelector((state) => state.authentication.user);
+    console.log(info);
     useEffect(() => {
-        dispatch(profileActions.readProfile(props.User["email"]));
+        dispatch(profileActions.readProfile(info["email"]));
+        // dispatch(profileActions.readProfile(props.User["email"]));
     }, []);
    
     return(

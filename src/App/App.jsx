@@ -70,9 +70,9 @@ function App(props) {
             // component={ProfilePage}
             {...props}
           ></PrivateRoute> */}
-          <PrivateRoute exact path="/">
+          <PrivateRoute exact path="/" component={PatientContextWrapper}>
             {/* <HomePage_Component /> */}
-            <PatientContextWrapper {...props} User={user}/>
+            {/* <PatientContextWrapper {...props} User={user}/> */}
           </PrivateRoute>
 
           <Route path="/login" component={LoginPage} {...props} />
