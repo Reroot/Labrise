@@ -2,7 +2,7 @@
 This defines how the Home Page should be rendered in the UI view
 ****************************************************************************/
 import React from "react";
-import { HomePage } from "./_lai_homePage";
+import { HomePage } from "./_lai_homepage";
 
 
 // Render the Home Page
