@@ -1,15 +1,20 @@
 import { AuthenticationContext, adalFetch, withAdalLogin } from "react-adal";
 
 export const AdalConfig = {
-  clientId: "5ed5efbc-3ed6-42fb-97d2-f1a12af75030",
-  tenant: "696c6efb-56c9-408f-9fd8-f4b1fb893b2d",
+  // clientId: "5ed5efbc-3ed6-42fb-97d2-f1a12af75030", //Will's
+  // clientId: "e5e83063-a74f-4dff-8f4e-1f3eee933ba5", //mine
+  clientId: "f38edcbf-d2dc-4fba-a062-fa21e0ff63af",  //mine #2
+  // tenant: "696c6efb-56c9-408f-9fd8-f4b1fb893b2d",  //Will's
+  tenant: "80d47f88-aff4-4039-941f-a8e98aa65729",  //mine
   redirectUri: "http://localhost:8080",
   endpoints: {
-    api: "https://notsmooth.crm.dynamics.com/",
+    // api: "https://notsmooth.crm.dynamics.com/",  //Will's
+    api: "https://notsuave.crm.dynamics.com/",  //mine
   },
   cacheLocation: "localStorage",
   
-  //secret: "~8A.kP~IqxjC64_pCVICcR38pQIuJ13N6T",
+  //secret: "~8A.kP~IqxjC64_pCVICcR38pQIuJ13N6T", //Will's
+  // secret: "6P8_8wM~e1.xN~egwR_0ILwl1.xvrSk7-i", //mine
 };
 
 export const authContext = new AuthenticationContext(AdalConfig);

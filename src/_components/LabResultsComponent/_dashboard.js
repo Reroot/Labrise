@@ -16,9 +16,9 @@ export class Dashboard extends React.Component {
         super(props);
         // The options for choosing LabTest name, unit, and order date
         this.rawJSON = props.labData.value;
-        this.testOptions = [...new Set( props.labData.value.map(row=>row.wc_test) )];
-        this.unitOptions = [...new Set( props.labData.value.map(row=>row.wc_units) )];
-        this.dateOptions = [...new Set( props.labData.value.map(row=>row.wc_orderdate) )];
+        this.testOptions = [...new Set( props.labData.value.map(row=>row.sstack_testname) )];
+        this.unitOptions = [...new Set( props.labData.value.map(row=>row.sstack_unit) )];
+        this.dateOptions = [...new Set( props.labData.value.map(row=>row.sstack_orderdate) )];
         // The Dashboard internal state includes:
         //   1) the Dashboard's currently selected:  LabTest name
         //   2) the Dashboard's currently selected:  LabTest unit of measure
@@ -36,7 +36,7 @@ export class Dashboard extends React.Component {
     // Method to handle the dropdown selection event:  Choosing a test name
     onSelectTest(choice) {
         this.setState( {selectedTest: choice.label} );
-        const chosenUnit = this.rawJSON.find(row => row.wc_test===choice.label).wc_units;
+        const chosenUnit = this.rawJSON.find(row => row.sstack_testname_test===choice.label).sstack_unit;
         this.setState( {selectedUnit: chosenUnit} );
     }
 
@@ -177,7 +177,7 @@ export class Dashboard extends React.Component {
                         if (elemArr[0]) {
                             const chosenTest = this.testOptions[elemArr[0]._index];
                             this.setState({selectedTest: chosenTest});
-                            this.setState({selectedUnit: this.rawJSON.find(row => row.wc_test===chosenTest).wc_units});
+                            this.setState({selectedUnit: this.rawJSON.find(row => row.sstack_testname===chosenTest).sstack_unit});
                         }
                     }}
                 />

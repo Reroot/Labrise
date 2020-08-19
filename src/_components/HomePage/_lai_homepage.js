@@ -23,7 +23,7 @@ export function HomePage(props) {
     function newestLabOrder(inputJSON) {
         
         // Find the date of the newest Lab Order
-        const setOfDistinctDates = [...new Set( inputJSON.map( row=>row.wc_orderdate ) )];
+        const setOfDistinctDates = [...new Set( inputJSON.map( row=>row.sstack_orderdate ) )];
         const newestOrderDate = setOfDistinctDates[ setOfDistinctDates.length - 1 ];
         
         // Summarize the newest Lab Order
