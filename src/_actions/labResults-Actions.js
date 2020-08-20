@@ -28,7 +28,9 @@ export const readLabResults = (patientName) => {
     dispatch( _readLabResultsStarted() );
 
     // Construct the URL for the API call
-    const endpoint = "https://notsuave.api.crm.dynamics.com/api/data/v9.1/";
+
+    //const endpoint = "https://notsuave.api.crm.dynamics.com/api/data/v9.1/";
+    const endpoint = "https://bumpystack.api.crm.dynamics.com/api/data/v9.1/";
     // const entity = "wc_labtestresults";
     const entity = "sstack_testresults";
     const fields = [

@@ -21,7 +21,8 @@ export const readProfile = (email) => {
     dispatch(_readProfileStarted);
     ///////////Your api azure function here
     let url =
-      "https://notsuave.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,sstack_weight,emailaddress1,sstack_birthday,sstack_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27" +
+    "https://bumpystack.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,sstack_weight,emailaddress1,sstack_birthday,sstack_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27" +
+      // "https://notsuave.api.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,sstack_weight,emailaddress1,sstack_birthday,sstack_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27" +
       // "https://notsuave.crm.dynamics.com/api/data/v9.1/contacts/?$select=firstname,mobilephone,lastname,new_weight,emailaddress1,new_bloodtype,new_birthdate,new_height,address1_name,address1_city,address1_stateorprovince,address1_postalcode,&$filter=contains(emailaddress1,(%27" +
       email +
       "%27))";
@@ -81,7 +82,8 @@ export const updateProfile = (updateObj) => {
     dispatch(_updateProfileStarted);
     adalApiFetch(
       axios,
-      "https://notsuave.api.crm.dynamics.com/api/data/v9.1/contacts(" +
+      "https://bumpystack.api.crm.dynamics.com/api/data/v9.1/contacts(" +
+      // "https://notsuave.api.crm.dynamics.com/api/data/v9.1/contacts(" +
         updateObj.contactid +
         ")",
       config

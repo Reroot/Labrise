@@ -19,7 +19,8 @@ export const readInvoices = (contactID) => {
       dispatch(_readInvoicesStarted());
 
     //   "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/invoices?$select=invoicenumber,msdyn_amountdue,name&$filter=_customerid_value eq 74290A68-639C-EA11-A811-000D3A58FEF8"
-      let url = "https://notsuave.api.crm.dynamics.com/api/data/v9.1/invoices?$select=invoicenumber,msdyn_amountdue,name&$filter=_customerid_value eq " + contactID;
+      // let url = "https://notsuave.api.crm.dynamics.com/api/data/v9.1/invoices?$select=invoicenumber,msdyn_amountdue,name&$filter=_customerid_value eq " + contactID;
+      let url = "https://bumpystack.api.crm.dynamics.com/api/data/v9.1/invoices?$select=invoicenumber,msdyn_amountdue,name&$filter=_customerid_value eq " + contactID;
       
       adalApiFetch(
         axios,

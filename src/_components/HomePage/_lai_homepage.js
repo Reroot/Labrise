@@ -127,8 +127,8 @@ export function HomePage(props) {
                         <InfoCard linkTo="appointments">
                             <p>Appointments</p>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li>Review a list of previous visits.</li>
+                                <li>Review Detailed Reports Concerning each visit.</li>
                             </ul>
                         </InfoCard>
                         
