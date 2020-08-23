@@ -23,7 +23,7 @@ export function HomePage(props) {
     function newestLabOrder(inputJSON) {
         
         // Find the date of the newest Lab Order
-        const setOfDistinctDates = [...new Set( inputJSON.map( row=>row.wc_orderdate ) )];
+        const setOfDistinctDates = [...new Set( inputJSON.map( row=>row.sstack_orderdate ) )];
         const newestOrderDate = setOfDistinctDates[ setOfDistinctDates.length - 1 ];
         
         // Summarize the newest Lab Order
@@ -127,8 +127,8 @@ export function HomePage(props) {
                         <InfoCard linkTo="appointments">
                             <p>Appointments</p>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li>Review a list of previous visits.</li>
+                                <li>Review Detailed Reports Concerning each visit.</li>
                             </ul>
                         </InfoCard>
                         

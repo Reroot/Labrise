@@ -28,23 +28,28 @@ export const readLabResults = (patientName) => {
     dispatch( _readLabResultsStarted() );
 
     // Construct the URL for the API call
-    const endpoint = "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/";
-    const entity = "wc_labtestresults";
+
+    //const endpoint = "https://notsuave.api.crm.dynamics.com/api/data/v9.1/";
+    const endpoint = "https://bumpystack.api.crm.dynamics.com/api/data/v9.1/";
+    // const entity = "wc_labtestresults";
+    const entity = "sstack_testresults";
     const fields = [
       // Note:  The "wc_" prefix is the Microsoft Dynamics publisher prefix for Will Cao's custom solution
       //   ****This publisher prefix is specific to this particular custom solution****
-      "wc_orderdate",
-      "wc_patient",
-      "wc_doctor",
-      "wc_test",
-      "wc_min",
-      "wc_max",
-      "wc_value",
-      "wc_flag",
-      "wc_units",
-      "wc_scaledvalue"
+      // "sstack_hypotheticalpatient",
+
+      "sstack_hypotheticalpatient",
+      "sstack_orderdate",
+      "sstack_hypotheticaldoctor",
+      "sstack_testname",
+      "sstack_min",
+      "sstack_max",
+      "sstack_value",
+      "sstack_flag",
+      "sstack_units",
+      "sstack_scaledvalue"
     ].join();
-    const criteria = "contains(wc_patient, %27" + patientName + "%27 )";
+    const criteria = "contains(sstack_hypotheticalpatient,(%27" + patientName + "%27))";
     const querystring = "?$select=" + fields + "&$filter=" + criteria;
     const url = endpoint + entity + querystring;
     

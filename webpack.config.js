@@ -1,7 +1,10 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const isDevelopment = process.env.NODE_ENV !== 'production'
+const path = require("path");
+
 module.exports = {
-    mode: 'development',
+  mode: isDevelopment ? 'development' : 'production',
     resolve: {
         extensions: ['.js', '.jsx', 'css']
     },
@@ -32,5 +35,9 @@ module.exports = {
         config: JSON.stringify({
             apiUrl: 'http://localhost:4000'
         })
+    },
+    output: {
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "build")
     }
 }

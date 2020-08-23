@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { ButtonGroup, Button, Paper, Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { navStyles } from "../_styles/navbarstyle";
+import { navStyles } from "../_styles/navBarStyle";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";

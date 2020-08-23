@@ -4,7 +4,7 @@ import { authentication } from "./authentication.reducer";
 import { registration } from "./registration.reducer";
 import { users } from "./users.reducer";
 import { alert } from "./alert.reducer";
-import invoiceReducer from "./invoiceReducer";
+import invoiceReducer from "./InvoiceReducer";
 import profileReducer from "./profile-reducer";
 import CoronaReducer from "./CoronaReducer";
 import CoronaStateReducer from "./CoronaStateReducer";

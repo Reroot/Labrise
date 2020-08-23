@@ -90,21 +90,24 @@ function App(props) {
           </Route>
           
           {/* This is the Lab Report Viewer component */}
+          {/* <Route path="/labreports" component={ProfileContainer} {...props} /> */}
           <Route path="/labreports">
             <LabReports_Component />
           </Route>
           
           {/* This is the Dashboard component */}
+          {/* <Route path="/dashboard" component={ProfileContainer} {...props} /> */}
           <Route path="/dashboard">
             <Dashboard_Component />
           </Route>
 
-          <Route
+          <Route path="/appointments" component={ProfileContainer} {...props} />
+          {/* <Route
             path="/appointments"
             component={BeetleContainer}
             loggedInUser={user}
             {...props}
-          />
+          /> */}
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
