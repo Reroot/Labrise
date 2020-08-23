@@ -1,7 +1,11 @@
+/*Functionality: creates a block on the z=1 axis, 
+which only displays once an element from the 
+date columnn is pressed 
+ */
+
 "use strict"
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import ModalDataContainer from './ModalDataContainer';
 
 const RModal = ({ active,onClick}) => {

@@ -1,5 +1,9 @@
+/*Functionality: the patEventRender takes a data structure
+ containing pagination information and giving explicit 
+ details on which items to present within the table
+ */
+
 "use strict"
-//this spits out record table with buttons
 import React from 'react';
 import PropTypes from 'prop-types';
 import RModalContainer from './RModalContainer';
@@ -8,30 +12,34 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import { Box } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 
-const PatEventRender = ({ patInfoData,action2,action3}) => {
+const PatEventRender = ({ patInfoData,action2,action3, num, number1}) => {
 
-    function call2(iValue){
-        action2(iValue)
+
+    function call2(iValue){//called on presses, changes the adal call changing the state of 
+        const construedData={
+            date:iValue,
+            cid:number1
+        }
+        console.log("the fuckign data: "+JSON.stringify(construedData));
+        action2(construedData)
         action3();
 
     }
 
-    function createPatRow(patsInfo,key){
-        let date= patsInfo.wc_appointmentdate
+    function createPatRow(patsInfo,key){//creates the rows for report table
+        let date= patsInfo.cr480_appointmentdate
         let dateCode= date.substring(5,7)+"/"+date.substring(8,10)+"/"+date.substring(0,4)
         return (
             <TableRow key={"0."+key} >
-                <TableCell key ={"1."+key}> <Button onClick={()=>call2(JSON.stringify(patsInfo["wc_appointmentdate"]))}>{dateCode}</Button> </TableCell>
-                <TableCell key ={"2."+key}> {patsInfo.wc_name} </TableCell>
-                <TableCell key ={"3."+key}> {patsInfo.firstname} </TableCell>
+                <TableCell key ={"1."+key}> <Button onClick={()=>call2(JSON.stringify(patsInfo["cr480_appointmentdate"]))}>{dateCode}</Button> </TableCell>
+                <TableCell key ={"2."+key}> {patsInfo.opportunityid} </TableCell>
+                <TableCell key ={"3."+key}> {patsInfo.new_reasonfortesting} </TableCell>
             </TableRow>
         );
     }
@@ -47,32 +55,46 @@ const PatEventRender = ({ patInfoData,action2,action3}) => {
             </div>
         );
     }
-    //console.log("debugxxxx67"+JSON.stringify(patInfoData));
 
-    if(patInfoData && patInfoData.requestSucessful){//pData.value[0]["firstname"]
-    //console.log("this is the pull"+patInfoData.value[0])
-        //const dataToPass=patInfoData;
+    if(patInfoData && patInfoData.requestSucessful){
         content = 
-        (<div>
-            <Box pl={"25%"} pt={5}>
-                <Paper style={{width:600}}>
-                    <TableContainer >
-                        <Table >
-                            <TableHead >
-                                <TableRow>
-                                    <TableCell key ={"DOA"}>Date of Appointment</TableCell>
-                                    <TableCell key ={"ID"}>ID</TableCell>
-                                    <TableCell key ={"R"}>Result</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                            {patInfoData.patInfo.value.map((patsInfo,i) => createPatRow(patsInfo,i))}
-                            </TableBody>    
-                        </Table>
-                    </TableContainer>
-                </Paper>
-            </Box>
-        </div>)
+        (
+                
+            <Grid                 
+                container 
+                item 
+                alignItems="center" 
+                alignContent="center"
+                direction="column" 
+                justify="center" >
+                    <Grid item>
+                    <Paper>Page: {num}</Paper>
+                    </Grid>
+                    <Grid item>
+                        <Paper>
+                            <TableContainer >
+                                <Table >
+                                    <TableHead >
+                                        <TableRow>
+                                            <TableCell key ={"DOA"}>Date of Appointment</TableCell>
+                                            <TableCell key ={"ID"}>ID</TableCell>
+                                            <TableCell key ={"R"}>Given Reason</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {patInfoData.patInfo.value.map((patsInfo,i) => createPatRow(patsInfo,i))}
+                                    </TableBody>    
+                                </Table>
+                            </TableContainer>
+                            
+                    </Paper>
+                    </Grid>
+
+
+            </Grid>
+
+
+        )
     }
 
     if(patInfoData && patInfoData.requestFailed){
@@ -83,8 +105,6 @@ const PatEventRender = ({ patInfoData,action2,action3}) => {
             </div>
         )
     }
-        //let dataToPass=ModalDataToBeDisplayed;
-        //console.log(dataToPass+"datatopass")//this seems like a bad way to do this because if it fails i cant display
     return(
         <div>
             
@@ -96,7 +116,7 @@ const PatEventRender = ({ patInfoData,action2,action3}) => {
 }
 
 PatEventRender.propTypes = {
-    PatInfoData: PropTypes.object//data={modalStuff} <button onClick={call1} >Butt1</button>//<button onClick={call2} >Butt2</button> 
+    PatInfoData: PropTypes.object 
 };
 
 export default PatEventRender;

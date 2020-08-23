@@ -5,20 +5,26 @@
 
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
+
 import { bindActionCreators } from 'redux';
 
 import * as beetleActions from '../../_actions/beetleActions';
 import Beetle from './Beetle';
 import * as shellActions from '../../_actions/shellActions'
-//import * as patientEventActions from '../../_actions/patientEventActions'
+
+
+
 
 
 const BeetleContainer = (props) => {
 
+    let info = useSelector((state) => state.profileReducer.profileData);
+    const rCid=info.pData.value[0].contactid;
+
     useEffect(() => {
         const { actions } = props;
-        actions.readBeetleInfo();
+        actions.readBeetleInfo(rCid);
     }, [] );
    
     return(
@@ -31,7 +37,8 @@ const BeetleContainer = (props) => {
 
 function mapStateToProps(state){
     return {
-        beetleInfoData: state.beetleReducer.beetleInfoData
+        beetleInfoData: state.beetleReducer.beetleInfoData,
+        number:state.profileReducer.profileData.pData.value[0].contactid
     }
 }
 

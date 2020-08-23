@@ -1,34 +1,23 @@
+/*Functionality: constructs a table showing 
+data pulled from the lab report enitity 
+ */
+
 "use strict"
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+
 
 import React from 'react';
 import PropTypes from 'prop-types';
-//import RModalContainer from './RModalContainer';
-//import ModalButtonContainer from './ModalButtonContainer';
-//var ModalDataToBeDisplayed;
+
 const ModalData = ({ modalDataInfo }) => {
-    function createModRow(modalDataInfo,key){
-        
-        return (
-            <TableRow >
-                <TableCell>type</TableCell>
-                <TableCell > {modalDataInfo.wc_appointmentdate}</TableCell>
-                <TableCell > {modalDataInfo.wc_name} </TableCell>
-                <TableCell> {modalDataInfo.wc_name} </TableCell>
-            </TableRow>
-        );
-    }
+
     
-    //console.log("fuckinghell"+JSON.stringify(modalDataInfo))
     let content = '';
 
     if(!modalDataInfo || modalDataInfo.requestPending){
@@ -41,13 +30,16 @@ const ModalData = ({ modalDataInfo }) => {
         );
     }
  
-
+    //creates table from modal data retrieved
     if(modalDataInfo && modalDataInfo.requestSucessful){
-        console.log(JSON.stringify(modalDataInfo))
+        let xdate=modalDataInfo.modalData.value[0].wc_appointmentdate;
+        let dateCode= xdate.substring(5,7)+"/"+xdate.substring(8,10)+"/"+xdate.substring(0,4)
+
+
         content = 
         (<div>
             <Paper>
-                <h1 >Lab Result for {modalDataInfo.modalData.value[0].wc_appointmentdate} </h1>
+                <h1 >Lab Result for {dateCode} </h1>
                 <TableContainer>
                     <Table>
                         <TableHead >
@@ -82,21 +74,21 @@ const ModalData = ({ modalDataInfo }) => {
                                 <TableCell> {modalDataInfo.modalData.value[0].wc_plateletflag} </TableCell>
                             </TableRow>
                             <TableRow >
-                                <TableCell>totalcholesterol</TableCell>
+                                <TableCell>Total Cholesterol</TableCell>
                                 <TableCell > {modalDataInfo.modalData.value[0].wc_totalcholesterolmin}</TableCell>
                                 <TableCell > {modalDataInfo.modalData.value[0].wc_totalcholesterolmax} </TableCell>
                                 <TableCell> {modalDataInfo.modalData.value[0].wc_totalcholesterolvalue} </TableCell>
                                 <TableCell> {modalDataInfo.modalData.value[0].wc_totalcholesterolflag} </TableCell>
                             </TableRow>
                             <TableRow >
-                                <TableCell>triglycerides</TableCell>
+                                <TableCell>Triglycerides</TableCell>
                                 <TableCell > {modalDataInfo.modalData.value[0].wc_triglyceridesmin}</TableCell>
                                 <TableCell > {modalDataInfo.modalData.value[0].wc_triglyceridesmax} </TableCell>
                                 <TableCell> {modalDataInfo.modalData.value[0].wc_triglyceridesvalue} </TableCell>
                                 <TableCell> {modalDataInfo.modalData.value[0].wc_triglyceridesflag} </TableCell>
                             </TableRow>
                             <TableRow >
-                                <TableCell>sodium</TableCell>
+                                <TableCell>Sodium</TableCell>
                                 <TableCell > {modalDataInfo.modalData.value[0].wc_sodiummin}</TableCell>
                                 <TableCell > {modalDataInfo.modalData.value[0].wc_sodiummax} </TableCell>
                                 <TableCell> {modalDataInfo.modalData.value[0].wc_sodiumvalue} </TableCell>
@@ -108,7 +100,7 @@ const ModalData = ({ modalDataInfo }) => {
             </Paper>
         </div>)
     
-    }//{modalDataInfo.modalData.value.map((modInfo,i) => createModRow(modInfo,i))}
+    }
 
     if(modalDataInfo && modalDataInfo.requestFailed){
         content = 
@@ -118,7 +110,6 @@ const ModalData = ({ modalDataInfo }) => {
             </div>
         )
     }
-    //console.log("fuckinghell"+JSON.stringify(modalDataInfo))
     return(
         <div>
             {content}
@@ -127,7 +118,7 @@ const ModalData = ({ modalDataInfo }) => {
 }
 
 ModalData.propTypes = {
-    modalDataInfo: PropTypes.object//data={modalStuff} 
+    modalDataInfo: PropTypes.object
 };
 
 export default ModalData;

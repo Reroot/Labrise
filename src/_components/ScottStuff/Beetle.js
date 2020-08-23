@@ -1,31 +1,31 @@
+/*
+
+Functionality: top component in the hierachy of components that
+ are used to create a paginating and data filter. Bettle component 
+ specifically makes the first adal call which all calls just the 
+ dates which it passes to the shell component
+ */ 
 "use strict"
-//this spits out record table with buttons
 import React from 'react';
 import PropTypes from 'prop-types';
-//import RModalContainer from './RModalContainer';
 import Button from '@material-ui/core/Button';
 import ShellContainer from './ShellContainer';
+import { Box, ButtonGroup, Grid } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import {scottStyles} from '../../_styles/scottStyles'
 
-//import ModalButtonContainer from './ModalButtonContainer';
-//var ModalDataToBeDisplayed;
 
-function compareDates(dataStructure){//date given as string 
-    let y=0;
-   //let showDates=[];
+function compareDates(dataStructure){//used to compare dates and mark dates not to be displayed
 
     let theDate = new Date();
     let dateString=JSON.stringify(theDate);
-
+    //clones the array
     dataStructure.someOfTheShowDates=dataStructure.someOfTheDates.slice();
-
-    //console.log("datestring:" +JSON.stringify(dataStructure));
+    //creates a date to compare to todays date
     let dateValue=dateString.substring(1,5)+dateString.substring(6,8)+dateString.substring(9,11);
-    //console.log("buttonxXXXXX:" +dataStructure.someButtonValue);
 
 
     if(dataStructure.someButtonValue=="future"){
-
-
         let j=0;
         while(j< dataStructure.someOfTheShowDates.length){
 
@@ -37,58 +37,44 @@ function compareDates(dataStructure){//date given as string
             }
             j++;
         }
+    }else if (dataStructure.someButtonValue=="all"){
 
-
-        
-    }
-
-        else if (dataStructure.someButtonValue=="all"){
-
-        }
-
-        else if(dataStructure.someButtonValue=="past"){
-
-
-            let j=0;
-            while(j< dataStructure.someOfTheShowDates.length){
-
-                let dateValue2=dataStructure.someOfTheDates[j].substring(0,4)+dataStructure.someOfTheDates[j].substring(5,7)+dataStructure.someOfTheDates[j].substring(8,10);
- 
-
-                if( Number(dateValue) < Number(dateValue2) ){
-                    //dataStructure.someOfTheShowDates[y]=dataStructure.someOfTheDates[i];
+    }else if(dataStructure.someButtonValue=="past"){
+        let j=0;
+        while(j< dataStructure.someOfTheShowDates.length){
+            let dateValue2=dataStructure.someOfTheDates[j].substring(0,4)+dataStructure.someOfTheDates[j].substring(5,7)+dataStructure.someOfTheDates[j].substring(8,10);
+            if( Number(dateValue) < Number(dateValue2) ){
                     dataStructure.someOfTheShowDates[j]="x";
-      
                 }
                 j++;
             }
+    }else{
+
+    }
+}
 
 
-            
-        }else{
+
+const Beetle = ({ beetleInfoData, action1,number}) => {
+
+    let content='';
+    const useStyles = scottStyles();//styles for header
+
+    function buttonPress(dataStructure, buttonStr,aCid){
+
+
+        dataStructure.someButtonValue=buttonStr;
+        compareDates(dataStructure);
+        const construedData={//object used to send data to action 
+            dates:dataStructure.someOfTheShowDates,
+            cid:aCid
 
         }
 
-    
-
-}
-
-// function buttonPress(dataStructure, buttonStr){
-//     dataStructure.buttonValue=buttonStr;
-//     compareDates(dataStructure);
-//     action1(dataStructure.someOfShowDates)
-// }
+        action1(construedData);
 
 
-const Beetle = ({ beetleInfoData, action1}) => {
-    //console.log(JSON.stringify(beetleInfoData)+"hecka")
-    let content='';
 
-    function buttonPress(dataStructure, buttonStr){
-        dataStructure.someButtonValue=buttonStr;
-        compareDates(dataStructure);
-        //console.log("what the fuck"+dataStructure.someOfTheShowDates);
-        action1(dataStructure.someOfTheShowDates);
     }
 
     let dataStructure={
@@ -97,20 +83,15 @@ const Beetle = ({ beetleInfoData, action1}) => {
         someButtonValue:"all"
     }
 
-    let theDates=[];
-    let showDates=[];
-    let buttonValue="ALL";
-    //dateButtonValue
+
+    if(beetleInfoData && beetleInfoData.requestSucessful){
 
 
-    //console.log("debugxxxx67"+JSON.stringify(patInfoData));
-
-    if(beetleInfoData && beetleInfoData.requestSucessful){//pData.value[0]["firstname"]
+        let cidInfo=number
         let theDate = new Date();
-        //let theDates=[];
-        //let showDates=[]
+
         for(let i=0;i<beetleInfoData.beetleInfo.value.length;i++){
-            dataStructure.someOfTheDates[i]=beetleInfoData.beetleInfo.value[i].wc_appointmentdate;
+            dataStructure.someOfTheDates[i]=beetleInfoData.beetleInfo.value[i].cr480_appointmentdate;
         }
         compareDates(dataStructure);
         
@@ -119,23 +100,37 @@ const Beetle = ({ beetleInfoData, action1}) => {
 
         
 
-        content = (
+        content = (<div className="col-lg-8 offset-lg-2" style={{backgroundImage: "linear-gradient(to bottom right, white, rgb(196, 180, 255,.4))",}}>
+            <h1 className={useStyles.HeadingText}>Patient Event Services:</h1>
+            <br/>
+            <br/>
+                <Grid 
+                    container 
+                    alignContent="center"
+                    alignItems="center" 
+                    direction="column"  
+                    justify="flex-start" 
+                    spacing={2}
+                    >
 
-             <div >
-                                  <div>
-                     <Button onClick={ ()=> buttonPress(dataStructure,"all")}>All</Button>
-                     <Button onClick={ ()=> buttonPress(dataStructure,"past")}>Past</Button>
-                     <Button onClick={ ()=> buttonPress(dataStructure,"future")}>Future</Button>
-                 </div>
-                 {/* {JSON.stringify(dataStructure.someOfTheShowDates)+"hhh"} */}
-                 {/* {JSON.stringify(beetleInfoData)} */}
-                 <ShellContainer datedData={dataStructure}/>
-                 {/* <div>
-                     <Button>All</Button>
-                     <Button>Past</Button>
-                     <Button>Future</Button>
-                 </div> */}
-            </div>)
+
+                    <Grid item >
+                        <Paper>
+                            <ButtonGroup>
+                                <Button onClick={ ()=> buttonPress(dataStructure,"all",cidInfo)}>All</Button>
+                                <Button onClick={ ()=> buttonPress(dataStructure,"past",cidInfo)}>Past</Button>
+                                <Button onClick={ ()=> buttonPress(dataStructure,"future",cidInfo)}>Future</Button>
+                            </ButtonGroup>
+                        </Paper>
+                    </Grid>
+
+                    <Grid item >
+
+                        <ShellContainer datedData={dataStructure}/>
+        
+                    </Grid>
+                 </Grid></div>
+            )
     }
 
     if(beetleInfoData && beetleInfoData.requestFailed){
@@ -157,7 +152,3 @@ const Beetle = ({ beetleInfoData, action1}) => {
 
 
 export default Beetle;
-
-/*three buttons, default is all, future, past, this will work just like pagination
-//take dates make date object that makes a value out of a date
-*/ 
