@@ -5,7 +5,7 @@ import { ButtonGroup, Button, Paper } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Image from "material-ui-image";
-import { navStyles } from "../_styles/navbarstyle";
+import { navStyles } from "../_styles/navBarStyle";
 
 // Import some navigation bar picture icons
 import HomeIcon from "@material-ui/icons/Home";

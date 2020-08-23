@@ -10,9 +10,11 @@ export const readCoronaStateData = (params) => {
       let last = "";
       
       if(!params['state'] || params['state'] == "US"){
-        first = "https://covidtracking.com/api/v1/us/";
+        // first = "https://covidtracking.com/api/v1/us/";
+        first = "https://api.covidtracking.com/v1/us/";
       }else{
-        first = "https://covidtracking.com/api/v1/states/" + params['state'].toLowerCase() + "/";
+        // first = "https://covidtracking.com/api/v1/states/" + params['state'].toLowerCase() + "/";
+        first = "https://api.covidtracking.com/v1/states/" + params['state'].toLowerCase() + "/";
       }
 
       if(!params['date']){

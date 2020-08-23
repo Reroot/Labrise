@@ -7,10 +7,10 @@ These functions will prepare the JSON data for plotting & aggregation
 export function FilterCondition(inputJSON, conditions) {
     let criteria;
     if      (Object.keys(conditions)[0] === 'test') {
-        criteria = (row) => row.wc_test===conditions.test;
+        criteria = (row) => row.sstack_testname===conditions.test;
     }
     else if (Object.keys(conditions)[0] === 'date') {
-        criteria = (row) => row.wc_orderdate===conditions.date;
+        criteria = (row) => row.sstack_orderdate===conditions.date;
     }
     const filtered = inputJSON.filter( criteria );
     return filtered;
@@ -19,18 +19,18 @@ export function FilterCondition(inputJSON, conditions) {
 // Parse the JSON into separate 'labels' and 'data'
 //   Prepare the data for Line Chart
 export function ParseLineData(inputJSON) {
-    const dates = inputJSON.map( row => row.wc_orderdate );
-    const min   = inputJSON.map( row => row.wc_min );
-    const max   = inputJSON.map( row => row.wc_max );
-    const value = inputJSON.map( row => row.wc_value );
+    const dates = inputJSON.map( row => row.sstack_orderdate );
+    const min   = inputJSON.map( row => row.sstack_min );
+    const max   = inputJSON.map( row => row.sstack_max );
+    const value = inputJSON.map( row => row.sstack_value );
     return {dates,min,max,value};
 }
 
 // Parse the JSON into separate 'labels' and 'data'
 //   Prepare the data for Horizontal Bar Chart
 export function ParseBarData(inputJSON) {
-    const tests = inputJSON.map( row => row.wc_test );
-    const scaledValue = inputJSON.map( row => row.wc_scaledvalue );
+    const tests = inputJSON.map( row => row.sstack_testname );
+    const scaledValue = inputJSON.map( row => row.sstack_scaledvalue );
     return {tests,scaledValue};
 }
 
@@ -49,9 +49,9 @@ export function groupbyLabOrders(inputJSON, setOfDistinctDates) {
             numHigh: 0
         };
         rowData.orderDate = date;
-        rowData.doctor = inputJSON.find(row => row.wc_orderdate===date).wc_doctor;
-        const orderResults = inputJSON.filter(row => row.wc_orderdate===date);
-        const orderFlags = orderResults.map(row => row.wc_flag);
+        rowData.doctor = inputJSON.find(row => row.sstack_orderdate===date).sstack_hypotheticaldoctor;
+        const orderResults = inputJSON.filter(row => row.sstack_orderdate===date);
+        const orderFlags = orderResults.map(row => row.sstack_flag);
 
         // Count how many abnormal flags per Lab Order
         for (const flag of orderFlags) {

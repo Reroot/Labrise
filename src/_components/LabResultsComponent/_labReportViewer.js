@@ -13,7 +13,7 @@ export class LabReportViewer extends React.Component {
         super(props);
         // The options for choosing a Lab Order date
         this.rawJSON = props.labData.value;
-        this.dateOptions = [...new Set( props.labData.value.map( row=>row.wc_orderdate ) )];
+        this.dateOptions = [...new Set( props.labData.value.map( row=>row.sstack_orderdate ) )];
         // The Lab Report Viewer internal state includes:
         //   1) the current visibility of the LabReport modal
         //   2) the currently chosen LabOrder date
@@ -33,9 +33,9 @@ export class LabReportViewer extends React.Component {
 
     // Method for preparing the data for a particular Lab Report
     prepareLabReport(inputJSON, orderDate) {
-        const data = inputJSON.filter(row => row.wc_orderdate===orderDate);
-        const patient = data[0].wc_patient;
-        const doctor = data[0].wc_doctor;
+        const data = inputJSON.filter(row => row.sstack_orderdate===orderDate);
+        const patient = data[0].sstack_hypotheticalpatient;
+        const doctor = data[0].sstack_hypotheticaldoctor;
         
         return {orderDate, patient, doctor, data};
     }
@@ -59,13 +59,13 @@ export class LabReportViewer extends React.Component {
     // Method for creating a table row in the Lab Report modal
     createLabReportRow(labReportData) {
         return (
-            <tr key={labReportData.wc_test} className="LabReport-row">
-                <td> {labReportData.wc_test} </td>
-                <td> {labReportData.wc_min} </td>
-                <td> {labReportData.wc_max} </td>
-                <td> {labReportData.wc_units} </td>
-                <td> {labReportData.wc_value} </td>
-                <td> {labReportData.wc_flag} </td>
+            <tr key={labReportData.sstack_testname} className="LabReport-row">
+                <td> {labReportData.sstack_testname} </td>
+                <td> {labReportData.sstack_min} </td>
+                <td> {labReportData.sstack_max} </td>
+                <td> {labReportData.sstack_unit} </td>
+                <td> {labReportData.sstack_value} </td>
+                <td> {labReportData.sstack_flag} </td>
             </tr>
         );
     }

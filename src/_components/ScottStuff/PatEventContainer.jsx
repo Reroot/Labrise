@@ -9,7 +9,7 @@ import { connect,useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as patientEventActions from '../../_actions/patientEventActions';
-import PatEventRender from './patEventRender';
+import PatEventRender from './PatEventRender';
 import * as modalDataActions from '../../_actions/modalDataActions'
 
 const PatEventContainer = (props) => {

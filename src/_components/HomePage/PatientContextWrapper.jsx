@@ -6,6 +6,7 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import  HomePage_Container  from './lai_home-Container';
 import * as profileActions from '../../_actions/profile-actions';
+import ProfileWrapper from "../Profile/ProfileWrapper";
 
 
 const PatientContextWrapper = (props) => {
@@ -21,6 +22,7 @@ const PatientContextWrapper = (props) => {
    
     return(
         <div>
+            {/* <ProfileWrapper {...props} /> */}
             <HomePage_Container {...props} />
         </div>
     );

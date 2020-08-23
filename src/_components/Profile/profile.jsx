@@ -55,8 +55,10 @@ const ProfilePage = ({ profileData }) => {
   if (profileData && profileData.requestSuccessful === true) {
     console.log("DISPLAY DATA BEEP");
     let fDate;
-    if (profileData.pData.value[0]["new_birthdate"] != null) {
-      const date = profileData.pData.value[0]["new_birthdate"].split("T");
+    // if (profileData.pData.value[0]["new_birthdate"] != null) {
+    //   const date = profileData.pData.value[0]["new_birthdate"].split("T");
+    if (profileData.pData.value[0]["sstack_birthday"] != null) {
+        const date = profileData.pData.value[0]["sstack_birthday"].split("T");
       fDate = date[0];
     } else {
       fDate = "";
@@ -101,7 +103,7 @@ const ProfilePage = ({ profileData }) => {
               readOnly: true,
             }}
           />
-          <TextField
+          {/* <TextField
             variant="filled"
             margin="normal"
             name="bloodType"
@@ -117,7 +119,7 @@ const ProfilePage = ({ profileData }) => {
               readOnly: true,
             }}
             className={useStyles.textField}
-          />
+          /> */}
           <TextField
             label="Weight"
             id="weight-filled-end-adornment"
@@ -126,7 +128,8 @@ const ProfilePage = ({ profileData }) => {
               endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
               readOnly: true,
             }}
-            defaultValue={profileData.pData.value[0]["new_weight"]}
+            // defaultValue={profileData.pData.value[0]["new_weight"]}
+            defaultValue={profileData.pData.value[0]["sstack_weight"]}
             variant="filled"
             autoComplete="off"
             className={useStyles.textFieldAdornment}
@@ -139,7 +142,8 @@ const ProfilePage = ({ profileData }) => {
               endAdornment: <InputAdornment position="end">CM</InputAdornment>,
               readOnly: true,
             }}
-            defaultValue={profileData.pData.value[0]["new_height"]}
+            // defaultValue={profileData.pData.value[0]["new_height"]}
+            defaultValue={profileData.pData.value[0]["sstack_height"]}
             variant="filled"
             autoComplete="off"
             className={useStyles.textFieldAdornment}
