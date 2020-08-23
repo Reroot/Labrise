@@ -3,15 +3,21 @@ import axios from 'axios'
 import { READ_MODALDATA_SUCCESFUL, READ_MODALDATA_FAILURE, READ_MODALDATA_PENDING, UPDATE_MODAL_DATA_STRING} from '../_constants/modalDataConstants';
 import { adalApiFetch } from "../_adalconfig/adalConfig";
 
-export const readModalDataInfo = (number) => {//default nonsense value
-
-    let filter=number
-    if(filter!=undefined){
+export const readModalDataInfo = (data) => {//default nonsense value
+    let number='';
+    let filter='';
+    let aCid='';
+    
+    if(data!=undefined){
+         number=data.date;
+         filter=number;
+         aCid=data.cid
         filter=filter.replace(/['"]+/g, '');
     }
     let importantString="https://notsmooth.api.crm.dynamics.com/api/data/v9.1/wc_labreports/?$select=wc_appointmentdate,_wc_doctor_value,_wc_patient_value,wc_name,wc_totalcholesterolmin,wc_totalcholesterolvalue,wc_totalcholesterolmax,wc_totalcholesterolflag,wc_triglyceridesmin,wc_triglyceridesmax,wc_triglyceridesflag,wc_triglyceridesvalue,wc_sodiummin,wc_sodiummax,wc_sodiumflag,wc_sodiumvalue,wc_redbloodcellmin,wc_redbloodcellmax,wc_redbloodcellflag,wc_redbloodcellvalue,wc_whitebloodcellmin,wc_whitebloodcellmax,wc_whitebloodcellflag,wc_whitebloodcellvalue,wc_plateletmin,wc_plateletmax,wc_plateletflag,wc_plateletvalue,wc_glucosemin,wc_glucosemax,wc_glucoseflag,wc_glucosevalue&$filter=wc_appointmentdate%20eq%20"//+2020-06-06T04:00:00Z
     //https://notsmooth.api.crm.dynamics.com/api/data/v9.1/wc_labreports/?$select=wc_name,wc_totalcholesterolmin,wc_totalcholesterolvalue,wc_totalcholesterolmax,wc_totalcholesterolflag,wc_triglyceridesmin,wc_triglyceridesmax,wc_triglyceridesflag,wc_triglyceridesvalue,wc_sodiummin,wc_sodiummax,wc_sodiumflag,wc_sodiumvalue,wc_redbloodcellmin,wc_redbloodcellmax,wc_redbloodcellflag,wc_redbloodcellvalue,wc_whitebloodcellmin,wc_whitebloodcellmax,wc_whitebloodcellflag,wc_whitebloodcellvalue,wc_plateletmin,wc_plateletmax,wc_plateletflag,wc_plateletvalue,wc_glucosemin,wc_glucosemax,wc_glucoseflag,wc_glucosevalue&$filter=wc_appointmentdate%20eq%20//starrting url
     let theString=importantString+filter;//
+    theString+="%20and%20_wc_patient_value%20eq%20"+aCid;
     //let importantStringx=importantString+number;//junk
 
 

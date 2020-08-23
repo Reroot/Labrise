@@ -5,23 +5,25 @@
 
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as shellActions from '../../_actions/shellActions';
 import Shell from './Shell';
 import * as patientEventActions from '../../_actions/patientEventActions'
-//import * as modalDataActions from '../../_actions/modalDataActions'
 
 const ShellContainer = (props) => {
-    //console.log("poopie"+props.datedData)
+
+    let info = useSelector((state) => state.profileReducer.profileData);
+    const dataToPass= {
+        dates:props.datedData.someOfTheShowDates,
+        cid:info.pData.value[0].contactid
+    }
     useEffect(() => {
         const { actions } = props;
-        actions.readShellInfo(props.datedData.someOfTheShowDates);
+        actions.readShellInfo(dataToPass);
     }, [] );
-    //console.log("debugrory"+JSON.stringify(props));
-    //console.log("debugrory1"+JSON.stringify(props.patInfoData));
-    //console.log("debugrory2"+JSON.stringify(typeof props.patInfoData));
+
    
     return(
         <div>
@@ -34,7 +36,6 @@ const ShellContainer = (props) => {
 function mapStateToProps(state, ownProps){
     return {
         shellInfoData: state.shellReducer.shellInfoData,
-        //penis: ownProps.datedData
     }
 }
 

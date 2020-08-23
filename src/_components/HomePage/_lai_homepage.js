@@ -127,8 +127,11 @@ export function HomePage(props) {
                         <InfoCard linkTo="appointments">
                             <p>Appointments</p>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li>Stay up to date with past appointments and their lab
+                                    reports
+                                </li>
+                                <li>Navigate with ease thanks to pagination and date filters
+                                </li>
                             </ul>
                         </InfoCard>
                         

@@ -1,30 +1,38 @@
+/*Functionality: the shell component takes the string of dates passed
+ to it by bettle component, counts these and passes it on to patEvent,
+ with the value of the pagination button, giving patEvent the range of 
+ values to call and display
+ */ 
+
+
 "use strict"
-//this spits out record table with buttons
+
 import React from 'react';
 import PropTypes from 'prop-types';
-//import RModalContainer from './RModalContainer';
+
 import PatEventContainer from './PatEventContainer';
-//import ModalButtonContainer from './ModalButtonContainer';
-//var ModalDataToBeDisplayed;
+
 import Button from '@material-ui/core/Button';
-import { Box, ThemeProvider } from '@material-ui/core';
+import {  ButtonGroup, Paper } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 
 
 
-const Shell = ({ shellInfoData, action1, penis }) => {
+const Shell = ({ shellInfoData, action1}) => {
 
     
     let content = '';
 
     let theDates=[];
-    const perLoad=2;
+    const perLoad=6;
 
 
 
 
-    function buttonPress(buttonValueX,data){
+    function buttonPress(buttonValueX,data,cidStuff){
+
         if(buttonValueX<1){
             data.buttonValue=1;
         }
@@ -33,7 +41,11 @@ const Shell = ({ shellInfoData, action1, penis }) => {
         }else{
             data.buttonValue=buttonValueX;
         } 
-        action1(data);
+        let construedData={
+            dateData:data,
+            cid:cidStuff
+        }
+        action1(construedData);
     }
 
     if(!shellInfoData || shellInfoData.requestPending){
@@ -47,11 +59,13 @@ const Shell = ({ shellInfoData, action1, penis }) => {
     }
 
     if(shellInfoData && shellInfoData.requestSucessful){
-
+        let info = useSelector((state) => state.profileReducer.profileData);
+        let cidInfo=info.pData.value[0].contactid;
+    
         let buttonContent=[];
 
         for(let i=0;i<shellInfoData.shellInfo.value.length;i++){
-            theDates[i]=shellInfoData.shellInfo.value[i].wc_appointmentdate;
+            theDates[i]=shellInfoData.shellInfo.value[i].cr480_appointmentdate;
 
         }
 
@@ -70,20 +84,35 @@ const Shell = ({ shellInfoData, action1, penis }) => {
         for (let i=1;i<=numberOfPages;i++){
             buttonContent[i]=<Button
             key={"PNB"+i}
-            onClick={()=>buttonPress(i,importantData)}>{i}
+            onClick={()=>buttonPress(i,importantData,cidInfo)}>{i}
             </Button>
         }
 
-        content = (<div>
+        content = (
+            <Grid                    
+                container 
+                item 
+                alignItems="center" 
+                alignContent="center"
+                direction="column"  
+                justify="center" 
+                spacing={2}> 
 
-            <Box pl={"40%"}pt={5}>Patient Event Services</Box>
-            <PatEventContainer someData={importantData}/>
-            <Box  pt={5} pl={"35%"} >
-                <Button onClick={()=>buttonPress(importantData.buttonValue-1,importantData)}>-</Button>
-                {buttonContent}
-                <Button onClick={()=>buttonPress(importantData.buttonValue+1,importantData)}>+</Button>
-            </Box>
-            </div>)
+                <Grid item>
+                    <PatEventContainer someData={importantData}/>
+                </Grid>
+
+                <Grid item>
+                    <ButtonGroup>
+                        <Paper>
+                            <Button onClick={()=>buttonPress(importantData.buttonValue-1,importantData,cidInfo)}>-</Button>
+                            {buttonContent}
+                            <Button onClick={()=>buttonPress(importantData.buttonValue+1,importantData,cidInfo)}>+</Button>
+                        </Paper>
+                    </ButtonGroup>
+                </Grid>
+            </Grid> 
+                )
     }
 
     if(shellInfoData && shellInfoData.requestFailed){
@@ -94,9 +123,8 @@ const Shell = ({ shellInfoData, action1, penis }) => {
             </div>
         )
     }
-        //let dataToPass=ModalDataToBeDisplayed;
-        //console.log(dataToPass+"datatopass")//this seems like a bad way to do this because if it fails i cant display
-    return(//<PatEventContainer someDates={theDates} perLoad={perLoad}/>
+        
+    return(
         <div>
             {content}
         </div>
@@ -104,11 +132,9 @@ const Shell = ({ shellInfoData, action1, penis }) => {
 }
 
 Shell.propTypes = {
-    ShellInfoData: PropTypes.object//data={modalStuff} <button onClick={call1} >Butt1</button>//<button onClick={call2} >Butt2</button> 
+    ShellInfoData: PropTypes.object
 };
 
 export default Shell;
 
-/*three buttons, default is all, future, past, this will work just like pagination
-//take dates make date object that makes a value out of a date
-*/ 
+

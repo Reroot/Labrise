@@ -3,7 +3,13 @@ import axios from 'axios'
 import { READ_BEETLEINFO_SUCCESSFUL, READ_BEETLEINFO_FAILURE, READ_BEETLEINFO_PENDING} from '../_constants/beetleConstants';
 import { adalApiFetch } from "../_adalconfig/adalConfig";
 
-export const readBeetleInfo = () => {
+export const readBeetleInfo = (cid) => {
+  console.log(cid);
+
+  let theString= "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=cr480_appointmentdate&$filter=_parentcontactid_value%20eq%20";
+  let xString=theString+cid;
+
+  xString+="%20and%20cr480_appointmentdate%20ne%20null"
 
     let config = {
         method: "get",
@@ -17,14 +23,14 @@ export const readBeetleInfo = () => {
       };
   return dispatch => {
         dispatch(_readBeetleInfoStarted);
-        ///////////Your api azure function here
+
         adalApiFetch(
           axios,
-          "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/wc_labreports/?$select=wc_appointmentdate&$filter=_wc_patient_value%20eq%205ab5efc4-15bb-ea11-a812-000d3a58fef8",//cr480_appointmentdate
+          xString,
           config
         )
           .then((res) => {
-            //console.log("success actiondqdqdq");
+
             dispatch(_readBeetleInfoSuccess(res));
           })
           .catch((error) => {
@@ -59,3 +65,7 @@ const _readBeetleInfoStarted = () => {
         type: READ_BEETLEINFO_PENDING
     };
 }
+
+
+
+//   https://notsmooth.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=cr480_appointmentdate&$filter=_parentcontactid_value%20eq%205ab5efc4-15bb-ea11-a812-000d3a58fef8
