@@ -33,13 +33,13 @@ const PatEventRender = ({ patInfoData,action2,action3, num, number1}) => {
     }
 
     function createPatRow(patsInfo,key){//creates the rows for report table
-        let date= patsInfo.cr480_appointmentdate
+        let date= patsInfo.sstack_dateofappointment
         let dateCode= date.substring(5,7)+"/"+date.substring(8,10)+"/"+date.substring(0,4)
         return (
             <TableRow key={"0."+key} >
-                <TableCell key ={"1."+key}> <Button onClick={()=>call2(JSON.stringify(patsInfo["cr480_appointmentdate"]))}>{dateCode}</Button> </TableCell>
+                <TableCell key ={"1."+key}> <Button onClick={()=>call2(JSON.stringify(patsInfo["sstack_dateofappointment"]))}>{dateCode}</Button> </TableCell>
                 <TableCell key ={"2."+key}> {patsInfo.opportunityid} </TableCell>
-                <TableCell key ={"3."+key}> {patsInfo.new_reasonfortesting} </TableCell>
+                <TableCell key ={"3."+key}> {patsInfo.sstack_reasonfortesting} </TableCell>
             </TableRow>
         );
     }

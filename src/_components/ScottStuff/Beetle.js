@@ -91,7 +91,7 @@ const Beetle = ({ beetleInfoData, action1,number}) => {
         let theDate = new Date();
 
         for(let i=0;i<beetleInfoData.beetleInfo.value.length;i++){
-            dataStructure.someOfTheDates[i]=beetleInfoData.beetleInfo.value[i].cr480_appointmentdate;
+            dataStructure.someOfTheDates[i]=beetleInfoData.beetleInfo.value[i].sstack_dateofappointment;
         }
         compareDates(dataStructure);
         

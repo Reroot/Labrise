@@ -6,7 +6,8 @@ import { adalApiFetch } from "../_adalconfig/adalConfig";
 export const readShellInfo = (data) => {
 
   let theDatesX=data.dates.slice();
-  let theString="https://notsmooth.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=cr480_appointmentdate&$filter=_parentcontactid_value%20eq%20";
+  // let theString="https://bumpystack.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=cr480_appointmentdate&$filter=_parentcontactid_value%20eq%20";
+  let theString="https://bumpystack.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=sstack_dateofappointment&$filter=_sstack_patients_value%20eq%20";
   theString+=data.cid;
   let x=0;
 
@@ -16,14 +17,14 @@ export const readShellInfo = (data) => {
 
       theDatesX[i]=theDatesX[i].replace(/['"]+/g, '');
        if(i==x&&theDatesX[i]!="x"){
-         theString+="%20and%20cr480_appointmentdate%20eq%20"+theDatesX[i];
+         theString+="%20and%20sstack_dateofappointment%20eq%20"+theDatesX[i];
        }else if(theDatesX[i]=="x"){
          if(i==x){
            x++;
          }
 
        }else{
-        theString+="%20or%20cr480_appointmentdate%20eq%20"+theDatesX[i];
+        theString+="%20or%20sstack_dateofappointment%20eq%20"+theDatesX[i];
       }
       
     }

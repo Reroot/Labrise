@@ -65,7 +65,7 @@ const Shell = ({ shellInfoData, action1}) => {
         let buttonContent=[];
 
         for(let i=0;i<shellInfoData.shellInfo.value.length;i++){
-            theDates[i]=shellInfoData.shellInfo.value[i].cr480_appointmentdate;
+            theDates[i]=shellInfoData.shellInfo.value[i].sstack_dateofappointment;
 
         }
 

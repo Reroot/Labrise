@@ -101,13 +101,13 @@ function App(props) {
             <Dashboard_Component />
           </Route>
 
-          <Route path="/appointments" component={ProfileContainer} {...props} />
-          {/* <Route
+          {/* <Route path="/appointments" component={ProfileContainer} {...props} /> */}
+          <Route
             path="/appointments"
             component={BeetleContainer}
             loggedInUser={user}
             {...props}
-          /> */}
+          />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>

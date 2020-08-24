@@ -7,7 +7,7 @@ export const readPatInfo = (theData) => {//needs cid
   let data=theData.dateData;
 
   let cid=theData.cid;
-  let theString="https://notsmooth.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=cr480_appointmentdate,new_reasonfortesting&$filter=_parentcontactid_value%20eq%20"
+  let theString="https://bumpystack.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=sstack_dateofappointment,sstack_reasonfortesting&$filter=_parentcontactid_value%20eq%20"
   theString+=cid;
 
   let start= ((data.buttonValue-1)*data.perLoad);
@@ -20,9 +20,9 @@ export const readPatInfo = (theData) => {//needs cid
   for(let i=start;i<end;i++){
 
     if(i==start){
-      theString+= "%20and%20cr480_appointmentdate%20eq%20" + data.dates[i];
+      theString+= "%20and%20sstack_dateofappointment%20eq%20" + data.dates[i];
     }else{
-      theString+= "%20or%20cr480_appointmentdate%20eq%20" + data.dates[i];
+      theString+= "%20or%20sstack_dateofappointment%20eq%20" + data.dates[i];
     }
     
   }

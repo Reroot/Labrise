@@ -32,7 +32,7 @@ const ModalData = ({ modalDataInfo }) => {
  
     //creates table from modal data retrieved
     if(modalDataInfo && modalDataInfo.requestSucessful){
-        let xdate=modalDataInfo.modalData.value[0].wc_appointmentdate;
+        let xdate=modalDataInfo.modalData.value[0].sstack_appointmentdate;
         let dateCode= xdate.substring(5,7)+"/"+xdate.substring(8,10)+"/"+xdate.substring(0,4)
 
 
@@ -54,45 +54,45 @@ const ModalData = ({ modalDataInfo }) => {
                         <TableBody>
                             <TableRow >
                                 <TableCell>Red Blood Cell</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_redbloodcellmin}</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_redbloodcellmax} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_redbloodcellvalue} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_redbloodcellflag} </TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_redbloodcellmin}</TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_redbloodcellmax} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_redbloodcellvalue} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_redbloodcellflag} </TableCell>
                             </TableRow>
                             <TableRow >
                                 <TableCell>White Blood Cell</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_whitebloodcellmin}</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_whitebloodcellmax} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_whitebloodcellvalue} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_whitebloodcellflag} </TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_whitebloodcellmin}</TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_whitebloodcellmax} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_whitebloodcellvalue} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_whitebloodcellflag} </TableCell>
                             </TableRow>
                             <TableRow >
                                 <TableCell>Platelet</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_plateletmin}</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_plateletmax} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_plateletvalue} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_plateletflag} </TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_plateletmin}</TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_plateletmax} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_plateletvalue} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_plateletflag} </TableCell>
                             </TableRow>
                             <TableRow >
                                 <TableCell>Total Cholesterol</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_totalcholesterolmin}</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_totalcholesterolmax} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_totalcholesterolvalue} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_totalcholesterolflag} </TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_totalcholesterolmin}</TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_totalcholesterolmax} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_totalcholesterolvalue} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_totalcholesterolflag} </TableCell>
                             </TableRow>
                             <TableRow >
                                 <TableCell>Triglycerides</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_triglyceridesmin}</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_triglyceridesmax} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_triglyceridesvalue} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_triglyceridesflag} </TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_triglyceridemin}</TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_triglyceridemax} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_triglyceridevalue} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_triglycerideflag} </TableCell>
                             </TableRow>
                             <TableRow >
                                 <TableCell>Sodium</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_sodiummin}</TableCell>
-                                <TableCell > {modalDataInfo.modalData.value[0].wc_sodiummax} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_sodiumvalue} </TableCell>
-                                <TableCell> {modalDataInfo.modalData.value[0].wc_sodiumflag} </TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_sodiummin}</TableCell>
+                                <TableCell > {modalDataInfo.modalData.value[0].sstack_sodiummax} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_sodiumvalue} </TableCell>
+                                <TableCell> {modalDataInfo.modalData.value[0].sstack_sodiumflag} </TableCell>
                             </TableRow>
                         </TableBody>    
                     </Table>

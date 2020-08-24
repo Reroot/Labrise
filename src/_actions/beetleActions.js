@@ -6,10 +6,12 @@ import { adalApiFetch } from "../_adalconfig/adalConfig";
 export const readBeetleInfo = (cid) => {
   console.log(cid);
 
-  let theString= "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=cr480_appointmentdate&$filter=_parentcontactid_value%20eq%20";
-  let xString=theString+cid;
+  // let theString= "https://notsmooth.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=cr480_appointmentdate&$filter=_parentcontactid_value%20eq%20";
+  let theString= "https://bumpystack.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=sstack_dateofappointment,name&$filter=_parentcontactid_value%20eq%20";
+  // let theString= "https://bumpystack.api.crm.dynamics.com/api/data/v9.1/opportunities/?$select=sstack_appointmentdate&$filter=sstack_patient%20eq%20";
+  let xString=theString + "{" + cid + "}";
 
-  xString+="%20and%20cr480_appointmentdate%20ne%20null"
+  xString+="%20and%20sstack_dateofappointment%20ne%20null"
 
     let config = {
         method: "get",
