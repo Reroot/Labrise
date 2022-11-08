@@ -19,7 +19,7 @@
         "bootstrap": "^4.5.0",
         "chart.js": "^2.9.3",
         "history": "^4.10.1",
-        "loader-utils": "^2.0.0",
+        "loader-utils": "^2.0.3",
         "lodash": "^4.17.19",
         "material-ui-image": "^3.2.3",
         "moment": "^2.27.0",
